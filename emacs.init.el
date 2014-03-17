@@ -522,58 +522,6 @@ user."
 ;; Clue: use C-M-\ to indent code
 ;; C-h v: information about what the function does
 
-;; This adds a small menu for commands that I found useful
-;; It is also good to remember the hotkeys
-
-(let ((menu '("augusto\'s"
-              ["Find file at point (ff)" find-file-at-point]
-              ["Edit file as root (C-x F)" find-file-as-root]
-              ["Using dired (C-x d)" dired]
-              ["Open .emacs (dotemacs)" dotemacs]
-              ["Open emacs.init.org" init]
-              ["Goto Last Change (C-.)" goto-last-change]
-              ["Browse Kill Ring (C-c k)" browse-kill-ring]
-              ["Goto Line (gl)" goto-line-with-feedback]
-              ["Dynamic abbrev (C-tab)" dabbrev-expand]
-              ["Count words (cw)" count-words-region]
-              ["Narrowing region (out: C-x n w)" narrow-to-region]
-              ["Count occurences" occur]
-              ["Flyspell buffer (M-x fb)" flyspell-buffer]
-              ["Flyspell next highl. word (M-f9)" flyspell-check-next-highlighted-word]
-              ["Helm search (C-c h)" helm-mini]
-              ["Magit Status (ms + TAB)" ms]
-              ("Eval"
-               ["Eval Buffer (eb)" eb]
-               ["Eval Region (er)" er]
-               ["Refresh Buffer (ref)" ref])
-              ("Windows"
-               ["Swap Windows (C-c s)" swap-windows]
-               ["Left (C-s-left)" windmove-left]
-               ["Right (C-s-right)" windmove-right]
-               ["Up (C-s-up)" windmove-up]
-               ["Down( C-s-down)" windmove-down]
-               ["Restore windows (C-c left or right)" winner])
-              ("Move Text Blocks"
-               ["Forward (next)" ergoemacs-forward-block]
-               ["Backware (prior)" ergoemacs-backward-block])
-              ("Orgmode"
-               ["Tangle a elisp file" org-babel-load-file]   
-               ["Insert Reftex (C-c C-x [)" reftex-citation]
-               ["Clock history in (C-c C-x C-i)" org-clock-in]
-               ["Clock history out (C-c C-x C-o)" org-clock-out])
-              ("Utils"
-               ["Manage Minor Mode" manage-minor-mode]
-               ["Unfill Paragraph" unfill-paragraph]
-               ["Unfill Region" unfill-region]
-               ["Browse url (C-x m)" browse-url-at-point]
-               ["Image editing" image-dired])
-              )))
-  (if (fboundp 'add-submenu)
-      (add-submenu nil menu)
-    (require 'easymenu)
-    (easy-menu-define andrews-menu global-map "augusto's Personal Menu" menu)
-    (easy-menu-add andrews-menu global-map)))
-
 ;; defining useful block types for Beamer
 (setq latex-block-names '("frame" "block" "exampleblock" "alertblock"))
 
@@ -1008,3 +956,55 @@ do this for the whole buffer."
 (global-hl-line-mode 1)
 ;; color for current line:
 ;;(set-face-background 'hl-line "#e0f8ff")
+
+;; This adds a small menu for commands that I found useful
+;; It is also good to remember the hotkeys
+
+(let ((menu '("augusto\'s"
+              ["Find file at point (ff)" find-file-at-point]
+              ["Edit file as root (C-x F)" find-file-as-root]
+              ["Using dired (C-x d)" dired]
+              ["Open .emacs (dotemacs)" dotemacs]
+              ["Open emacs.init.org" init]
+              ["Goto Last Change (C-.)" goto-last-change]
+              ["Browse Kill Ring (C-c k)" browse-kill-ring]
+              ["Goto Line (gl)" goto-line-with-feedback]
+              ["Dynamic abbrev (C-tab)" dabbrev-expand]
+              ["Count words (cw)" count-words-region]
+              ["Narrowing region (out: C-x n w)" narrow-to-region]
+              ["Count occurences" occur]
+              ["Flyspell buffer (M-x fb)" flyspell-buffer]
+              ["Flyspell next highl. word (M-f9)" flyspell-check-next-highlighted-word]
+              ["Helm search (C-c h)" helm-mini]
+              ["Magit Status (ms + TAB)" ms]
+              ("Eval"
+               ["Eval Buffer (eb)" eb]
+               ["Eval Region (er)" er]
+               ["Refresh Buffer (ref)" ref])
+              ("Windows"
+               ["Swap Windows (C-c s)" swap-windows]
+               ["Left (C-s-left)" windmove-left]
+               ["Right (C-s-right)" windmove-right]
+               ["Up (C-s-up)" windmove-up]
+               ["Down( C-s-down)" windmove-down]
+               ["Restore windows (C-c left or right)" winner])
+              ("Move Text Blocks"
+               ["Forward (next)" ergoemacs-forward-block]
+               ["Backware (prior)" ergoemacs-backward-block])
+              ("Orgmode"
+               ["Tangle a elisp file" org-babel-load-file]   
+               ["Insert Reftex (C-c C-x [)" reftex-citation]
+               ["Clock history in (C-c C-x C-i)" org-clock-in]
+               ["Clock history out (C-c C-x C-o)" org-clock-out])
+              ("Utils"
+               ["Manage Minor Mode" manage-minor-mode]
+               ["Unfill Paragraph" unfill-paragraph]
+               ["Unfill Region" unfill-region]
+               ["Browse url (C-x m)" browse-url-at-point]
+               ["Image editing" image-dired])
+              )))
+  (if (fboundp 'add-submenu)
+      (add-submenu nil menu)
+    (require 'easymenu)
+    (easy-menu-define andrews-menu global-map "augusto's Personal Menu" menu)
+    (easy-menu-add andrews-menu global-map)))

@@ -1,30 +1,3 @@
-* License
-
-Copyright (C) 2014 Antonio Augusto F Garcia
-
-Author: Antonio Augusto F Garcia (and several others, from books,
-internet, Emacswiki and elsewhere. Sorry for not mentioning you here;
-I just cannot remember all the sources of this useful code).
-
-Maintainer: Antonio Augusto F Garcia
-Created 09 March 2014
-Version: 1.0
-Version Keywords: newborn
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 3
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-
 * Description
 
 This is my personal collection of Emacs Lisp utilities that should be
@@ -655,67 +628,6 @@ user."
 
 #+END_SRC
 
-* Defining a customized menu
- 
-
-#+BEGIN_SRC emacs-lisp
-  
-;; This adds a small menu for commands that I found useful
-;; It is also good to remember the hotkeys
-
-(let ((menu '("augusto\'s"
-              ["Find file at point (ff)" find-file-at-point]
-              ["Edit file as root (C-x F)" find-file-as-root]
-              ["Using dired (C-x d)" dired]
-              ["Open .emacs (dotemacs)" dotemacs]
-              ["Open emacs.init.org" init]
-              ["Goto Last Change (C-.)" goto-last-change]
-              ["Browse Kill Ring (C-c k)" browse-kill-ring]
-              ["Goto Line (gl)" goto-line-with-feedback]
-              ["Dynamic abbrev (C-tab)" dabbrev-expand]
-              ["Count words (cw)" count-words-region]
-              ["Narrowing region (out: C-x n w)" narrow-to-region]
-              ["Count occurences" occur]
-              ["Flyspell buffer (M-x fb)" flyspell-buffer]
-              ["Flyspell next highl. word (M-f9)" flyspell-check-next-highlighted-word]
-              ["Helm search (C-c h)" helm-mini]
-              ["Magit Status (ms + TAB)" ms]
-              ("Eval"
-               ["Eval Buffer (eb)" eb]
-               ["Eval Region (er)" er]
-               ["Refresh Buffer (ref)" ref])
-              ("Windows"
-               ["Swap Windows (C-c s)" swap-windows]
-               ["Left (C-s-left)" windmove-left]
-               ["Right (C-s-right)" windmove-right]
-               ["Up (C-s-up)" windmove-up]
-               ["Down( C-s-down)" windmove-down]
-               ["Restore windows (C-c left or right)" winner])
-              ("Move Text Blocks"
-               ["Forward (next)" ergoemacs-forward-block]
-               ["Backware (prior)" ergoemacs-backward-block])
-              ("Orgmode"
-               ["Tangle a elisp file" org-babel-load-file]   
-               ["Insert Reftex (C-c C-x [)" reftex-citation]
-               ["Clock history in (C-c C-x C-i)" org-clock-in]
-               ["Clock history out (C-c C-x C-o)" org-clock-out])
-              ("Utils"
-               ["Manage Minor Mode" manage-minor-mode]
-               ["Unfill Paragraph" unfill-paragraph]
-               ["Unfill Region" unfill-region]
-               ["Browse url (C-x m)" browse-url-at-point]
-               ["Image editing" image-dired])
-              )))
-  (if (fboundp 'add-submenu)
-      (add-submenu nil menu)
-    (require 'easymenu)
-    (easy-menu-define andrews-menu global-map "augusto's Personal Menu" menu)
-    (easy-menu-add andrews-menu global-map)))
-
-
-#+END_SRC
-
-
 * Configurations for Auctex e LaTeX
 
   
@@ -1288,4 +1200,93 @@ one you like, and click save. I prefer however using the codes.
 
 
 #+END_SRC
+
+* Defining a customized menu
+ 
+
+#+BEGIN_SRC emacs-lisp
+  
+;; This adds a small menu for commands that I found useful
+;; It is also good to remember the hotkeys
+
+(let ((menu '("augusto\'s"
+              ["Find file at point (ff)" find-file-at-point]
+              ["Edit file as root (C-x F)" find-file-as-root]
+              ["Using dired (C-x d)" dired]
+              ["Open .emacs (dotemacs)" dotemacs]
+              ["Open emacs.init.org" init]
+              ["Goto Last Change (C-.)" goto-last-change]
+              ["Browse Kill Ring (C-c k)" browse-kill-ring]
+              ["Goto Line (gl)" goto-line-with-feedback]
+              ["Dynamic abbrev (C-tab)" dabbrev-expand]
+              ["Count words (cw)" count-words-region]
+              ["Narrowing region (out: C-x n w)" narrow-to-region]
+              ["Count occurences" occur]
+              ["Flyspell buffer (M-x fb)" flyspell-buffer]
+              ["Flyspell next highl. word (M-f9)" flyspell-check-next-highlighted-word]
+              ["Helm search (C-c h)" helm-mini]
+              ["Magit Status (ms + TAB)" ms]
+              ("Eval"
+               ["Eval Buffer (eb)" eb]
+               ["Eval Region (er)" er]
+               ["Refresh Buffer (ref)" ref])
+              ("Windows"
+               ["Swap Windows (C-c s)" swap-windows]
+               ["Left (C-s-left)" windmove-left]
+               ["Right (C-s-right)" windmove-right]
+               ["Up (C-s-up)" windmove-up]
+               ["Down( C-s-down)" windmove-down]
+               ["Restore windows (C-c left or right)" winner])
+              ("Move Text Blocks"
+               ["Forward (next)" ergoemacs-forward-block]
+               ["Backware (prior)" ergoemacs-backward-block])
+              ("Orgmode"
+               ["Tangle a elisp file" org-babel-load-file]   
+               ["Insert Reftex (C-c C-x [)" reftex-citation]
+               ["Clock history in (C-c C-x C-i)" org-clock-in]
+               ["Clock history out (C-c C-x C-o)" org-clock-out])
+              ("Utils"
+               ["Manage Minor Mode" manage-minor-mode]
+               ["Unfill Paragraph" unfill-paragraph]
+               ["Unfill Region" unfill-region]
+               ["Browse url (C-x m)" browse-url-at-point]
+               ["Image editing" image-dired])
+              )))
+  (if (fboundp 'add-submenu)
+      (add-submenu nil menu)
+    (require 'easymenu)
+    (easy-menu-define andrews-menu global-map "augusto's Personal Menu" menu)
+    (easy-menu-add andrews-menu global-map)))
+
+
+#+END_SRC
+
+
+
+* License
+
+Copyright (C) 2014 Antonio Augusto F Garcia
+
+Author: Antonio Augusto F Garcia (and several others, from books,
+internet, Emacswiki and elsewhere. Sorry for not mentioning you here;
+I just cannot remember all the sources of this useful code).
+
+Maintainer: Antonio Augusto F Garcia
+Created 09 March 2014
+Version: 1.0
+Version Keywords: newborn
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 3
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
 
