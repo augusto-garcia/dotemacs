@@ -39,7 +39,7 @@ Therefore, I just needed to include this on my =.emacs= file (that,
 remember, is on the /Dropbox/ directory).
 
 #+BEGIN_SRC emacs-lisp :tangle no
-(add-to-list 'load-path "~/git/emacs") ;;where emacs.init.el is
+(add-to-list 'load-path "~/git/dotemacs") ;;where emacs.init.el is
 (add-to-list 'load-path "~/.emacs.d") ;;where packages are
 (load "emacs.init")
 #+END_SRC
