@@ -44,8 +44,8 @@ remember, is on the /Dropbox/ directory).
 (load "emacs.init")
 #+END_SRC
 
-By doing this, Emacs will look for files on =~/git/emacs=; there, he
-will find =emacs.init.el= (the file produced by tangling
+By doing this, Emacs will look for files on =~/git/dotemacs=; there,
+he will find =emacs.init.el= (the file produced by tangling
 =emacs.init.org=) and will load it.
 
 
