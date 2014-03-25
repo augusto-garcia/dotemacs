@@ -97,6 +97,7 @@ Usage: (package-require 'package)"
 ;; to adjust the position of the window when starting emacs
 (setq initial-frame-alist '((top . 30) (left . 90)))
 
+
 ;; To customize the Welcome Message when loading Emacs
 (setq initial-scratch-message "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \nHi augusto.
@@ -106,6 +107,7 @@ then start your chores list.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ")
+
 
 ;; Don't display the 'Welcome to GNU Emacs' buffer on startup
 (setq inhibit-startup-message t)
