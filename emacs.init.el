@@ -528,6 +528,9 @@ See: `ergoemacs-forward-block'"
                  "http://www.urbandictionary.com/define.php?term="
                  ""])))
 
+;; save/restore opened files and windows config
+(desktop-save-mode 1) ; 0 for off
+
 ;; FIXME
 ;; Not working, need to fix
 ;; Convenient printing
