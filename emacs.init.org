@@ -48,6 +48,9 @@ By doing this, Emacs will look for files on =~/git/dotemacs=; there,
 he will find =emacs.init.el= (the file produced by tangling
 =emacs.init.org=) and will load it.
 
+I also use another trick. In my =.emacs=, I force my =~/git/dotemacs=
+to pull modifications from =github= before loading Emacs. By doing
+that, everything will always be updated on all my computers.
 
 * Packages and repositories
 
