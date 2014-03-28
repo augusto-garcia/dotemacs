@@ -596,7 +596,7 @@ user."
 ;; shortcut to open file emacs.init.org
 (defun init ()
   (interactive)
-  (find-file "~/git/emacs/emacs.init.org")
+  (find-file "~/git/dotemacs/emacs.init.org")
   )
 
 ;; A function to "refresh" the buffer without asking confirmation
@@ -1057,8 +1057,8 @@ do this for the whole buffer."
               ["Edit file as root (C-x F)" find-file-as-root]
               ["Rename file at butter (C-x C-r)" rename-current-buffer-file]
               ["Using dired (C-x d)" dired]
-              ["Open .emacs (dotemacs)" dotemacs]
-              ["Open emacs.init.org" init]
+              ["Open .emacs (M-x dotemacs)" dotemacs]
+              ["Open emacs.init.org (M-x init)" init]
               ["Goto Last Change (C-.)" goto-last-change]
               ["Browse Kill Ring (C-c k)" browse-kill-ring]
               ["Goto Line (gl)" goto-line-with-feedback]
