@@ -48,6 +48,9 @@ By doing this, Emacs will look for files on =~/git/dotemacs=; there,
 he will find =emacs.init.el= (the file produced by tangling
 =emacs.init.org=) and will load it.
 
+I also use another trick. In my =.emacs=, I force my =~/git/dotemacs=
+to pull modifications from =github= before loading Emacs. By doing
+that, everything will always be updated on all my computers.
 
 * Packages and repositories
 
@@ -97,6 +100,7 @@ Usage: (package-require 'package)"
 ;; to adjust the position of the window when starting emacs
 (setq initial-frame-alist '((top . 30) (left . 90)))
 
+
 ;; To customize the Welcome Message when loading Emacs
 (setq initial-scratch-message "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \nHi augusto.
@@ -106,6 +110,7 @@ then start your chores list.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ")
+
 
 ;; Don't display the 'Welcome to GNU Emacs' buffer on startup
 (setq inhibit-startup-message t)
@@ -609,6 +614,9 @@ See: `ergoemacs-forward-block'"
                  "http://www.urbandictionary.com/define.php?term="
                  ""])))
 
+;; save/restore opened files and windows config
+(desktop-save-mode 1) ; 0 for off
+
 
 #+END_SRC
 
@@ -702,7 +710,7 @@ user."
 ;; shortcut to open file emacs.init.org
 (defun init ()
   (interactive)
-  (find-file "~/git/emacs/emacs.init.org")
+  (find-file "~/git/dotemacs/emacs.init.org")
   )
 
 ;; A function to "refresh" the buffer without asking confirmation
@@ -1308,8 +1316,8 @@ one you like, and click save. I prefer however using the codes.
               ["Edit file as root (C-x F)" find-file-as-root]
               ["Rename file at butter (C-x C-r)" rename-current-buffer-file]
               ["Using dired (C-x d)" dired]
-              [".emacs (M-x dotemacs)" dotemacs]
-              ["emacs.init.org (M-x init)" init]
+              ["Open .emacs (M-x dotemacs)" dotemacs]
+              ["Open emacs.init.org (M-x init)" init]
               ["Goto Last Change (C-.)" goto-last-change]
               ["Browse Kill Ring (C-c k)" browse-kill-ring]
               ["Goto Line (gl)" goto-line-with-feedback]

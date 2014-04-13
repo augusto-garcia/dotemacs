@@ -35,6 +35,7 @@ Usage: (package-require 'package)"
 ;; to adjust the position of the window when starting emacs
 (setq initial-frame-alist '((top . 30) (left . 90)))
 
+
 ;; To customize the Welcome Message when loading Emacs
 (setq initial-scratch-message "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \nHi augusto.
@@ -44,6 +45,7 @@ then start your chores list.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ")
+
 
 ;; Don't display the 'Welcome to GNU Emacs' buffer on startup
 (setq inhibit-startup-message t)
@@ -529,6 +531,9 @@ See: `ergoemacs-forward-block'"
                  "http://www.urbandictionary.com/define.php?term="
                  ""])))
 
+;; save/restore opened files and windows config
+(desktop-save-mode 1) ; 0 for off
+
 ;; FIXME
 ;; Not working, need to fix
 ;; Convenient printing
@@ -594,7 +599,7 @@ user."
 ;; shortcut to open file emacs.init.org
 (defun init ()
   (interactive)
-  (find-file "~/git/emacs/emacs.init.org")
+  (find-file "~/git/dotemacs/emacs.init.org")
   )
 
 ;; A function to "refresh" the buffer without asking confirmation
@@ -1055,8 +1060,13 @@ do this for the whole buffer."
               ["Edit file as root (C-x F)" find-file-as-root]
               ["Rename file at butter (C-x C-r)" rename-current-buffer-file]
               ["Using dired (C-x d)" dired]
+<<<<<<< HEAD
               [".emacs (M-x dotemacs)" dotemacs]
               ["emacs.init.org (M-x init)" init]
+=======
+              ["Open .emacs (M-x dotemacs)" dotemacs]
+              ["Open emacs.init.org (M-x init)" init]
+>>>>>>> 1ff60ab4e353bb708a4f2194724d0e9db9f104d7
               ["Goto Last Change (C-.)" goto-last-change]
               ["Browse Kill Ring (C-c k)" browse-kill-ring]
               ["Goto Line (gl)" goto-line-with-feedback]
