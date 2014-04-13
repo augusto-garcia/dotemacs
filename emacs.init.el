@@ -1060,13 +1060,8 @@ do this for the whole buffer."
               ["Edit file as root (C-x F)" find-file-as-root]
               ["Rename file at butter (C-x C-r)" rename-current-buffer-file]
               ["Using dired (C-x d)" dired]
-<<<<<<< HEAD
-              [".emacs (M-x dotemacs)" dotemacs]
-              ["emacs.init.org (M-x init)" init]
-=======
               ["Open .emacs (M-x dotemacs)" dotemacs]
               ["Open emacs.init.org (M-x init)" init]
->>>>>>> 1ff60ab4e353bb708a4f2194724d0e9db9f104d7
               ["Goto Last Change (C-.)" goto-last-change]
               ["Browse Kill Ring (C-c k)" browse-kill-ring]
               ["Goto Line (gl)" goto-line-with-feedback]
