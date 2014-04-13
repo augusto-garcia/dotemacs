@@ -3,7 +3,7 @@
 (require 'package)
 (package-initialize)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;                          ("marmalade" . "http://marmalade-repo.org/packages")
+                          ("marmalade" . "http://marmalade-repo.org/packages")
                           ("elpa" . "http://tromey.com/elpa/")
                           ("melpa" . "http://melpa.milkbox.net/packages/")))
 
@@ -93,6 +93,9 @@ then start your chores list.
           (set-window-buffer (next-window) next-win-buffer)
           (select-window first-win)
           (if this-win-2nd (other-window 1))))))
+
+;; save/restore opened files and windows config
+(desktop-save-mode 1) ; 0 for off
 
 ;; keep a list of recently opened files, available using F7
 (recentf-mode 1)
@@ -1052,8 +1055,8 @@ do this for the whole buffer."
               ["Edit file as root (C-x F)" find-file-as-root]
               ["Rename file at butter (C-x C-r)" rename-current-buffer-file]
               ["Using dired (C-x d)" dired]
-              ["Open .emacs (dotemacs)" dotemacs]
-              ["Open emacs.init.org" init]
+              [".emacs (M-x dotemacs)" dotemacs]
+              ["emacs.init.org (M-x init)" init]
               ["Goto Last Change (C-.)" goto-last-change]
               ["Browse Kill Ring (C-c k)" browse-kill-ring]
               ["Goto Line (gl)" goto-line-with-feedback]
