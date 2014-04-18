@@ -99,6 +99,28 @@ then start your chores list.
 ;; save/restore opened files and windows config
 (desktop-save-mode 1) ; 0 for off
 
+;; Sublimity mode (M-x sublimity-mode)
+;; smooth-scrolling, minimap and distraction-free mode
+;; For customization: https://github.com/zk-phi/sublimity
+(require 'sublimity)
+(require 'sublimity-scroll)
+(require 'sublimity-map)
+(require 'sublimity-attractive)
+;; minimap
+(setq sublimity-map-size 20)
+(setq sublimity-map-fraction 0.3)
+(setq sublimity-map-text-scale -7)
+(add-hook 'sublimity-map-setup-hook
+          (lambda ()
+            (setq buffer-face-mode-face '(:family "Monospace"))
+            (buffer-face-mode)))
+(sublimity-map-set-delay 5)
+;; distraction-free
+(sublimity-attractive-hide-bars)
+(sublimity-attractive-hide-vertical-border)
+(sublimity-attractive-hide-fringes)
+(sublimity-attractive-hide-modelines)
+
 ;; keep a list of recently opened files, available using F7
 (recentf-mode 1)
 (global-set-key (kbd "<f7>") 'recentf-open-files)
