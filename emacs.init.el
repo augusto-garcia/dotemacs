@@ -372,11 +372,11 @@ See: `ergoemacs-forward-block'"
 
 ;; To add GPL or other licenses
 ;; Usage: M-x legalese (for GPL), or C-u M-x legalese (others)
-(package-require 'legalese)
-(setq comment-style 'extra-line)
-(add-hook 'scheme-mode-hook
-          (lambda ()
-            (set (make-local-variable 'comment-add) 1)))
+;;(package-require 'legalese)
+;;(setq comment-style 'extra-line)
+;;(add-hook 'scheme-mode-hook
+;;          (lambda ()
+;;            (set (make-local-variable 'comment-add) 1)))
 
 ;; IDO mode, for autocompletion; use with C-x C-f
 (ido-mode 1)
@@ -461,6 +461,7 @@ See: `ergoemacs-forward-block'"
 (helm-mode 1)
 (global-set-key (kbd "C-c h") 'helm-mini)
 
+
 ;; smex, for auto-complete on M-x
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
@@ -533,6 +534,19 @@ See: `ergoemacs-forward-block'"
 
 ;; save/restore opened files and windows config
 (desktop-save-mode 1) ; 0 for off
+
+;; For using ace-jump mode, for faster navigation
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c j") 'ace-jump-mode)
+;; enable a more powerful jump back function
+(autoload
+  'ace-jump-mode-pop-mark
+  "ace-jump-mode"
+  "Ace jump back:-)"
+  t)
+(eval-after-load "ace-jump-mode"
+  '(ace-jump-mode-enable-mark-sync))
+(define-key global-map (kbd "C-x j") 'ace-jump-mode-pop-mark)
 
 ;; FIXME
 ;; Not working, need to fix
@@ -703,6 +717,9 @@ user."
 ;; To use RDired, that is similar to dired mode
 (autoload 'ess-rdired "ess-rdired"
   "View *R* objects in a dired-like buffer." t)
+
+;; Enable helm for ESS
+(require 'helm-R)
 
 ;; enabling it for text-mode, and disabling it for log-edit
 ;; and change-log-mode
@@ -1056,7 +1073,7 @@ do this for the whole buffer."
 ;; It is also good to remember the hotkeys
 
 (let ((menu '("augusto\'s"
-              ["Find file at point (ff)" find-file-at-point]
+              ["Find file at point (M-x ff)" find-file-at-point]
               ["Edit file as root (C-x F)" find-file-as-root]
               ["Rename file at butter (C-x C-r)" rename-current-buffer-file]
               ["Using dired (C-x d)" dired]
@@ -1064,16 +1081,20 @@ do this for the whole buffer."
               ["Open emacs.init.org (M-x init)" init]
               ["Goto Last Change (C-.)" goto-last-change]
               ["Browse Kill Ring (C-c k)" browse-kill-ring]
-              ["Goto Line (gl)" goto-line-with-feedback]
+              ["Goto Line (M-x gl)" goto-line-with-feedback]
               ["Dynamic abbrev (C-tab)" dabbrev-expand]
-              ["Count words (cw)" count-words-region]
+              ["Count words (M-x cw)" count-words-region]
               ["Narrowing region (out: C-x n w)" narrow-to-region]
               ["Count occurences" occur]
               ["Flyspell buffer (M-x fb)" flyspell-buffer]
               ["Flyspell next highl. word (M-f9)" flyspell-check-next-highlighted-word]
               ["Helm search (C-c h)" helm-mini]
               ["Magit Status (ms + TAB)" ms]
-              ["Search word in the web (C-x g)" webjump]  
+              ["Search word in the web (C-x g)" webjump]
+              ("Ace-jump-mode"
+               ["Word (C-c j)" ace-jump-word-mode]
+               ["Char (C-u C-c j)" ace-jump-char-mode]
+               ["Line (C-u C-u C-c j)" ace-jump-line-mode])
               ("Eval"
                ["Eval Buffer (eb)" eb]
                ["Eval Region (er)" er]
