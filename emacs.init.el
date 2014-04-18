@@ -30,7 +30,7 @@ Usage: (package-require 'package)"
 ;;(package-refresh-contents)
 
 ;; To adjust the size of the window when starting emacs
-(if (window-system) (set-frame-size (selected-frame) 124 33))
+(if (window-system) (set-frame-size (selected-frame) 108 33))
 
 ;; to adjust the position of the window when starting emacs
 (setq initial-frame-alist '((top . 30) (left . 90)))
@@ -104,7 +104,7 @@ then start your chores list.
 ;; For customization: https://github.com/zk-phi/sublimity
 (require 'sublimity)
 (require 'sublimity-scroll)
-(require 'sublimity-map)
+;(require 'sublimity-map)
 (require 'sublimity-attractive)
 ;; Load it by default
 (sublimity-mode 1)
