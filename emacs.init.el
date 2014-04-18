@@ -116,10 +116,10 @@ then start your chores list.
             (buffer-face-mode)))
 (sublimity-map-set-delay 5)
 ;; distraction-free
-(sublimity-attractive-hide-bars)
+;;(sublimity-attractive-hide-bars)
 (sublimity-attractive-hide-vertical-border)
 (sublimity-attractive-hide-fringes)
-(sublimity-attractive-hide-modelines)
+;;(sublimity-attractive-hide-modelines)
 
 ;; keep a list of recently opened files, available using F7
 (recentf-mode 1)
