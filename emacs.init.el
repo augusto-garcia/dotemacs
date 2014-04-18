@@ -102,10 +102,13 @@ then start your chores list.
 ;; Sublimity mode (M-x sublimity-mode)
 ;; smooth-scrolling, minimap and distraction-free mode
 ;; For customization: https://github.com/zk-phi/sublimity
+;; OBS: minimap is not working
 (require 'sublimity)
 (require 'sublimity-scroll)
 (require 'sublimity-map)
 (require 'sublimity-attractive)
+;; Load it by default
+(sublimity-mode 1)
 ;; minimap
 (setq sublimity-map-size 20)
 (setq sublimity-map-fraction 0.3)
