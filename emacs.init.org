@@ -545,7 +545,7 @@ See: `ergoemacs-forward-block'"
   (function
     (lambda ()
       (make-local-variable 'resize-minibuffer-window-max-height)
-      (setq resize-minibuffer-window-max-height 1))))
+      (setq resize-minibuffer-window-max-height 2))))
 
 ;; save minibuffer history
 ;; hint: a good way to type commands is C-r then a part of the command
