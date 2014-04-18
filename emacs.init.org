@@ -1325,6 +1325,7 @@ completion. The ones I liked so far:
   + anti-zenburn
   + zenburn
   + tangotango (my favorite)
+  + dakrone (cool!)
 
 Install the ones you want from repositories. To load then, use the
 codes below. Another option: use =M-x customize-themes=, select the
@@ -1333,7 +1334,7 @@ one you like, and click save. I prefer however using the codes.
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'tangotango t)
+(load-theme 'dakrone t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)

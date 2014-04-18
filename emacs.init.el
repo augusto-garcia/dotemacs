@@ -1086,7 +1086,7 @@ do this for the whole buffer."
 (sp-with-modes '(html-mode sgml-mode)
   (sp-local-pair "<" ">"))
 
-(load-theme 'tangotango t)
+(load-theme 'dakrone t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
