@@ -1251,6 +1251,35 @@ do this for the whole buffer."
 
 #+END_SRC
 
+* For Makefiles
+
+From http://www.emacswiki.org/emacs/MakefileMode
+  
+#+BEGIN_SRC emacs-lisp
+
+(require 'make-mode)
+  
+  (defconst makefile-nmake-statements
+    `("!IF" "!ELSEIF" "!ELSE" "!ENDIF" "!MESSAGE" "!ERROR" "!INCLUDE" ,@makefile-statements)
+    "List of keywords understood by nmake.")
+  
+  (defconst makefile-nmake-font-lock-keywords
+    (makefile-make-font-lock-keywords
+     makefile-var-use-regex
+     makefile-nmake-statements
+     t))
+  
+  (define-derived-mode makefile-nmake-mode makefile-mode "nMakefile"
+    "An adapted `makefile-mode' that knows about nmake."
+    (setq font-lock-defaults
+          `(makefile-nmake-font-lock-keywords ,@(cdr font-lock-defaults))))
+
+(setq auto-mode-alist
+        (cons '("\\.mak\\'" . makefile-nmake-mode) auto-mode-alist))
+
+#+END_SRC
+
+  
 * Smartparens
 
 #+BEGIN_SRC emacs-lisp

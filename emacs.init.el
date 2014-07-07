@@ -1060,6 +1060,26 @@ do this for the whole buffer."
   "Major mode for editing R-Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-markdown-mode))
 
+(require 'make-mode)
+  
+  (defconst makefile-nmake-statements
+    `("!IF" "!ELSEIF" "!ELSE" "!ENDIF" "!MESSAGE" "!ERROR" "!INCLUDE" ,@makefile-statements)
+    "List of keywords understood by nmake.")
+  
+  (defconst makefile-nmake-font-lock-keywords
+    (makefile-make-font-lock-keywords
+     makefile-var-use-regex
+     makefile-nmake-statements
+     t))
+  
+  (define-derived-mode makefile-nmake-mode makefile-mode "nMakefile"
+    "An adapted `makefile-mode' that knows about nmake."
+    (setq font-lock-defaults
+          `(makefile-nmake-font-lock-keywords ,@(cdr font-lock-defaults))))
+
+(setq auto-mode-alist
+        (cons '("\\.mak\\'" . makefile-nmake-mode) auto-mode-alist))
+
 ;; to enable smartparens (package) in all modes
 ;; it was necessary to turn off electric-pair-mode (above)
 (package-initialize)
