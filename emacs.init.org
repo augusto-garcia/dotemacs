@@ -1334,7 +1334,7 @@ one you like, and click save. I prefer however using the codes.
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'dakrone t)
+(load-theme 'light-blue t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
