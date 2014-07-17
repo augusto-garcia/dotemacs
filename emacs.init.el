@@ -193,6 +193,11 @@ point reaches the beginning or end of the buffer, stop there."
 ;; defining C-x C-u as undo (same as C-x u). It was upcase-region.
 (define-key global-map "\C-x\C-u" 'undo)
 
+;; For defining redo, based on package undo-tree
+(require 'undo-tree)
+(defalias 'redo 'undo-tree-redo)
+(global-set-key (kbd "C-z") 'redo) ;; it will work with Ctrl+z
+
 ;; Turn on font-lock mode to color text in certain modes 
 (global-font-lock-mode t)
 
