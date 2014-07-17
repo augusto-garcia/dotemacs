@@ -201,6 +201,9 @@ point reaches the beginning or end of the buffer, stop there."
 ;; Turn on font-lock mode to color text in certain modes 
 (global-font-lock-mode t)
 
+;; Show line and column position of cursor
+(column-number-mode 1)
+
 ;; Make sure spaces are used when indenting code
 (setq-default indent-tabs-mode nil)
 
