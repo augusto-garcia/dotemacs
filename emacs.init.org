@@ -1360,10 +1360,14 @@ Install the ones you want from repositories. To load then, use the
 codes below. Another option: use =M-x customize-themes=, select the
 one you like, and click save. I prefer however using the codes.
 
+One amazing package, with a number of beautiful themes, is
+=sublime-themes= (you can install from MELPA). After, just use the
+procedure above to choose the one you like. You can have an overview
+of available themes at [[https://github.com/owainlewis/emacs-color-themes]] 
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'light-blue t)
+(load-theme 'fogus t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
