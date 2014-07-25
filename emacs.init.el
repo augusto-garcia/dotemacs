@@ -727,6 +727,9 @@ user."
                 '("XeLaTeX" "xelatex -interaction=nonstopmode %s"
                   TeX-run-command t t :help "Run xelatex") t))
 
+;; To use magic-latex-buffer
+(require 'magic-latex-buffer)
+
 ;; By default, it uses text mode
 (require 'edit-server)
 (edit-server-start)
@@ -1164,9 +1167,10 @@ do this for the whole buffer."
                ["Clock history in (C-c C-x C-i)" org-clock-in]
                ["Clock history out (C-c C-x C-o)" org-clock-out])
               ("Utils"
-               ["Manage Minor Mode" manage-minor-mode]
+               ["Magic LaTeX Buffer" magic-latex-buffer]
                ["Unfill Paragraph" unfill-paragraph]
                ["Unfill Region" unfill-region]
+               ["Manage Minor Mode" manage-minor-mode]
                ["Browse url (C-x m)" browse-url-at-point]
                ["Image editing" image-dired])
               )))
