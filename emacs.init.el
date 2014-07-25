@@ -1055,18 +1055,12 @@ do this for the whole buffer."
   (setq ad-return-value
         (wicked/org-update-checkbox-count (ad-get-arg 1))))
 
-;; Package polymodes not yet on repositories (last check: Feb 12th 2014)
-;; https://github.com/vitoshka/polymode
-;; Need also to install markdown-mode.el, from MELPA
-(setq load-path
-      (append '("~/Dropbox/Emacs/.emacs.d/polymode/"  "~/Dropbox/Emacs/.emacs.d/polymode/modes")
-              load-path))
-(require 'poly-R)
-(require 'poly-markdown)
-
-(autoload 'poly-markdown-mode "poly-markdown-mode"
-  "Major mode for editing R-Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.Rmd\\'" . poly-markdown-mode))
+;;; MARKDOWN
+(add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
+;;; R modes
+(add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+(add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 
 (require 'make-mode)
   
