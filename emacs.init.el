@@ -635,6 +635,7 @@ user."
 (defalias 'eb 'eval-buffer)
 (defalias 'er 'eval-region)
 (defalias 'ms 'magit-status)
+(defalias 'tm' 'git-timemachine)
 
 ;; shortcut to open file .emacs
 (defun dotemacs ()
@@ -806,9 +807,11 @@ user."
 (eval-after-load "magit" 
   '(mapc (apply-partially 'add-to-list 'magit-repo-dirs)
          '("~/git/augusto-garcia.github.io"
-           "~/git/R-Introduction"
            "~/git/statgen-esalq"
-           "~/git/dotemacs")))
+           "~/git/dotemacs"
+           "~/git/Mixed-Models"
+           "~/git/Templates-do-Lab"
+           "~/git/Templates")))
 
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
@@ -1115,9 +1118,6 @@ do this for the whole buffer."
 ;; color for current line:
 ;;(set-face-background 'hl-line "#e0f8ff")
 
-;; This adds a small menu for commands that I found useful
-;; It is also good to remember the hotkeys
-
 (let ((menu '("augusto\'s"
               ["Find file at point (M-x ff)" find-file-at-point]
               ["Edit file as root (C-x F)" find-file-as-root]
@@ -1135,12 +1135,15 @@ do this for the whole buffer."
               ["Flyspell buffer (M-x fb)" flyspell-buffer]
               ["Flyspell next highl. word (M-f9)" flyspell-check-next-highlighted-word]
               ["Helm search (C-c h)" helm-mini]
-              ["Magit Status (ms + TAB)" ms]
               ["Search word in the web (C-x g)" webjump]
               ("Ace-jump-mode"
                ["Word (C-c j)" ace-jump-word-mode]
                ["Char (C-u C-c j)" ace-jump-char-mode]
                ["Line (C-u C-u C-c j)" ace-jump-line-mode])
+              ("git"
+               ["Magit Status (ms+TAB)" ms]
+               ["Git Timemachine (tm)" tm]
+               )
               ("Eval"
                ["Eval Buffer (eb)" eb]
                ["Eval Region (er)" er]
