@@ -745,7 +745,7 @@ user."
 (defalias 'eb 'eval-buffer)
 (defalias 'er 'eval-region)
 (defalias 'ms 'magit-status)
-(defalias 'tm' 'git-timemachine)
+(defalias 'tm 'git-timemachine)
 
 ;; shortcut to open file .emacs
 (defun dotemacs ()
@@ -957,6 +957,10 @@ sudo apt-get install aspell aspell-doc aspell-en aspell-pt-br
 
 * Configurations of magit (using git in Emacs)
 
+A very useful package is git-timemachine (installed from MELPA). It
+has a very simple usage. To start, M-x git-timemachine (binding to
+'tm'); to navigate, 'n' and 'p'; to exit, 'q'.
+  
 #+BEGIN_SRC emacs-lisp
 
 ;; To check the magit status of my favorite repos

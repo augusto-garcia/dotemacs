@@ -635,7 +635,7 @@ user."
 (defalias 'eb 'eval-buffer)
 (defalias 'er 'eval-region)
 (defalias 'ms 'magit-status)
-(defalias 'tm' 'git-timemachine)
+(defalias 'tm 'git-timemachine)
 
 ;; shortcut to open file .emacs
 (defun dotemacs ()
