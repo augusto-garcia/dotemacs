@@ -282,6 +282,11 @@ point reaches the beginning or end of the buffer, stop there."
 ;; Using single space after dots to define the end of sentences
 (setq sentence-end-double-space nil)
 
+;; makes backspace and C-d erase all consecutive white space
+;; (instead of just one)
+(require 'hungry-delete)
+(global-hungry-delete-mode)
+
 ; use allout minor mode to have outlining everywhere.
 (allout-mode)
 
