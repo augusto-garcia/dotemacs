@@ -636,6 +636,8 @@ user."
 (defalias 'er 'eval-region)
 (defalias 'ms 'magit-status)
 (defalias 'tm 'git-timemachine)
+(defalias 'lm 'linum-mode)
+
 
 ;; shortcut to open file .emacs
 (defun dotemacs ()
@@ -1135,6 +1137,7 @@ do this for the whole buffer."
               ["Count words (M-x cw)" count-words-region]
               ["Narrowing region (out: C-x n w)" narrow-to-region]
               ["Count occurences" occur]
+              ["Toggle linum-mode (M-x lm)" lm]
               ["Flyspell buffer (M-x fb)" flyspell-buffer]
               ["Flyspell next highl. word (M-f9)" flyspell-check-next-highlighted-word]
               ["Helm search (C-c h)" helm-mini]
