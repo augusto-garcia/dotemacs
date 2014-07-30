@@ -1068,8 +1068,8 @@ do this for the whole buffer."
   (setq ad-return-value
         (wicked/org-update-checkbox-count (ad-get-arg 1))))
 
-;;; MARKDOWN
-(add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
+;;; MARKDOWN - I prefer markdown mode, see above
+;;(add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
 ;;; R modes
 (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
 (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
