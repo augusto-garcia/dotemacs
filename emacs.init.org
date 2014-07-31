@@ -1,56 +1,56 @@
 * Description
 
-This is my personal collection of Emacs Lisp utilities that should be
-helpful for some people when customizing their Emacs. It is a personal
-collection adapted to my working style. Feel free to modify it
-according to your needs.
+                This is my personal collection of Emacs Lisp utilities that should be
+                helpful for some people when customizing their Emacs. It is a personal
+                collection adapted to my working style. Feel free to modify it
+                according to your needs.
 
-They are all organized into this org-mode file (=emacs.init.org=). You
-can produce a =emacs.init.el= file (by tangling only the elisp code)
-by loading this file in Emacs and then running =M-x
-org-babel-load-file=. You can of course edit before tangling. I assume
-you are using Emacs24.
+                They are all organized into this org-mode file (=emacs.init.org=). You
+                can produce a =emacs.init.el= file (by tangling only the elisp code)
+                by loading this file in Emacs and then running =M-x
+                org-babel-load-file=. You can of course edit before tangling. I assume
+                you are using Emacs24.
 
-A good idea would be to include these files into a directory using
-=git= for version control. You can do this by cloning my =github=
-repository or by downloading the files.
+                A good idea would be to include these files into a directory using
+                =git= for version control. You can do this by cloning my =github=
+                repository or by downloading the files.
 
-In my case, files (=.emacs=, =emacs.init.org= and =emacs.init.el=) are
-at =~/git/dotemacs=. But since emacs will by default load =.emacs=
-from my home directory, I simply create a symbolic link pointing out
-to my file on the /git/ directory:
+                In my case, files (=.emacs=, =emacs.init.org= and =emacs.init.el=) are
+                at =~/git/dotemacs=. But since emacs will by default load =.emacs=
+                from my home directory, I simply create a symbolic link pointing out
+                to my file on the /git/ directory:
 
-#+BEGIN_SRC sh :tangle no
-ln -s  ~/git/dotemacs/.emacs ~/
-#+END_SRC
+                #+BEGIN_SRC sh :tangle no
+                ln -s  ~/git/dotemacs/.emacs ~/
+                #+END_SRC
 
-Packages, org-mode files, and passwords (securely) stored on the
-=.gpg= file, are all on my Dropbox directory. So, I also use symbolic
-links to access them in Emacs:
+                Packages, org-mode files, and passwords (securely) stored on the
+                =.gpg= file, are all on my Dropbox directory. So, I also use symbolic
+                links to access them in Emacs:
 
-#+BEGIN_SRC sh :tangle no
-ln -s  ~/Dropbox/Emacs/org/ ~/
-ln -s  ~/Dropbox/Emacs/.emacs.d/ ~/
-ln -s  ~/Dropbox/Emacs/org/diary ~/
-ln -s ~/Dropbox/Emacs/.authinfo.gpg ~/
-#+END_SRC
+                #+BEGIN_SRC sh :tangle no
+                ln -s  ~/Dropbox/Emacs/org/ ~/
+                ln -s  ~/Dropbox/Emacs/.emacs.d/ ~/
+                ln -s  ~/Dropbox/Emacs/org/diary ~/
+                ln -s ~/Dropbox/Emacs/.authinfo.gpg ~/
+                #+END_SRC
 
-Therefore, I just needed to include this on my =.emacs= file (that,
-remember, is on the /Dropbox/ directory).
+                Therefore, I just needed to include this on my =.emacs= file (that,
+                remember, is on the /Dropbox/ directory).
 
-#+BEGIN_SRC emacs-lisp :tangle no
-(add-to-list 'load-path "~/git/dotemacs") ;;where emacs.init.el is
-(add-to-list 'load-path "~/.emacs.d") ;;where packages are
-(load "emacs.init")
-#+END_SRC
+                #+BEGIN_SRC emacs-lisp :tangle no
+                (add-to-list 'load-path "~/git/dotemacs") ;;where emacs.init.el is
+                (add-to-list 'load-path "~/.emacs.d") ;;where packages are
+                (load "emacs.init")
+                #+END_SRC
 
-By doing this, Emacs will look for files on =~/git/dotemacs=; there,
-he will find =emacs.init.el= (the file produced by tangling
-=emacs.init.org=) and will load it.
+                By doing this, Emacs will look for files on =~/git/dotemacs=; there,
+                he will find =emacs.init.el= (the file produced by tangling
+                =emacs.init.org=) and will load it.
 
-I also use another trick. In my =.emacs=, I force my =~/git/dotemacs=
-to pull modifications from =github= before loading Emacs. By doing
-that, everything will always be updated on all my computers.
+                I also use another trick. In my =.emacs=, I force my =~/git/dotemacs=
+                to pull modifications from =github= before loading Emacs. By doing
+                that, everything will always be updated on all my computers.
 
 * Packages and repositories
 
@@ -1014,6 +1014,7 @@ has a very simple usage. To start, M-x git-timemachine (binding to
 (setq org-mobile-directory "~/Dropbox/MobileOrg")
 
 ;; CONSIDER INSTALLING org-mobile-sync from the repo
+
 
 #+END_SRC
 
