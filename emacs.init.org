@@ -135,6 +135,7 @@ then start your chores list.
 ;                       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 ;(global-set-key [f11] 'fullscreen)
 
+
 ;; Toggles between horizontal and vertical layout of two windows
 (defun toggle-window-split ()
   (interactive)
