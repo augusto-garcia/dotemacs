@@ -1390,9 +1390,13 @@ One amazing package, with a number of beautiful themes, is
 procedure above to choose the one you like. You can have an overview
 of available themes at [[https://github.com/owainlewis/emacs-color-themes]] 
 
+My favorite ones:
+
+  + fogus
+
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'fogus t)
+(load-theme 'junio t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
