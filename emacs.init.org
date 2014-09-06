@@ -1020,6 +1020,18 @@ has a very simple usage. To start, M-x git-timemachine (binding to
 #+END_SRC
 
 
+* CSV files
+
+#+BEGIN_SRC emacs-lisp
+
+(add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
+(autoload 'csv-mode "csv-mode"
+  "Major mode for editing comma-separated value files." t)
+
+
+#+END_SRC
+
+  
 * Configurations for orgmode
 
 #+BEGIN_SRC emacs-lisp

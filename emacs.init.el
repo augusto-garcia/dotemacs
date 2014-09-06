@@ -839,6 +839,10 @@ user."
 
 ;; CONSIDER INSTALLING org-mobile-sync from the repo
 
+(add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
+(autoload 'csv-mode "csv-mode"
+  "Major mode for editing comma-separated value files." t)
+
 ;; To use Org-mode as the default mode (auto-fill off)
 (setq default-major-mode 'org-mode)
 (add-hook 'text-mode-hook  'turn-on-auto-fill)
