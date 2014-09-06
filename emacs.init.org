@@ -1393,10 +1393,11 @@ of available themes at [[https://github.com/owainlewis/emacs-color-themes]]
 My favorite ones:
 
   + fogus
+  + junio
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'junio t)
+(load-theme 'hickey t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
