@@ -578,8 +578,8 @@ See: `ergoemacs-forward-block'"
   uniquify-ignore-buffers-re "^\\*")
 
 ;; Enable helm, for a better search
-(helm-mode 1)
-(global-set-key (kbd "C-c h") 'helm-mini)
+;;(helm-mode 1)
+;;(global-set-key (kbd "C-c h") 'helm-mini)
 
 
 ;; smex, for auto-complete on M-x
