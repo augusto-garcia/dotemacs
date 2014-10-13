@@ -1406,10 +1406,11 @@ My favorite ones:
 
   + fogus
   + junio
+  + hickey (problem: very dark for R comments)
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'hickey t)
+(load-theme 'graham t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
