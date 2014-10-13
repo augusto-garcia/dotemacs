@@ -1410,7 +1410,7 @@ My favorite ones:
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'graham t)
+(load-theme 'dorsey t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
