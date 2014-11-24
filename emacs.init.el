@@ -3,7 +3,7 @@
 (require 'package)
 (package-initialize)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-;                          ("marmalade" . "http://marmalade-repo.org/packages")
+                          ("marmalade" . "http://marmalade-repo.org/packages/")
                           ("elpa" . "http://tromey.com/elpa/")
                           ("melpa" . "http://melpa.org/packages/")))
 
@@ -1126,7 +1126,7 @@ do this for the whole buffer."
 (sp-with-modes '(html-mode sgml-mode)
   (sp-local-pair "<" ">"))
 
-(load-theme 'fogus t)
+(load-theme 'gotham t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
