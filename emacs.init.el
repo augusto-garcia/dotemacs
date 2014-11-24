@@ -1134,7 +1134,24 @@ do this for the whole buffer."
 ;;(set-face-background 'hl-line "#e0f8ff")
 
 (setq compilation-read-command nil) ;to remove make -k question
+
 ;(global-set-key "\C-x\C-m" 'compile)
+
+(defun notify-compilation-result(buffer msg)
+  "Notify that the compilation is finished,
+close the *compilation* buffer if the compilation is successful,
+and set the focus back to Emacs frame"
+  (if (string-match "^finished" msg)
+    (progn
+     (delete-windows-on buffer)
+     (tooltip-show "\n Consegui Compilar! :-) \n "))
+    (tooltip-show "\n Deu Zica na Compilação :-( \n "))
+  (setq current-frame (car (car (cdr (current-frame-configuration)))))
+  (select-frame-set-input-focus current-frame)
+  )
+
+(add-to-list 'compilation-finish-functions
+             'notify-compilation-result)
 
 (let ((menu '("augusto\'s"
               ["Find file at point (M-x ff)" find-file-at-point]
