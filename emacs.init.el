@@ -1133,6 +1133,9 @@ do this for the whole buffer."
 ;; color for current line:
 ;;(set-face-background 'hl-line "#e0f8ff")
 
+(setq compilation-read-command nil) ;to remove make -k question
+;(global-set-key "\C-x\C-m" 'compile)
+
 (let ((menu '("augusto\'s"
               ["Find file at point (M-x ff)" find-file-at-point]
               ["Edit file as root (C-x F)" find-file-as-root]

@@ -1421,6 +1421,14 @@ My favorite ones:
 
 #+END_SRC
 
+* Compiling MAKEFILES
+
+#+BEGIN_SRC emacs-lisp
+(setq compilation-read-command nil) ;to remove make -k question
+;(global-set-key "\C-x\C-m" 'compile)
+#+END_SRC
+
+  
 * Defining a customized menu
 
 This adds a small menu for commands that I found useful. It is also
