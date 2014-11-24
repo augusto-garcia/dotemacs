@@ -1411,7 +1411,7 @@ My favorite ones:
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'gotham t)
+(load-theme 'granger t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
