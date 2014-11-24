@@ -1409,6 +1409,10 @@ My favorite ones:
   + hickey (problem: very dark for R comments)
   + fogus
 
+
+Another interesting option is http://pawelbx.github.io/emacs-theme-gallery/
+
+
 #+BEGIN_SRC emacs-lisp
 
 (load-theme 'dakrone t)
