@@ -21,30 +21,11 @@ Usage: (package-require 'package)"
     ; if we cannot require it, it does not exist, yet. So install it.
     (error (package-install package))))
 
-;; Initialize installed packages
-;(package-initialize)  
-;; package init not needed, since it is done anyway in emacs 24 after reading the init
-;; but we have to load the list of available packages
-;; The option below seems to be useful, but it takes a while to run when loadin emacs
-;; So, I will let it disabled by default
-;;(package-refresh-contents)
-
 ;; To adjust the size of the window when starting emacs
 (if (window-system) (set-frame-size (selected-frame) 108 33))
 
 ;; to adjust the position of the window when starting emacs
 (setq initial-frame-alist '((top . 30) (left . 90)))
-
-
-;; To customize the Welcome Message when loading Emacs
-(setq initial-scratch-message "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\nHi augusto.
-\nHope you have fun here.\n
-First, take a look on your org-mode,
-then start your chores list.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-")
 
 
 ;; Don't display the 'Welcome to GNU Emacs' buffer on startup
@@ -62,43 +43,19 @@ then start your chores list.
 ;; disable to scroll bar
 (scroll-bar-mode -1)
 
-;; full screen
-; Not working on Gnome shell, Ubuntu 13.10
-;(defun fullscreen ()
-;  (interactive)
-;  (set-frame-parameter nil 'fullscreen
-;                       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
-;(global-set-key [f11] 'fullscreen)
+;; To customize the Welcome Message when loading Emacs
+(setq initial-scratch-message "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nHi augusto.
+\nDid you manage to start using emacs 24.4?\n
+Cool!
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+")
 
-;; Toggles between horizontal and vertical layout of two windows
-(defun toggle-window-split ()
-  (interactive)
-  (if (= (count-windows) 2)
-      (let* ((this-win-buffer (window-buffer))
-             (next-win-buffer (window-buffer (next-window)))
-             (this-win-edges (window-edges (selected-window)))
-             (next-win-edges (window-edges (next-window)))
-             (this-win-2nd (not (and (<= (car this-win-edges)
-                                         (car next-win-edges))
-                                     (<= (cadr this-win-edges)
-                                         (cadr next-win-edges)))))
-             (splitter
-              (if (= (car this-win-edges)
-                     (car (window-edges (next-window))))
-                  'split-window-horizontally
-                'split-window-vertically)))
-        (delete-other-windows)
-        (let ((first-win (selected-window)))
-          (funcall splitter)
-          (if this-win-2nd (other-window 1))
-          (set-window-buffer (selected-window) this-win-buffer)
-          (set-window-buffer (next-window) next-win-buffer)
-          (select-window first-win)
-          (if this-win-2nd (other-window 1))))))
 
 ;; save/restore opened files and windows config
 (desktop-save-mode 1) ; 0 for off
+
 
 ;; Sublimity mode (M-x sublimity-mode)
 ;; smooth-scrolling, minimap and distraction-free mode
@@ -138,7 +95,8 @@ then start your chores list.
 (package-require 'flymake-cursor)  
 
 ;; To activate COPY from Emacs to other applications
-(setq x-select-enable-clipboard t)
+; Not necessary anymore, for Emacs 24.4
+;(setq x-select-enable-clipboard t)
 
 ;; for having small hints when using TAB for completion
 (custom-set-variables
@@ -156,7 +114,6 @@ then start your chores list.
                    'global-semantic-idle-local-symbol-highlight-mode)
       (add-to-list 'semantic-default-submodes
                    'global-semantic-mru-bookmark-mode)))
-
 ;; For using auto-completion features
 (when (ignore-errors (require 'auto-complete-config nil t))
   (ac-config-default)
@@ -194,11 +151,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; defining C-x C-u as undo (same as C-x u). It was upcase-region.
 (define-key global-map "\C-x\C-u" 'undo)
 
-;; For defining redo, based on package undo-tree
-(require 'undo-tree)
-(defalias 'redo 'undo-tree-redo)
-(global-set-key (kbd "C-z") 'redo) ;; it will work with Ctrl+z
-
 ;; Turn on font-lock mode to color text in certain modes 
 (global-font-lock-mode t)
 
@@ -216,20 +168,20 @@ point reaches the beginning or end of the buffer, stop there."
 (require 'hungry-delete)
 (global-hungry-delete-mode)
 
-; use allout minor mode to have outlining everywhere.
+;; use allout minor mode to have outlining everywhere.
 (allout-mode)
 
-; Add proper word wrapping
+;; Add proper word wrapping
 (global-visual-line-mode t)
 
-;; C-pgup goes to the start, C-pgdw goes to the end of the file
-(global-set-key (kbd "<C-prior>")
+;; C-home goes to the start, C-end goes to the end of the file
+(global-set-key (kbd "<C-home>")
   (lambda()(interactive)(goto-char(point-min))))
-(global-set-key (kbd "<C-next>")
+(global-set-key (kbd "<C-end>")
   (lambda()(interactive)(goto-char(point-max))))
 
-; go to the last change
-; Super-cool!
+;; Go to the last change
+;; Super-cool!
 (package-require 'goto-chg)
 (global-set-key [(control .)] 'goto-last-change)
 ; M-. can conflict with etags tag search. But C-. can get overwritten
@@ -244,16 +196,13 @@ point reaches the beginning or end of the buffer, stop there."
 ;; make all "yes or no" prompts show "y or n" instead
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; Better scrolling
-(setq 
-  scroll-margin 0                        ;; do smooth scrolling, ...
-  scroll-conservatively 100000           ;; ... the defaults ...
-;;  scroll-up-aggressively 0               ;; ... are very ...
-;;  scroll-down-aggressively 0             ;; ... annoying
-  scroll-preserve-screen-position t)     ;; preserve screen pos with C-v/M-v 
+;; Smooth scrolling
+(require 'smooth-scroll)
+(smooth-scroll-mode t)
 
 ;; To browse the kill-ring with C-c k
 (require 'browse-kill-ring)
+(require 'browse-kill-ring+)
 (global-set-key (kbd "C-c k") 'browse-kill-ring)
 
 ;; To swap two windows using C-c s
@@ -275,6 +224,34 @@ point reaches the beginning or end of the buffer, stop there."
            (set-window-start w2 s1))))
   (other-window 1))
 (global-set-key (kbd "C-c s") 'swap-windows)
+
+
+;; Toggles between horizontal and vertical layout of two windows
+(defun toggle-window-split ()
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+             (next-win-buffer (window-buffer (next-window)))
+             (this-win-edges (window-edges (selected-window)))
+             (next-win-edges (window-edges (next-window)))
+             (this-win-2nd (not (and (<= (car this-win-edges)
+                                         (car next-win-edges))
+                                     (<= (cadr this-win-edges)
+                                         (cadr next-win-edges)))))
+             (splitter
+              (if (= (car this-win-edges)
+                     (car (window-edges (next-window))))
+                  'split-window-horizontally
+                'split-window-vertically)))
+        (delete-other-windows)
+        (let ((first-win (selected-window)))
+          (funcall splitter)
+          (if this-win-2nd (other-window 1))
+          (set-window-buffer (selected-window) this-win-buffer)
+          (set-window-buffer (next-window) next-win-buffer)
+          (select-window first-win)
+          (if this-win-2nd (other-window 1))))))
+(global-set-key (kbd "C-c m") 'toggle-window-split)
 
 ;; use control + arrow keys to switch between visible buffers
 (require 'windmove)
@@ -327,7 +304,7 @@ line instead."
 (setq read-quoted-char-radix 10)         ; use decimal, not octal
 
 ;; global keybindings
-(global-set-key (kbd "RET") 'newline-and-indent)
+;(global-set-key (kbd "RET") 'newline-and-indent)
 
 ;; Move more quickly, 5 lines or chars at a time
 ;; It works with capslock with usual commands
@@ -408,14 +385,6 @@ See: `ergoemacs-forward-block'"
 ;; Usage: In: C-x n n Out: C-x n w
 (put 'narrow-to-region 'disabled nil)
 
-;; To add GPL or other licenses
-;; Usage: M-x legalese (for GPL), or C-u M-x legalese (others)
-;;(package-require 'legalese)
-;;(setq comment-style 'extra-line)
-;;(add-hook 'scheme-mode-hook
-;;          (lambda ()
-;;            (set (make-local-variable 'comment-add) 1)))
-
 ;; IDO mode, for autocompletion; use with C-x C-f
 (ido-mode 1)
 ;;(setq ido-enable-flex-matching t)
@@ -455,29 +424,28 @@ See: `ergoemacs-forward-block'"
       tramp-backup-directory-alist backup-directory-alist)
 ;; to keep some old versions of all files edited with Emacs
 (setq delete-old-versions t
-  kept-new-versions 10
-  kept-old-versions 10
+  kept-new-versions 20
+  kept-old-versions 20
   version-control t) ;;to also backup files under version control
 
-;; A very simple web browser, w3m
-;; Also need to install emacs-w3m on Linux!
-(setq browse-url-browser-function 'w3m-browse-url)
-(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
-(global-set-key "\C-xm" 'browse-url-at-point)
+;; Emacs 24.4 has a browser, eww
+;; M-x eww
 
+;; Minibuffer
+;; I was using this configuration before 24.4,
+;; but will try without them for a while
 ;; the minibuffer
-(setq
-  enable-recursive-minibuffers nil         ;;  allow mb cmds in the mb
-  max-mini-window-height .25             ;;  max 2 lines
-  minibuffer-scroll-window nil
-  resize-mini-windows nil)
-
+;(setq
+;  enable-recursive-minibuffers nil         ;;  allow mb cmds in the mb
+;  max-mini-window-height .25             ;;  max 2 lines
+;  minibuffer-scroll-window nil
+;  resize-mini-windows nil)
 ;; increase minibuffer size when ido completion is active
-(add-hook 'ido-minibuffer-setup-hook 
-  (function
-    (lambda ()
-      (make-local-variable 'resize-minibuffer-window-max-height)
-      (setq resize-minibuffer-window-max-height 2))))
+;(add-hook 'ido-minibuffer-setup-hook 
+;  (function
+;    (lambda ()
+;      (make-local-variable 'resize-minibuffer-window-max-height)
+;      (setq resize-minibuffer-window-max-height 2))))
 
 ;; save minibuffer history
 ;; hint: a good way to type commands is C-r then a part of the command
@@ -494,11 +462,6 @@ See: `ergoemacs-forward-block'"
   uniquify-separator ":"
   uniquify-after-kill-buffer-p t
   uniquify-ignore-buffers-re "^\\*")
-
-;; Enable helm, for a better search
-;;(helm-mode 1)
-;;(global-set-key (kbd "C-c h") 'helm-mini)
-
 
 ;; smex, for auto-complete on M-x
 (global-set-key (kbd "M-x") 'smex)
@@ -570,9 +533,6 @@ See: `ergoemacs-forward-block'"
                  "http://www.urbandictionary.com/define.php?term="
                  ""])))
 
-;; save/restore opened files and windows config
-(desktop-save-mode 1) ; 0 for off
-
 ;; For using ace-jump mode, for faster navigation
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c j") 'ace-jump-mode)
@@ -586,14 +546,10 @@ See: `ergoemacs-forward-block'"
   '(ace-jump-mode-enable-mark-sync))
 (define-key global-map (kbd "C-x j") 'ace-jump-mode-pop-mark)
 
-;; FIXME
-;; Not working, need to fix
-;; Convenient printing
-;(require 'printing)
-;(pr-update-menus t)
-; make sure we use localhost as cups server
-;(setenv "CUPS_SERVER" "localhost")
-;(package-require 'cups)
+;; I need to learn more about helm
+;; Enable helm, for a better search
+;;(helm-mode 1)
+;;(global-set-key (kbd "C-c h") 'helm-mini)
 
 ;; Hidding password when prompted in shell mode inside Emacs
 (add-hook 'comint-output-filter-functions
@@ -612,38 +568,12 @@ See: `ergoemacs-forward-block'"
    (process-send-string (get-buffer-process "*shell-commands-buf*") (concat cmd "\n")))
 (global-set-key (kbd "C-!") 'babcore-shell-execute)
 
-;; TRAMP: support multiprotocols, including ssh
-;; to avoid problems with characters sent by the server:
-;(custom-set-variables
-; '(tramp-shell-prompt-pattern
-;   "v\\(?:^\\|
-;\\)[^]#$%>\n]*#?[]#$%>] *\\(;?\\[[0-9;]*[a-zA-Z] *\\)*"))
-
-;; It is necessary to configure the file .authinfo.gpg
-;; To ssh: C-x C-f /ssh:USER@SERVER: (do not forget ":" in the end)
-
-;; To edit files as sudo without needing to use tramp/sudo first
-;; Just use C-x F
-;; From http://emacs-fu.blogspot.com.br/2013/03/editing-with-root-privileges-once-more.html
-(defun find-file-as-root ()
-  "Like `ido-find-file, but automatically edit the file with
-root-privileges (using tramp/sudo), if the file is not writable by
-user."
-  (interactive)
-  (let ((file (ido-read-file-name "Edit as root: ")))
-    (unless (file-writable-p file)
-      (setq file (concat "/sudo:root@localhost:" file)))
-    (find-file file)))
-;; or some other keybinding...
-(global-set-key (kbd "C-x F") 'find-file-as-root)
-
-;; shortcuts 
+;; useful ones
 (defalias 'eb 'eval-buffer)
 (defalias 'er 'eval-region)
 (defalias 'ms 'magit-status)
 (defalias 'tm 'git-timemachine)
 (defalias 'lm 'linum-mode)
-
 
 ;; shortcut to open file .emacs
 (defun dotemacs ()
@@ -669,8 +599,34 @@ user."
 ;; To count words on region
 (defalias 'cw 'count-words-region)
 
-;; Clue: use C-M-\ to indent code
-;; C-h v: information about what the function does
+;; Reminders:
+;; Use C-M-\ to indent code
+;; Use C-h v to have information about what the function does
+
+;; TRAMP: support multiprotocols, including ssh
+;; to avoid problems with characters sent by the server:
+;(custom-set-variables
+; '(tramp-shell-prompt-pattern
+;   "v\\(?:^\\|
+;\\)[^]#$%>\n]*#?[]#$%>] *\\(;?\\[[0-9;]*[a-zA-Z] *\\)*"))
+
+;; It is necessary to configure the file .authinfo.gpg
+;; To ssh: C-x C-f /ssh:USER@SERVER: (do not forget ":" in the end)
+
+;; To edit files as sudo without needing to use tramp/sudo first
+;; Just use C-x F
+;; From http://emacs-fu.blogspot.com.br/2013/03/editing-with-root-privileges-once-more.html
+(defun find-file-as-root ()
+  "Like `ido-find-file, but automatically edit the file with
+root-privileges (using tramp/sudo), if the file is not writable by
+user."
+  (interactive)
+  (let ((file (ido-read-file-name "Edit as root: ")))
+    (unless (file-writable-p file)
+      (setq file (concat "/sudo:root@localhost:" file)))
+    (find-file file)))
+;; or some other keybinding...
+(global-set-key (kbd "C-x F") 'find-file-as-root)
 
 ;; defining useful block types for Beamer
 (setq latex-block-names '("frame" "block" "exampleblock" "alertblock"))
@@ -700,13 +656,28 @@ user."
 (add-hook 'LaTeX-mode-hook (lambda ()
              (TeX-fold-mode 1)))
 
+;; to autosave before compiling LaTeX in AucTex
+(setq TeX-save-query nil)
+
+;; In AUCTex, make PDF by default (can toggle with C-c C-t C-p)
+(add-hook 'TeX-mode-hook '(lambda () (TeX-PDF-mode 1)))
+
+;; To don't query for master file - it was causing some problems
+(setq-default TeX-master t)
+
+;; To add xelatex to the available commands for compiling with C-c C-c
+(eval-after-load "tex"
+  '(add-to-list 'TeX-command-list
+                '("XeLaTeX" "xelatex -interaction=nonstopmode %s"
+                  TeX-run-command t t :help "Run xelatex") t))
+
+;; To use magic-latex-buffer
+;(require 'magic-latex-buffer)
+
 ;; To activate RefTex and make it interact with AucTeX
 (add-hook 'latex-mode-hook 'turn-on-reftex)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-auctex t)
-
-;; to autosave before compiling LaTeX in AucTex
-(setq TeX-save-query nil)
 
 ;; To use AucTeX with Sweave
 ;; http://andreas.kiermeier.googlepages.com/essmaterials
@@ -722,21 +693,6 @@ user."
             (add-to-list 'TeX-command-list
                          '("LatexSweave" "%l %(mode) %s"
                            TeX-run-TeX nil (latex-mode) :help "Run Latex after Sweave") t)))
-            
-;; In AUCTex, make PDF by default (can toggle with C-c C-t C-p)
-(add-hook 'TeX-mode-hook '(lambda () (TeX-PDF-mode 1)))
-
-;; To don't query for master file - it was causing some problems
-(setq-default TeX-master t)
-
-;; To add xelatex to the available commands for compiling with C-c C-c
-(eval-after-load "tex"
-  '(add-to-list 'TeX-command-list
-                '("XeLaTeX" "xelatex -interaction=nonstopmode %s"
-                  TeX-run-command t t :help "Run xelatex") t))
-
-;; To use magic-latex-buffer
-(require 'magic-latex-buffer)
 
 ;; By default, it uses text mode
 (require 'edit-server)
@@ -755,15 +711,12 @@ user."
   (setq edit-server-url-major-mode-alist
         '(("github\\.com" . markdown-mode)))
 
-;; to automaticaly load ess
-(require 'ess-site)
-
 ;; To use RDired, that is similar to dired mode
 (autoload 'ess-rdired "ess-rdired"
   "View *R* objects in a dired-like buffer." t)
 
 ;; Enable helm for ESS
-(require 'helm-R)
+;(require 'helm-R)
 
 ;; enabling it for text-mode, and disabling it for log-edit
 ;; and change-log-mode
@@ -793,8 +746,8 @@ user."
 (eval-after-load "flyspell" 
 '(define-key flyspell-mode-map [down-mouse-3] 'flyspell-correct-word)) 
 
-;; easy spell check - from http://www.emacswiki.org/emacs/FlySpell
-;; Mudei o default, f8, para usar a tecla f9
+;; Easy spell check - heavily based on http://www.emacswiki.org/emacs/FlySpell
+;; I changed for using f9, instead of f8
 ;; F9 will call ispell (or aspell, etc) for the word the cursor is on (or near). 
 ;; You can also use the built-in key binding M-$.
 ;; Ctrl-Shift-F9 enables/disables FlySpell for your current buffer (highlights misspelled words as you type)
@@ -813,6 +766,7 @@ user."
   )
 (global-set-key (kbd "M-<f9>") 'flyspell-check-next-highlighted-word)
 
+;; Magit
 ;; To check the magit status of my favorite repos
 ;; Usage: M-x magit-status, then TAB
 (eval-after-load "magit" 
@@ -824,26 +778,31 @@ user."
            "~/git/Templates-do-Lab"
            "~/git/Templates")))
 
+;; .gitconfig
+;(require 'gitconfig) is an option
+;another one, that I am using now, is to install gitconfig-mode,
+;that will load automatically for .gitconfig files
+
+;; Start with M-x git-timemachine (binding to 'M-x tm')
+;; To navigate, use 'n' and 'p'
+;; To exit, 'q'.
+
 (autoload 'markdown-mode "markdown-mode"
    "Major mode for editing Markdown files" t)
   (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-;; To use MobileOrg
-;; Set to the location of your Org files on your local system
-(setq org-directory "~/Dropbox/Emacs/org")
-;; Set to the name of the file where new notes will be stored
-(setq org-mobile-inbox-for-pull "~/Dropbox/Emacs/org/flagged.org")
-;; Set to <your Dropbox root directory>/MobileOrg.
-(setq org-mobile-directory "~/Dropbox/MobileOrg")
-
-;; CONSIDER INSTALLING org-mobile-sync from the repo
+;; For using MARKDOWN (other than RMarkdown) I prefer markdown mode, see above
+;; For R modes
+(add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+(add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 
 (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
 (autoload 'csv-mode "csv-mode"
   "Major mode for editing comma-separated value files." t)
 
-;; To use Org-mode as the default mode (auto-fill off)
+;; To use Org-mode as the default mode with auto-fill
 (setq default-major-mode 'org-mode)
 (add-hook 'text-mode-hook  'turn-on-auto-fill)
 
@@ -872,65 +831,6 @@ user."
 ; '(scroll-bar-mode (quote right))
  '(show-paren-mode t))
 
-;; To set up Beamer exporting
-(unless (boundp 'org-export-latex-classes)
-  (setq org-export-latex-classes nil))
-(add-to-list 'org-export-latex-classes
-             '("beamer"
-            "\\documentclass[pdftex]{beamer}\n\\usepackage{beamerfontthemeprofessionalfonts}\n\\usetheme{Antibes}\n\\usecolortheme{rose}\n\\usepackage[utf8]{inputenc}\n\\usepackage[T1]{fontenc}\n\\usepackage{hyperref}\n\\usepackage{verbatim}\n"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\begin{frame}\\frametitle{%s}" "\\end{frame}"
-                "\\begin{frame}\\frametitle{%s}" "\\end{frame}")))
-
-
-;; To set up LaTeX exporting from orgmode
-(require 'org-latex)
-(unless (boundp 'org-export-latex-classes)
-  (setq org-export-latex-classes nil))
-(add-to-list 'org-export-latex-classes
-             '("article"
-               "\\documentclass{article}"
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-               ("\\paragraph{%s}" . "\\paragraph*{%s}")
-               ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-
-
-;; Is this working? Need to check!
-;; from http://emacs-fu.blogspot.com/2011/04/nice-looking-pdfs-with-org-mode-and.html
-;; nice looking pdfs with org-mode and xetex
-;; 'djcb-org-article' for export org documents to the LaTex 'article', using
-;; XeTeX and some fancy fonts; requires XeTeX (see org-latex-to-pdf-process)
-(add-to-list 'org-export-latex-classes
-  '("djcb-org-article"
-"\\documentclass[11pt,a4paper]{article}
-\\usepackage[T1]{fontenc}
-\\usepackage{fontspec}
-\\usepackage{graphicx} 
-\\defaultfontfeatures{Mapping=tex-text}
-\\setromanfont{Gentium}
-\\setromanfont [BoldFont={Gentium Basic Bold},
-                ItalicFont={Gentium Basic Italic}]{Gentium Basic}
-\\setsansfont{Charis SIL}
-\\setmonofont[Scale=0.8]{DejaVu Sans Mono}
-\\usepackage{geometry}
-\\geometry{a4paper, textwidth=6.5in, textheight=10in,
-            marginparsep=7pt, marginparwidth=.6in}
-\\pagestyle{empty}
-\\title{}
-      [NO-DEFAULT-PACKAGES]
-      [NO-PACKAGES]"
-     ("\\section{%s}" . "\\section*{%s}")
-     ("\\subsection{%s}" . "\\subsection*{%s}")
-     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-     ("\\paragraph{%s}" . "\\paragraph*{%s}")
-     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
-
-(setq org-latex-to-pdf-process 
-  '("xelatex -interaction nonstopmode %f"
-     "xelatex -interaction nonstopmode %f")) ;; for multiple passes
-
 ;; to avoid killing whole subtrees with C-k
 (setq org-special-ctrl-k t)
 
@@ -955,24 +855,6 @@ user."
 ;; to include entries from Emacs diary into Org-mode's agenda
 (setq org-agenda-include-diary t)
 
-;; RefTeX with Org-mode
-(defun org-mode-reftex-setup ()
-  (load-library "reftex")
-  (and (buffer-file-name)
-       (file-exists-p (buffer-file-name))
-       (reftex-parse-all))
-  (define-key org-mode-map (kbd "C-c C-x [") 'reftex-citation)
-  )
-(add-hook 'org-mode-hook 'org-mode-reftex-setup)
-
-;; to run pdflatex, bibtex, pdflatex and pdflatex, to insert bibliography
-(require 'org-latex)
-(setq org-latex-to-pdf-process
-      '("pdflatex -interaction nonstopmode %b"
-        "bibtex %b"
-        "pdflatex -interaction nonstopmode %b"
-        "pdflatex -interaction nonstopmode %b"))
-
 ;;;;;;;;;;;;
 ;; Very important!
 ;; from http://www.newartisans.com/2007/08/using-org-mode-as-a-day-planner.html
@@ -992,7 +874,9 @@ user."
      (define-key org-todo-state-map "s"
        #'(lambda nil (interactive) (org-todo "STARTED")))
      (define-key org-todo-state-map "w"
-       #'(lambda nil (interactive) (org-todo "WAITING")))
+       #'(lambda nil (interactive) (org-todo "WAITING")))))
+(eval-after-load "org-agenda"
+   '(progn
      (define-key org-agenda-mode-map "\C-n" 'next-line)
      (define-key org-agenda-keymap "\C-n" 'next-line)
      (define-key org-agenda-mode-map "\C-p" 'previous-line)
@@ -1073,12 +957,61 @@ do this for the whole buffer."
   (setq ad-return-value
         (wicked/org-update-checkbox-count (ad-get-arg 1))))
 
-;;; MARKDOWN - I prefer markdown mode, see above
-;;(add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
-;;; R modes
-(add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
+;; To set up Beamer exporting
+(require 'ox-latex)
+(add-to-list 'org-latex-classes
+             '("beamer"
+               "\\documentclass\[presentation\]\{beamer\}"
+               ("\\section\{%s\}" . "\\section*\{%s\}")
+               ("\\subsection\{%s\}" . "\\subsection*\{%s\}")
+               ("\\subsubsection\{%s\}" . "\\subsubsection*\{%s\}")))
+;; The head of the file should have
+;#+LaTeX_CLASS: beamer
+;#+TITLE: Put the title here
+;#+AUTHOR: Me, Myself and I
+;#+LaTeX_CLASS_OPTIONS: [presentation,smaller]
+
+
+;; It is not easy using xetex with the new exporting features of orgmode,
+;; so I will skip this for a while.
+;; A good setup for producing pdf files for reports is this one:
+;#+TITLE: Put the title here
+;#+AUTHOR: Antonio Augusto Franco Garcia
+;#+LATEX_CLASS: article
+;#+LATEX_CLASS_OPTIONS: [lettersize]
+;#+LaTeX_HEADER: \usepackage[brazil,brazilian]{babel}
+;#+LaTeX_HEADER: \usepackage[ttscale=.875]{libertine}
+;#+OPTIONS: H:2 toc:nil \n:nil @:t ::t |:t ^:{} _:{} *:t TeX:t LaTeX:t
+
+;; RefTeX with Org-mode
+;(defun org-mode-reftex-setup ()
+;  (load-library "reftex")
+;  (and (buffer-file-name)
+;       (file-exists-p (buffer-file-name))
+;       (reftex-parse-all))
+;  (define-key org-mode-map (kbd "C-c C-x [") 'reftex-citation)
+;  )
+;(add-hook 'org-mode-hook 'org-mode-reftex-setup)
+
+;; to run pdflatex, bibtex, pdflatex and pdflatex, to insert bibliography
+;(require 'org-latex)
+;(setq org-latex-to-pdf-process
+;      '("pdflatex -interaction nonstopmode %b"
+;        "bibtex %b"
+;        "pdflatex -interaction nonstopmode %b"
+;        "pdflatex -interaction nonstopmode %b"))
+
+;; To use MobileOrg
+;; Set to the location of your Org files on your local system
+(setq org-directory "~/Dropbox/Emacs/org")
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull "~/Dropbox/Emacs/org/flagged.org")
+;; Set to <your Dropbox root directory>/MobileOrg.
+(setq org-mobile-directory "~/Dropbox/MobileOrg")
+
+;; Goes very well together with org-mobile-sync
+;(require 'org-mobile-sync)
+;(org-mobile-sync-mode 1)
 
 (require 'make-mode)
   
@@ -1099,6 +1032,26 @@ do this for the whole buffer."
 
 (setq auto-mode-alist
         (cons '("\\.mak\\'" . makefile-nmake-mode) auto-mode-alist))
+
+(setq compilation-read-command nil) ;to remove make -k question
+
+;(global-set-key "\C-x\C-m" 'compile)
+
+(defun notify-compilation-result(buffer msg)
+  "Notify that the compilation is finished,
+close the *compilation* buffer if the compilation is successful,
+and set the focus back to Emacs frame"
+  (if (string-match "^finished" msg)
+    (progn
+     (delete-windows-on buffer)
+     (tooltip-show "\n Consegui Compilar! :-) \n "))
+    (tooltip-show "\n Deu Zica na Compilação :-( \n "))
+  (setq current-frame (car (car (cdr (current-frame-configuration)))))
+  (select-frame-set-input-focus current-frame)
+  )
+
+(add-to-list 'compilation-finish-functions
+             'notify-compilation-result)
 
 ;; to enable smartparens (package) in all modes
 ;; it was necessary to turn off electric-pair-mode (above)
@@ -1126,32 +1079,20 @@ do this for the whole buffer."
 (sp-with-modes '(html-mode sgml-mode)
   (sp-local-pair "<" ">"))
 
-(load-theme 'dakrone t)
+(load-theme 'alect-black t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
 ;; color for current line:
 ;;(set-face-background 'hl-line "#e0f8ff")
 
-(setq compilation-read-command nil) ;to remove make -k question
-
-;(global-set-key "\C-x\C-m" 'compile)
-
-(defun notify-compilation-result(buffer msg)
-  "Notify that the compilation is finished,
-close the *compilation* buffer if the compilation is successful,
-and set the focus back to Emacs frame"
-  (if (string-match "^finished" msg)
-    (progn
-     (delete-windows-on buffer)
-     (tooltip-show "\n Consegui Compilar! :-) \n "))
-    (tooltip-show "\n Deu Zica na Compilação :-( \n "))
-  (setq current-frame (car (car (cdr (current-frame-configuration)))))
-  (select-frame-set-input-focus current-frame)
-  )
-
-(add-to-list 'compilation-finish-functions
-             'notify-compilation-result)
+(require 'powerline)
+(powerline-default-theme)
+(set-face-attribute 'mode-line nil
+                     :background "Black"
+                     :background "grey40" ; was DarkOrange
+                     :box nil)
+;(setq powerline-arrow-shape 'curve) ;;option: arrow, arrow14
 
 (let ((menu '("augusto\'s"
               ["Find file at point (M-x ff)" find-file-at-point]
@@ -1168,10 +1109,14 @@ and set the focus back to Emacs frame"
               ["Narrowing region (out: C-x n w)" narrow-to-region]
               ["Count occurences" occur]
               ["Toggle linum-mode (M-x lm)" lm]
-              ["Flyspell buffer (M-x fb)" flyspell-buffer]
-              ["Flyspell next highl. word (M-f9)" flyspell-check-next-highlighted-word]
               ["Helm search (C-c h)" helm-mini]
               ["Search word in the web (C-x g)" webjump]
+              ("Flyspell"
+               ["Flyspell buffer (M-x fb)" flyspell-buffer]
+               ["Toggle on buffer (C-S-f9)" flyspell-mode]
+               ["Flyspell next highl. word (M-f9)" flyspell-check-next-highlighted-word]
+               ["Flysp prev highl. word (C-f9)" flyspell-check-previous-highlighted-word]
+               )
               ("Ace-jump-mode"
                ["Word (C-c j)" ace-jump-word-mode]
                ["Char (C-u C-c j)" ace-jump-char-mode]
@@ -1186,6 +1131,7 @@ and set the focus back to Emacs frame"
                ["Refresh Buffer (ref)" ref])
               ("Windows"
                ["Swap Windows (C-c s)" swap-windows]
+               ["Toggle Split Window (C-c m)" toggle-window-split]
                ["Left (C-s-left)" windmove-left]
                ["Right (C-s-right)" windmove-right]
                ["Up (C-s-up)" windmove-up]
