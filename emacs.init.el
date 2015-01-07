@@ -857,7 +857,7 @@ user."
 
 ;;;;;;;;;;;;
 ;; Very important!
-;; from http://www.newartisans.com/2007/08/using-org-mode-as-a-day-planner.html
+;; from http://www.newartisans.com/2007/08/using-org-mode-as-a-day-planner/
 (define-key mode-specific-map [?a] 'org-agenda)
 (eval-after-load "org"
   '(progn
