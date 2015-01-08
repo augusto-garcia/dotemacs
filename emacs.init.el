@@ -906,7 +906,7 @@ user."
               ("t" "todo" entry (file+headline "~/org/Tarefas.org" "FIXME")
                "* TODO %?\n  %U")
               ("n" "notas" entry (file+datetree "~/org/Notas.org")
-              "* %?\nEntered on %U\n  %i\n  %a")
+              "* %u %?")
               )))
 
 ; '(org-remember-templates (quote ((116 "* TODO %?
