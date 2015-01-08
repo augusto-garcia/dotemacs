@@ -866,7 +866,10 @@ user."
 
 ;;;;;;;;;;;;
 ;; Very important!
-;; from http://www.newartisans.com/2007/08/using-org-mode-as-a-day-planner/
+;; from
+;; http://www.newartisans.com/2007/08/using-org-mode-as-a-day-planner/
+;; This was modified on January 2015 to use org-capture insteado of
+;; org-remember, as required by Emacs 24.4
 (define-key mode-specific-map [?a] 'org-agenda)
 (eval-after-load "org"
   '(progn
@@ -908,9 +911,6 @@ user."
 
 ; '(org-remember-templates (quote ((116 "* TODO %?
 ;  %u" "~/org/Tarefas.org" "FIXME") (110 "* %u %?" "~/org/Notas.org" "Notes"))))
-
-
-
 
 ;; to add a log note when changing the status to DONE:
 (setq org-log-done 'time)
