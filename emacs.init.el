@@ -822,12 +822,21 @@ user."
  '(org-deadline-warning-days 14)
  '(org-default-notes-file "~/org/Notas.org")
  '(org-fast-tag-selection-single-key (quote expert))
- '(org-remember-store-without-prompt t)
- '(org-remember-templates (quote ((116 "* TODO %?
-  %u" "~/org/Tarefas.org" "FIXME") (110 "* %u %?" "~/org/Notas.org" "Notes"))))
+; '(org-remember-store-without-prompt t)
+; '(org-remember-templates (quote ((116 "* TODO %?
+;  %u" "~/org/Tarefas.org" "FIXME") (110 "* %u %?" "~/org/Notas.org" "Notes"))))
+
+;(global-set-key "\C-cc" 'org-capture)
+;(setq org-capture-templates
+;      ( quote(
+;              ("t" "todo" entry (file "~/org/Tarefas.org")
+;               "* TODO %?\n     SCHEDULED: %t\n%i\nEntered on %U")
+;              )))
+
+
  '(org-reverse-note-order t)
- '(remember-annotation-functions (quote (org-remember-annotation)))
- '(remember-handler-functions (quote (org-remember-handler)))
+; '(remember-annotation-functions (quote (org-remember-annotation)))
+; '(remember-handler-functions (quote (org-remember-handler)))
 ; '(scroll-bar-mode (quote right))
  '(show-paren-mode t))
 
@@ -881,9 +890,27 @@ user."
      (define-key org-agenda-keymap "\C-n" 'next-line)
      (define-key org-agenda-mode-map "\C-p" 'previous-line)
      (define-key org-agenda-keymap "\C-p" 'previous-line)))
-(require 'remember)
-(add-hook 'remember-mode-hook 'org-remember-apply-template)
-(define-key global-map [(control super ?r)] 'remember)
+;(require 'remember)
+;(add-hook 'remember-mode-hook 'org-remember-apply-template)
+;(define-key global-map [(control super ?r)] 'remember)
+
+
+(define-key global-map [(control super ?r)] 'org-capture)
+
+;(global-set-key "\C-cc" 'org-capture)
+(setq org-capture-templates
+      ( quote(
+              ("t" "todo" entry (file+headline "~/org/Tarefas.org" "FIXME")
+               "* TODO %?\n  %U")
+              ("n" "notas" entry (file+datetree "~/org/Notas.org")
+              "* %?\nEntered on %U\n  %i\n  %a")
+              )))
+
+; '(org-remember-templates (quote ((116 "* TODO %?
+;  %u" "~/org/Tarefas.org" "FIXME") (110 "* %u %?" "~/org/Notas.org" "Notes"))))
+
+
+
 
 ;; to add a log note when changing the status to DONE:
 (setq org-log-done 'time)
