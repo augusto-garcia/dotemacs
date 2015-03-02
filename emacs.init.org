@@ -467,6 +467,22 @@ See: `ergoemacs-forward-block'"
 ;; Usage: In: C-x n n Out: C-x n w
 (put 'narrow-to-region 'disabled nil)
 
+;; Unfill paragraph and region
+(defun unfill-paragraph ()
+  "Replace newline chars in current paragraph by single spaces.
+This command does the inverse of `fill-paragraph'."
+  (interactive)
+  (let ((fill-column 90002000)) ; 90002000 is just random. you can use `most-positive-fixnum'
+    (fill-paragraph nil)))
+
+(defun unfill-region (start end)
+  "Replace newline chars in region by single spaces.
+This command does the inverse of `fill-region'."
+  (interactive "r")
+  (let ((fill-column 90002000))
+    (fill-region start end)))
+
+
 #+END_SRC
 
 * Working through files, buffers and directories
