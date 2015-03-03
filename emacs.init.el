@@ -726,6 +726,9 @@ user."
   (setq edit-server-url-major-mode-alist
         '(("github\\.com" . markdown-mode)))
 
+;; Required to load ESS
+(load "ess-site")
+
 ;; To use RDired, that is similar to dired mode
 (autoload 'ess-rdired "ess-rdired"
   "View *R* objects in a dired-like buffer." t)

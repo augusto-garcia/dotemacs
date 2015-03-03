@@ -873,6 +873,9 @@ Sweave (do I still need this, given the recent R package =knitr=?).
 
 #+BEGIN_SRC emacs-lisp
 
+;; Required to load ESS
+(load "ess-site")
+
 ;; To use RDired, that is similar to dired mode
 (autoload 'ess-rdired "ess-rdired"
   "View *R* objects in a dired-like buffer." t)
