@@ -46,7 +46,7 @@ Usage: (package-require 'package)"
 ;; To customize the Welcome Message when loading Emacs
 (setq initial-scratch-message "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \nHi augusto.
-\nDid you manage to start using emacs 24.4?\n
+\nDid you manage to start using emacs 24.5?\n
 Cool!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
