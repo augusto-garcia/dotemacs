@@ -1418,6 +1418,7 @@ My favorite ones:
   + junio
   + hickey (problem: very dark for R comments)
   + fogus
+  + alect-black (use it from months!)
 
 Another interesting option is http://pawelbx.github.io/emacs-theme-gallery/
 
@@ -1426,7 +1427,7 @@ More fancy ones:
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'alect-black t)
+(load-theme 'tangotango t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
