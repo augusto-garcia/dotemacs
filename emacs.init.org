@@ -740,6 +740,9 @@ This command does the inverse of `fill-region'."
 ;; Notice that if .authinfo.gpg is configured, one does not need to type passwords
 ;; /protocol:[user@]hostname[#port]:
 
+;; For multiple hops, jumping to oboe using maestro as the initial destination
+(add-to-list 'tramp-default-proxies-alist
+                 '("oboe" nil "/ssh:augusto@maestro:"))
 
 ;; To edit files as sudo without needing to use tramp/sudo first
 ;; Just use C-x F
