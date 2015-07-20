@@ -736,8 +736,10 @@ This command does the inverse of `fill-region'."
 ;   "v\\(?:^\\|
 ;\\)[^]#$%>\n]*#?[]#$%>] *\\(;?\\[[0-9;]*[a-zA-Z] *\\)*"))
 
-;; It is necessary to configure the file .authinfo.gpg
-;; To ssh: C-x C-f /ssh:USER@SERVER: (do not forget ":" in the end)
+;; All tramp connections follow the sintax below, after typing C-x C-f
+;; Notice that if .authinfo.gpg is configured, one does not need to type passwords
+;; /protocol:[user@]hostname[#port]:
+
 
 ;; To edit files as sudo without needing to use tramp/sudo first
 ;; Just use C-x F
