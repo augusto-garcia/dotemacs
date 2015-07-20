@@ -1109,6 +1109,36 @@ and set the focus back to Emacs frame"
 (add-to-list 'compilation-finish-functions
              'notify-compilation-result)
 
+;; This gives a regular `compile-command' prompt.
+(define-key prog-mode-map [C-f6] #'compile)
+;; This just compiles immediately.
+(define-key prog-mode-map [f6]
+  #'endless/compile-please)
+
+;; I'm not scared of saving everything.
+(setq compilation-ask-about-save nil)
+;; Stop on the first error.
+(setq compilation-scroll-output 'next-error)
+;; Don't stop on info or warnings.
+(setq compilation-skip-threshold 2)
+
+(defcustom endless/compile-window-size 60
+  "Width given to the compilation window."
+  :type 'integer
+  :group 'endless)
+
+(defun endless/compile-please ()
+  "Compile without confirmation."
+  (interactive)
+  ;; Do the command without a prompt.
+  (save-window-excursion
+    (compile compile-command))
+  ;; Create a compile window of the desired width.
+  (pop-to-buffer (get-buffer "*compilation*"))
+  (enlarge-window
+   (- endless/compile-window-size (window-width))
+   'horizontal))
+
 ;; to enable smartparens (package) in all modes
 ;; it was necessary to turn off electric-pair-mode (above)
 (package-initialize)
