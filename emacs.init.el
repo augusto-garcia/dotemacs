@@ -1051,6 +1051,12 @@ do this for the whole buffer."
 ;        "pdflatex -interaction nonstopmode %b"
 ;        "pdflatex -interaction nonstopmode %b"))
 
+;; To allow exporting from orgmode to Markdown and Odt files
+(eval-after-load "org"
+  '(require 'ox-md nil t))
+(eval-after-load "org"
+  '(require 'ox-odt nil t))
+
 ;; To use MobileOrg
 ;; Set to the location of your Org files on your local system
 (setq org-directory "~/Dropbox/Emacs/org")
