@@ -637,18 +637,8 @@ This command does the inverse of `fill-region'."
                  "http://www.urbandictionary.com/define.php?term="
                  ""])))
 
-;; For using ace-jump mode, for faster navigation
-(require 'ace-jump-mode)
-(define-key global-map (kbd "C-c j") 'ace-jump-mode)
-;; enable a more powerful jump back function
-(autoload
-  'ace-jump-mode-pop-mark
-  "ace-jump-mode"
-  "Ace jump back:-)"
-  t)
-(eval-after-load "ace-jump-mode"
-  '(ace-jump-mode-enable-mark-sync))
-(define-key global-map (kbd "C-x j") 'ace-jump-mode-pop-mark)
+;; For using avy mode, for faster navigation
+(global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
 
 ;; I need to learn more about helm
 ;; Enable helm, for a better search
@@ -1510,10 +1500,8 @@ good to remember the hotkeys.
                ["Flyspell next highl. word (M-f9)" flyspell-check-next-highlighted-word]
                ["Flysp prev highl. word (C-f9)" flyspell-check-previous-highlighted-word]
                )
-              ("Ace-jump-mode"
-               ["Word (C-c j)" ace-jump-word-mode]
-               ["Char (C-u C-c j)" ace-jump-char-mode]
-               ["Line (C-u C-u C-c j)" ace-jump-line-mode])
+              ("Avy-mode"
+               ["Word (C-c j)" avy-goto-word-or-subword-1])
               ("git"
                ["Magit Status (ms+TAB)" ms]
                ["Git Timemachine (tm)" tm]
