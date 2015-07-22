@@ -550,6 +550,7 @@ This command does the inverse of `fill-region'."
 
 ;; For using avy mode, for faster navigation
 (global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
+(global-set-key (kbd "C-c c") 'avy-goto-char)
 
 ;; I need to learn more about helm
 ;; Enable helm, for a better search
@@ -1174,7 +1175,9 @@ and set the focus back to Emacs frame"
                ["Flysp prev highl. word (C-f9)" flyspell-check-previous-highlighted-word]
                )
               ("Avy-mode"
-               ["Word (C-c j)" avy-goto-word-or-subword-1])
+               ["Word (C-c j)" avy-goto-word-or-subword-1]
+               ["Character (C-c c)" avy-goto-char]
+               )
               ("git"
                ["Magit Status (ms+TAB)" ms]
                ["Git Timemachine (tm)" tm]
