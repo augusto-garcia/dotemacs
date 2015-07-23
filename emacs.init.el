@@ -266,6 +266,10 @@ point reaches the beginning or end of the buffer, stop there."
 (when (fboundp 'winner-mode)
       (winner-mode 1))
 
+;; to setup ace-window, to easily navigate between windows
+(global-set-key (kbd "C-c w") 'ace-window)
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+
 ;; For searching and replacing
 (setq search-highlight t                 ;; highlight when searching... 
   query-replace-highlight t)             ;; ...and replacing
@@ -1193,7 +1197,9 @@ and set the focus back to Emacs frame"
                ["Right (C-s-right)" windmove-right]
                ["Up (C-s-up)" windmove-up]
                ["Down( C-s-down)" windmove-down]
-               ["Restore windows (C-c left or right)" winner])
+               ["Restore windows (C-c left or right)" winner]
+               ["Ace-window (C-c w)" ace-window]
+               )
               ("Move Text Blocks"
                ["Forward (next)" ergoemacs-forward-block]
                ["Backware (prior)" ergoemacs-backward-block])
