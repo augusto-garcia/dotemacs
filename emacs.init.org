@@ -654,6 +654,11 @@ This command does the inverse of `fill-region'."
 ;;(helm-mode 1)
 ;;(global-set-key (kbd "C-c h") 'helm-mini)
 
+;; Prettier text replacement with anzu
+(global-anzu-mode +1)
+(global-set-key (kbd "M-%") 'anzu-query-replace)
+(global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+
 #+END_SRC
 
 
