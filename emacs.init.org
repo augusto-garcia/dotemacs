@@ -243,6 +243,9 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "C-S-z") 'redo)
 ;; C-x u for a neat tree visualization; q for change and C-q for quit
 
+;; Seeing color values
+; M-x list-colors-display
+
 ;; Turn on font-lock mode to color text in certain modes 
 (global-font-lock-mode t)
 
