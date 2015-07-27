@@ -647,6 +647,7 @@ This command does the inverse of `fill-region'."
 ;; /protocol:[user@]hostname[#port]:
 
 ;; For multiple hops, jumping to oboe using maestro as the initial destination
+(require 'tramp)
 (add-to-list 'tramp-default-proxies-alist
                  '("oboe" nil "/ssh:augusto@maestro:"))
 
