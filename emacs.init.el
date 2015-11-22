@@ -80,7 +80,7 @@ Cool!
 (sublimity-attractive-hide-fringes)
 ;;(sublimity-attractive-hide-modelines)
 
-;; To help find the cursor
+;; To help find the cursorS
 (beacon-mode 1)
 (setq beacon-push-mark 35)
 (setq beacon-color "#666600")
@@ -199,12 +199,9 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; Go to the last change
 ;; Super-cool!
-(package-require 'goto-chg)
-(global-set-key [(control .)] 'goto-last-change)
-; M-. can conflict with etags tag search. But C-. can get overwritten
-; by flyspell-auto-correct-word. And goto-last-change needs a really
-; fast key.
-(global-set-key [(meta .)] 'goto-last-change)
+(require 'goto-chg)
+(global-set-key (kbd "C-c C-,") 'goto-last-change)
+(global-set-key (kbd "C-c C-.") 'goto-last-change-reverse)
 
 ;; save cursor position between sessions
 (require 'saveplace)
