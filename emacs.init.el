@@ -1,4 +1,3 @@
-
 ;; Package repositories
 (require 'package)
 (package-initialize)
@@ -80,6 +79,11 @@ Cool!
 (sublimity-attractive-hide-vertical-border)
 (sublimity-attractive-hide-fringes)
 ;;(sublimity-attractive-hide-modelines)
+
+;; To help find the cursor
+(beacon-mode 1)
+(setq beacon-push-mark 35)
+(setq beacon-color "#666600")
 
 ;; keep a list of recently opened files, available using F7
 (recentf-mode 1)

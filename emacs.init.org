@@ -151,6 +151,12 @@ Cool!
 (sublimity-attractive-hide-fringes)
 ;;(sublimity-attractive-hide-modelines)
 
+;; To help find the cursor
+(beacon-mode 1)
+(setq beacon-push-mark 35)
+(setq beacon-color "#666600")
+
+
 
 #+END_SRC
 
