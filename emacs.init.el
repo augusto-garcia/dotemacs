@@ -85,6 +85,13 @@ Cool!
 (setq beacon-push-mark 35)
 (setq beacon-color "#666600")
 
+;; Highlighting indentation (minor mode)
+;; To activate: highlight-indentation-mode or highlight-indentation-current-column-mode
+;; To customize colors:
+(highlight-indentation-mode 1)
+(set-face-background 'highlight-indentation-face "#e3e3d3")
+(set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+
 ;; keep a list of recently opened files, available using F7
 (recentf-mode 1)
 (global-set-key (kbd "<f7>") 'recentf-open-files)
