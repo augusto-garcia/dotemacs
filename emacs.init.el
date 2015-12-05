@@ -92,6 +92,11 @@ Cool!
 (set-face-background 'highlight-indentation-face "#e3e3d3")
 (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
 
+;; To enable Focus mode:
+;; M-x focus-mode
+;; Or, to initialize by default:
+;; (focus-mode 1)
+
 ;; keep a list of recently opened files, available using F7
 (recentf-mode 1)
 (global-set-key (kbd "<f7>") 'recentf-open-files)
