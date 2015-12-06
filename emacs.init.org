@@ -1481,10 +1481,11 @@ Another interesting option is http://pawelbx.github.io/emacs-theme-gallery/
 
 More fancy ones:
   + dakrone
+  + tangotango
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'tangotango t)
+(load-theme 'ubuntu t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)

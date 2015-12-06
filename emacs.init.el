@@ -1176,7 +1176,7 @@ and set the focus back to Emacs frame"
 (sp-with-modes '(html-mode sgml-mode)
   (sp-local-pair "<" ">"))
 
-(load-theme 'tangotango t)
+(load-theme 'ubuntu t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
