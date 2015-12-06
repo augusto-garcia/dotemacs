@@ -1478,6 +1478,7 @@ My favorite ones:
   + alect-black (use it from months!)
 
 Another interesting option is http://pawelbx.github.io/emacs-theme-gallery/
+Or the super-cool [[https://emacsthemes.com/]]
 
 More fancy ones:
   + dakrone
