@@ -1257,3 +1257,17 @@ and set the focus back to Emacs frame"
     (require 'easymenu)
     (easy-menu-define andrews-menu global-map "augusto's Personal Menu" menu)
     (easy-menu-add andrews-menu global-map)))
+
+;; I do need to work on this; some of them are not working
+
+(defhydra hydra-windows (:color blue)
+  "windows"
+  ("s" swap-windows "swap")
+  ("a" ace-window "ace")
+  ("t" toggle-window-split "toggle window split")
+  ("l" windmove-left "windmove left")
+  ("r" windmove-right "windmove right")
+  ("u" windmove-up "windmove up")
+  ("d" windmove-down "windmove down")
+  ("w" winner "winner"))
+(global-set-key (kbd "M-g w") 'hydra-windows/body)

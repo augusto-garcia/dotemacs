@@ -1591,6 +1591,31 @@ good to remember the hotkeys.
 
 #+END_SRC
 
+* Hydras
+
+The customized menu is pretty cool, but I still find it difficult to
+remember the hotkeys. With Hydras this is supposed to be easier.  
+
+#+BEGIN_SRC emacs-lisp
+
+;; I do need to work on this; some of them are not working
+
+(defhydra hydra-windows (:color blue)
+  "windows"
+  ("s" swap-windows "swap")
+  ("a" ace-window "ace")
+  ("t" toggle-window-split "toggle window split")
+  ("l" windmove-left "windmove left")
+  ("r" windmove-right "windmove right")
+  ("u" windmove-up "windmove up")
+  ("d" windmove-down "windmove down")
+  ("w" winner "winner"))
+(global-set-key (kbd "M-g w") 'hydra-windows/body)
+
+
+#+END_SRC
+
+
 * License
 
 Copyright (C) 2014 Antonio Augusto F Garcia
