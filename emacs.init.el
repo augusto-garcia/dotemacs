@@ -1261,7 +1261,8 @@ and set the focus back to Emacs frame"
 (defhydra hydra-eval (:color blue)
   "eval"
   ("b" eval-buffer "eval buffer")
-  ("r" eval-region "eval region"))
+  ("r" eval-region "eval region")
+  ("t" org-babel-load-file "Tangle a elisp file"))
 (global-set-key (kbd "M-g e") 'hydra-eval/body)
 
 
