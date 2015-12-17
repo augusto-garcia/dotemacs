@@ -1600,6 +1600,13 @@ remember the hotkeys. With Hydras this is supposed to be easier.
 
 ;; I do need to work on this; some of them are not working
 
+(defhydra hydra-eval (:color blue)
+  "eval"
+  ("b" eval-buffer "eval buffer")
+  ("r" eval-region "eval region"))
+(global-set-key (kbd "M-g e") 'hydra-eval/body)
+
+
 (defhydra hydra-windows (:color blue)
   "windows"
   ("s" swap-windows "swap")
@@ -1611,6 +1618,7 @@ remember the hotkeys. With Hydras this is supposed to be easier.
   ("d" windmove-down "windmove down")
   ("w" winner "winner"))
 (global-set-key (kbd "M-g w") 'hydra-windows/body)
+
 
 
 #+END_SRC

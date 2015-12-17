@@ -1260,6 +1260,13 @@ and set the focus back to Emacs frame"
 
 ;; I do need to work on this; some of them are not working
 
+(defhydra hydra-eval (:color blue)
+  "eval"
+  ("b" eval-buffer "eval buffer")
+  ("r" eval-region "eval region"))
+(global-set-key (kbd "M-g e") 'hydra-eval/body)
+
+
 (defhydra hydra-windows (:color blue)
   "windows"
   ("s" swap-windows "swap")
