@@ -1598,7 +1598,6 @@ remember the hotkeys. With Hydras this is supposed to be easier.
 
 #+BEGIN_SRC emacs-lisp
 
-;; I do need to work on this; some of them are not working
 
 (defhydra hydra-eval (:color blue)
   "eval"
@@ -1615,8 +1614,7 @@ remember the hotkeys. With Hydras this is supposed to be easier.
   ("l" windmove-left "windmove left")
   ("r" windmove-right "windmove right")
   ("u" windmove-up "windmove up")
-  ("d" windmove-down "windmove down")
-  ("w" winner "winner"))
+  ("d" windmove-down "windmove down"))
 (global-set-key (kbd "M-g w") 'hydra-windows/body)
 
 
