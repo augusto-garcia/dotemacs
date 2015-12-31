@@ -746,9 +746,10 @@ user."
                            TeX-run-TeX nil (latex-mode) :help "Run Latex after Sweave") t)))
 
 ;; By default, it uses text mode
-(when (and (daemonp) (locate-library "edit-server"))
+;(when (and (daemonp) (locate-library "edit-server"))
 (require 'edit-server)
-(edit-server-start))
+(edit-server-start)
+;)
 
 ;; To open pages for editing in new buffers in your existing Emacs instance:
   (when (require 'edit-server nil t)
@@ -756,12 +757,12 @@ user."
     (edit-server-start))
 
 ;; To open pages for editing in new frames using a running emacs started in --daemon mode:
-  (when (and (require 'edit-server nil t) (daemonp))
-    (edit-server-start))
+;  (when (and (require 'edit-server nil t) (daemonp))
+;    (edit-server-start))
 
 ;; To use markdown mode when editing github pages
-  (setq edit-server-url-major-mode-alist
-        '(("github\\.com" . markdown-mode)))
+;  (setq edit-server-url-major-mode-alist
+;        '(("github\\.com" . markdown-mode)))
 
 ;; Required to load ESS
 (load "ess-site")
