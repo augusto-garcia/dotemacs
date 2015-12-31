@@ -756,8 +756,8 @@ user."
     (edit-server-start))
 
 ;; To open pages for editing in new frames using a running emacs started in --daemon mode:
-;  (when (and (require 'edit-server nil t) (daemonp))
-;    (edit-server-start))
+  (when (and (require 'edit-server nil t) (daemonp))
+    (edit-server-start))
 
 ;; To use markdown mode when editing github pages
   (setq edit-server-url-major-mode-alist
