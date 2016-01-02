@@ -884,7 +884,7 @@ Sweave (do I still need this, given the recent R package =knitr=?).
 #+BEGIN_SRC emacs-lisp
 
 ;; Define emacs to always start as a server
-(server-start)
+;(server-start)
 
 ;; By default, it uses text mode
 (when (and (daemonp) (locate-library "edit-server"))
