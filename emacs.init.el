@@ -746,7 +746,7 @@ user."
                            TeX-run-TeX nil (latex-mode) :help "Run Latex after Sweave") t)))
 
 ;; Define emacs to always start as a server
-;(server-start)
+(server-start)
 
 ;; By default, it uses text mode
 (when (and (daemonp) (locate-library "edit-server"))
