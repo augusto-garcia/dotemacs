@@ -766,6 +766,11 @@ user."
   (setq edit-server-url-major-mode-alist
         '(("github\\.com" . markdown-mode)))
 
+;; To configurate gmail-message-mode for using Pandoc, not Ham ("HTML as Markdown")
+;; maybe the next configuration is necessary
+;(setf ham-mode-markdown-command
+;  '("/usr/bin/pandoc" "--from" "markdown" "--to" "html" "--standalone" file))
+
 ;; Required to load ESS
 (load "ess-site")
 
