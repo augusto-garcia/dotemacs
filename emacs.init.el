@@ -1105,9 +1105,14 @@ do this for the whole buffer."
 ;; Set to <your Dropbox root directory>/MobileOrg.
 (setq org-mobile-directory "~/Dropbox/MobileOrg")
 
-;; Goes very well together with org-mobile-sync
+;; Package org-mobile-sync is a very good companion
+;; it is necessary to install file-notify-support
 ;(require 'org-mobile-sync)
 ;(org-mobile-sync-mode 1)
+
+;; To automaticaly push and pull modifications when opening/closing emacs
+(add-hook 'after-init-hook 'org-mobile-pull)
+(add-hook 'kill-emacs-hook 'org-mobile-push)
 
 (require 'make-mode)
   
