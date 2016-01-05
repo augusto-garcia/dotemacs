@@ -1130,7 +1130,7 @@ Package git-timemachine:
 ;; Very important!
 ;; from
 ;; http://www.newartisans.com/2007/08/using-org-mode-as-a-day-planner/
-;; This was modified on January 2015 to use org-capture insteado of
+;; This was modified on January 2015 to use org-capture instead of
 ;; org-remember, as required by Emacs 24.4
 (define-key mode-specific-map [?a] 'org-agenda)
 (eval-after-load "org"
@@ -1317,7 +1317,7 @@ Exporting:
 ;; Set to the name of the file where new notes will be stored
 (setq org-mobile-inbox-for-pull "~/Dropbox/Emacs/org/flagged.org")
 ;; Set to <your Dropbox root directory>/MobileOrg.
-(setq org-mobile-directory "~/Dropbox/MobileOrg")
+(setq org-mobile-directory "~/Dropbox/Emacs/org/MobileOrg")
 
 ;; Package org-mobile-sync is a very good companion
 ;; it is necessary to install file-notify-support
