@@ -771,6 +771,14 @@ user."
 ;(setf ham-mode-markdown-command
 ;  '("/usr/bin/pandoc" "--from" "markdown" "--to" "html" "--standalone" file))
 
+;; To activate conkeror-minor-mode
+(add-hook 'js-mode-hook 'conkeror-minor-mode)
+
+;; To enable conkeror-minor-mode to edit only .conkerorrc file
+(add-hook 'js-mode-hook (lambda ()
+                          (when (string= ".conkerorrc" (buffer-name))
+                            (conkeror-minor-mode 1))))
+
 ;; Required to load ESS
 (load "ess-site")
 
