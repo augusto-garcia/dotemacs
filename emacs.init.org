@@ -1020,6 +1020,12 @@ Magit and other:
            "~/git/dotemacs"
            "~/git/Mixed-Models"
            "~/git/Templates-do-Lab"
+           "~/git/Biometria-de-Marcadores"
+           "~/git/cartas"
+           "~/git/cv"
+           "~/git/memorial"
+           "~/git/onemap"
+           "~/git/OneMap-Book"
            "~/git/Templates")))
 
 ;; .gitconfig
