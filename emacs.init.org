@@ -856,6 +856,11 @@ RefTex:
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-auctex t)
 
+;; To automaticaly find the .bib file when using C-c [
+(setq reftex-bibliography-commands '("bibliography" "nobibliography" "addbibresource"))
+
+
+
 #+END_SRC
 
 Sweave (do I still need this, given the recent R package =knitr=?).

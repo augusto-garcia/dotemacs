@@ -730,6 +730,9 @@ user."
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-auctex t)
 
+;; To automaticaly find the .bib file when using C-c [
+(setq reftex-bibliography-commands '("bibliography" "nobibliography" "addbibresource"))
+
 ;; To use AucTeX with Sweave
 ;; http://andreas.kiermeier.googlepages.com/essmaterials
 (setq TeX-file-extensions
