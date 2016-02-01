@@ -731,7 +731,8 @@ user."
 (setq reftex-plug-into-auctex t)
 
 ;; To automaticaly find the .bib file when using C-c [
-(setq reftex-bibliography-commands '("bibliography" "nobibliography" "addbibresource"))
+;; THIS IS VALID ONLY FOR THE ONEMAP BOOK!
+(setq reftex-default-bibliography '("/home/augusto/git/OneMap-Book/content/mainmatter/library.bib"))
 
 ;; To use AucTeX with Sweave
 ;; http://andreas.kiermeier.googlepages.com/essmaterials
