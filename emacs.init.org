@@ -1066,6 +1066,16 @@ Package git-timemachine:
 (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
 (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
 (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
+
+;; Emacs polymode - allows auctex/reftex to work with .Rnw files
+(setq load-path
+      (append '("/usr/share/emacs/site-lisp/polymode/"  "/usr/share/emacs/site-lisp/polymode/modes")
+              load-path))
+
+
+
+
+
 #+END_SRC
 
 

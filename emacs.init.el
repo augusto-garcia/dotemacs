@@ -879,6 +879,11 @@ user."
 (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
 (add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 
+;; Emacs polymode - allows auctex/reftex to work with .Rnw files
+(setq load-path
+      (append '("/usr/share/emacs/site-lisp/polymode/"  "/usr/share/emacs/site-lisp/polymode/modes")
+              load-path))
+
 (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
 (autoload 'csv-mode "csv-mode"
   "Major mode for editing comma-separated value files." t)
