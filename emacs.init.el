@@ -841,7 +841,7 @@ user."
 ;; To check the magit status of my favorite repos
 ;; Usage: M-x magit-status, then TAB
 (eval-after-load "magit" 
-  '(mapc (apply-partially 'add-to-list 'magit-repo-dirs)
+  '(mapc (apply-partially 'add-to-list 'magit-repository-directories)
          '("~/git/augusto-garcia.github.io"
            "~/git/statgen-esalq"
            "~/git/dotemacs"
@@ -1204,7 +1204,7 @@ and set the focus back to Emacs frame"
 (sp-with-modes '(html-mode sgml-mode)
   (sp-local-pair "<" ">"))
 
-(load-theme 'ubuntu t)
+(load-theme 'abyss t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
