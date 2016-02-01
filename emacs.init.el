@@ -734,6 +734,11 @@ user."
 ;; THIS IS VALID ONLY FOR THE ONEMAP BOOK!
 (setq reftex-default-bibliography '("/home/augusto/git/OneMap-Book/content/mainmatter/library.bib"))
 
+;; File extensions for reftex
+(setq reftex-file-extensions
+      '(("tex" ".Rnw" ".nw" ".tex")
+        ("bib" ".bib")))
+
 ;; To use AucTeX with Sweave
 ;; http://andreas.kiermeier.googlepages.com/essmaterials
 (setq TeX-file-extensions
