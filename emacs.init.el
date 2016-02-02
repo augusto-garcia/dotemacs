@@ -739,6 +739,9 @@ user."
       '(("tex" ".Rnw" ".nw" ".tex")
         ("bib" ".bib")))
 
+;; to ask for cite format after C-c [
+(setq reftex-cite-format 'natbib)
+
 ;; To use AucTeX with Sweave
 ;; http://andreas.kiermeier.googlepages.com/essmaterials
 (setq TeX-file-extensions

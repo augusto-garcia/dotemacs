@@ -865,6 +865,9 @@ RefTex:
       '(("tex" ".Rnw" ".nw" ".tex")
         ("bib" ".bib")))
 
+;; to ask for cite format after C-c [
+(setq reftex-cite-format 'natbib)
+
 #+END_SRC
 
 Sweave (do I still need this, given the recent R package =knitr=?).
