@@ -434,6 +434,16 @@ This command does the inverse of `fill-region'."
   (let ((fill-column 90002000))
     (fill-region start end)))
 
+
+;; company: to "complete anything"
+;; to be available in all major-modes
+(add-hook 'after-init-hook 'global-company-mode)
+;; company with auctex
+(require 'company-auctex)
+(company-auctex-init)
+;; company-statistics
+(add-hook 'after-init-hook 'company-statistics-mode)
+
 ;; IDO mode, for autocompletion; use with C-x C-f
 (ido-mode 1)
 ;;(setq ido-enable-flex-matching t)

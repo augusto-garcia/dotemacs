@@ -517,6 +517,18 @@ This command does the inverse of `fill-region'."
     (fill-region start end)))
 
 
+;; company: to "complete anything"
+;; to be available in all major-modes
+(add-hook 'after-init-hook 'global-company-mode)
+;; company with auctex
+(require 'company-auctex)
+(company-auctex-init)
+;; company-statistics
+(add-hook 'after-init-hook 'company-statistics-mode)
+
+
+
+
 #+END_SRC
 
 * Working through files, buffers and directories
