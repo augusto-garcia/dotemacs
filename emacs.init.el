@@ -442,7 +442,8 @@ This command does the inverse of `fill-region'."
 (require 'company-auctex)
 (company-auctex-init)
 ;; company-statistics
-(add-hook 'after-init-hook 'company-statistics-mode)
+(require 'company-statistics)
+(company-statistics-mode)
 
 ;; IDO mode, for autocompletion; use with C-x C-f
 (ido-mode 1)

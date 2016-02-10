@@ -524,8 +524,8 @@ This command does the inverse of `fill-region'."
 (require 'company-auctex)
 (company-auctex-init)
 ;; company-statistics
-(add-hook 'after-init-hook 'company-statistics-mode)
-
+(require 'company-statistics)
+(company-statistics-mode)
 
 
 
