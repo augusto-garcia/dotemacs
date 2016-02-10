@@ -584,7 +584,7 @@ This command does the inverse of `fill-region'."
 
 ;; For using avy mode, for faster navigation
 (global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
-(global-set-key (kbd "C-c c") 'avy-goto-char)
+(global-set-key (kbd "C-c c") 'avy-goto-char-timer)
 
 ;; I need to learn more about helm
 ;; Enable helm, for a better search
