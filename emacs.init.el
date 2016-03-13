@@ -743,7 +743,10 @@ user."
 
 ;; To automaticaly find the .bib file when using C-c [
 ;; THIS IS VALID ONLY FOR THE ONEMAP BOOK!
-(setq reftex-default-bibliography '("/home/augusto/git/OneMap-Book/content/mainmatter/library.bib"))
+;(setq reftex-default-bibliography '("/home/augusto/git/OneMap-Book/content/mainmatter/library.bib"))
+; FOR MEMORIAL:
+(setq reftex-default-bibliography '("/home/augusto/git/memorial/referencias/abstracts.bib"))
+
 
 ;; File extensions for reftex
 (setq reftex-file-extensions
