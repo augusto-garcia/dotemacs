@@ -1550,10 +1550,11 @@ More fancy ones:
   + dakrone
   + tangotango
   + ubuntu
+  + abyss
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'abyss t)
+(load-theme 'cyberpunk t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
