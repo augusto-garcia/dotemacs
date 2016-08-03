@@ -1297,6 +1297,7 @@ do this for the whole buffer."
   (setq ad-return-value
 	(wicked/org-update-checkbox-count (ad-get-arg 1))))
 
+
 #+END_SRC
 
 Exporting:
@@ -1352,6 +1353,10 @@ Exporting:
   '(require 'ox-md nil t))
 (eval-after-load "org"
   '(require 'ox-odt nil t))
+
+
+;; To export to Reveal.js
+(require 'ox-reveal)
 
 
 #+END_SRC

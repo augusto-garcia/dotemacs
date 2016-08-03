@@ -1142,6 +1142,10 @@ do this for the whole buffer."
 (eval-after-load "org"
   '(require 'ox-odt nil t))
 
+
+;; To export to Reveal.js
+(require 'ox-reveal)
+
 ;; To use MobileOrg
 ;; Set to the location of your Org files on your local system
 (setq org-directory "~/Dropbox/Emacs/org")
