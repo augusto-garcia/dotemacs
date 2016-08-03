@@ -1145,6 +1145,9 @@ do this for the whole buffer."
 
 ;; To export to Reveal.js
 (require 'ox-reveal)
+;; To look for CSS file, js and plugin in the same file where the
+;; presentation is
+(setq org-reveal-root "")
 
 ;; To use MobileOrg
 ;; Set to the location of your Org files on your local system
