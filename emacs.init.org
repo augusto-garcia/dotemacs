@@ -848,19 +848,20 @@ user."
       "Antonio Augusto Franco Garcia\n"
       "http://about.me/augusto.garcia\n"))
 
-;; sending mail -- replace USERNAME with your gmail username
+;; sending mail using smtp in gmail
 ;; also, make sure the gnutls command line utils are installed
 ;; package 'gnutls-bin' in Debian/Ubuntu
-
+;; login and password are encrypted on .authinfo.gpg
 (require 'smtpmail)
 (setq message-send-mail-function 'smtpmail-send-it
    starttls-use-gnutls t
    smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
    smtpmail-auth-credentials
-     '(("smtp.gmail.com" 587 "a.augusto.f.garcia@gmail.com" nil))
+   (expand-file-name "~/.authinfo.gpg")
    smtpmail-default-smtp-server "smtp.gmail.com"
    smtpmail-smtp-server "smtp.gmail.com"
-   smtpmail-smtp-service 587)
+   smtpmail-smtp-service 587
+   smtpmail-debug-info t)
 
 ;; alternatively, for emacs-24 you can use:
 ;;(setq message-send-mail-function 'smtpmail-send-it
