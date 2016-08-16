@@ -870,6 +870,20 @@ user."
 ;;     smtpmail-smtp-server "smtp.gmail.com"
 ;;     smtpmail-smtp-service 587)
 
+;; show images
+(setq mu4e-show-images t)
+
+;; use imagemagick, if available
+(when (fboundp 'imagemagick-register-types)
+  (imagemagick-register-types))
+
+;; spell check
+(add-hook 'mu4e-compose-mode-hook
+        (defun my-do-compose-stuff ()
+           "My settings for message composition."
+           (set-fill-column 72)
+           (flyspell-mode)))
+
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
 #+END_SRC
