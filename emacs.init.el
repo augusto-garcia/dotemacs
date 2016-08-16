@@ -769,6 +769,12 @@ user."
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
 
+;; for encrypting password for offlineimap
+(defun offlineimap-get-password (host port)
+      (let* ((netrc (netrc-parse (expand-file-name "~/.netrc.gpg")))
+             (hostentry (netrc-machine netrc host port port)))
+        (when hostentry (netrc-get hostentry "password"))))
+
 ;; defining useful block types for Beamer
 (setq latex-block-names '("frame" "block" "exampleblock" "alertblock"))
 
