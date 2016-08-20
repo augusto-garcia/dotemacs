@@ -769,7 +769,7 @@ user."
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
 
-;; for encrypting password for offlineimap
+;; for encrypting password for offlineimap - FIXME
 (defun offlineimap-get-password (host port)
       (let* ((netrc (netrc-parse (expand-file-name "~/.netrc.gpg")))
              (hostentry (netrc-machine netrc host port port)))
@@ -1329,7 +1329,7 @@ and set the focus back to Emacs frame"
 (sp-with-modes '(html-mode sgml-mode)
   (sp-local-pair "<" ">"))
 
-(load-theme 'cyberpunk t)
+(load-theme 'spacemacs-dark t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)

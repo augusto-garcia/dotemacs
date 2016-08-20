@@ -1651,10 +1651,11 @@ More fancy ones:
   + tangotango
   + ubuntu
   + abyss
+  + cyberpunk
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'cyberpunk t)
+(load-theme 'spacemacs-dark t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
