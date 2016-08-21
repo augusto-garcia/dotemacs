@@ -832,7 +832,7 @@ user."
 ; FOR MEMORIAL:
 ;(setq reftex-default-bibliography '("/home/augusto/git/memorial/referencias/abstracts.bib"))
 ; For Thesis:
-(setq reftex-default-bibliography '("/home/augusto/git/TeseLivreDocencia/referencias/ColaboracoesEtc.bib"))
+(setq reftex-default-bibliography '("/home/augusto/git/TeseLivreDocencia/referencias/PredicaoCruzamentos.bib"))
 
 
 ;; File extensions for reftex
