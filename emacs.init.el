@@ -26,7 +26,6 @@ Usage: (package-require 'package)"
 ;; to adjust the position of the window when starting emacs
 (setq initial-frame-alist '((top . 30) (left . 90)))
 
-
 ;; Don't display the 'Welcome to GNU Emacs' buffer on startup
 (setq inhibit-startup-message t)
 
@@ -51,10 +50,8 @@ Cool!
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ")
 
-
 ;; save/restore opened files and windows config
 (desktop-save-mode 1) ; 0 for off
-
 
 ;; Sublimity mode (M-x sublimity-mode)
 ;; smooth-scrolling, minimap and distraction-free mode
@@ -832,7 +829,7 @@ user."
 ; FOR MEMORIAL:
 ;(setq reftex-default-bibliography '("/home/augusto/git/memorial/referencias/abstracts.bib"))
 ; For Thesis:
-(setq reftex-default-bibliography '("/home/augusto/git/TeseLivreDocencia/referencias/PredicaoCruzamentos.bib"))
+(setq reftex-default-bibliography '("/home/augusto/git/TeseLivreDocencia/referencias/MilhoEtc.bib"))
 
 
 ;; File extensions for reftex
