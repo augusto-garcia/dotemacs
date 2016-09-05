@@ -719,8 +719,8 @@ user."
 ;; (add-to-list 'load-path "/usr/share/emacs24/site-lisp/mu4e")
 ;; (require 'mu4e)
 
-;; default
-;; (setq mu4e-maildir "~/Maildir")
+;;default
+;;(setq mu4e-maildir "~/Maildir")
 
 ;; (setq mu4e-drafts-folder "/[Gmail].Drafts")
 ;; (setq mu4e-sent-folder   "/[Gmail].Sent Mail")
@@ -738,23 +738,23 @@ user."
 ;; then, when you want archive some messages, move them to
 ;; the 'All Mail' folder by pressing ``ma''.
 
-;;(setq mu4e-maildir-shortcuts
-    ;;'( ("/INBOX"               . ?i)
-    ;;   ("/[Gmail].Sent Mail"   . ?s)
-    ;;   ("/[Gmail].Trash"       . ?t)
-    ;;   ("/[Gmail].All Mail"    . ?a)))
+;; (setq mu4e-maildir-shortcuts
+;;     '( ("/INBOX"               . ?i)
+;;        ("/[Gmail].Sent Mail"   . ?s)
+;;        ("/[Gmail].Trash"       . ?t)
+;;        ("/[Gmail].All Mail"    . ?a)))
 
 ;; allow for updating mail using 'U' in the main view:
-;;(setq mu4e-get-mail-command "offlineimap")
+;; (setq mu4e-get-mail-command "offlineimap")
 
 ;; something about ourselves
 ;; (setq
-;;   user-mail-address "a.augusto.f.garcia@gmail.com"
-;;   user-full-name  "A. Augusto F. Garcia"
-;;   mu4e-compose-signature
-;;    (concat
-;;      "Antonio Augusto Franco Garcia\n"
-;;      "http://about.me/augusto.garcia\n"))
+;;    user-mail-address "a.augusto.f.garcia@gmail.com"
+;;    user-full-name  "A. Augusto F. Garcia"
+;;    mu4e-compose-signature
+;;     (concat
+;;       "Antonio Augusto Franco Garcia\n"
+;;       "http://about.me/augusto.garcia\n"))
 
 ;; sending mail using smtp in gmail
 ;; also, make sure the gnutls command line utils are installed
@@ -762,14 +762,14 @@ user."
 ;; login and password are encrypted on .authinfo.gpg
 ;; (require 'smtpmail)
 ;; (setq message-send-mail-function 'smtpmail-send-it
-;;   starttls-use-gnutls t
-;;   smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
-;;   smtpmail-auth-credentials
-;;   (expand-file-name "~/.authinfo.gpg")
-;;   smtpmail-default-smtp-server "smtp.gmail.com"
-;;   smtpmail-smtp-server "smtp.gmail.com"
-;;   smtpmail-smtp-service 587
-;;   smtpmail-debug-info t)
+;;    starttls-use-gnutls t
+;;    smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
+;;    smtpmail-auth-credentials
+;;    (expand-file-name "~/.authinfo.gpg")
+;;    smtpmail-default-smtp-server "smtp.gmail.com"
+;;    smtpmail-smtp-server "smtp.gmail.com"
+;;    smtpmail-smtp-service 587
+;;    smtpmail-debug-info t)
 
 ;; alternatively, for emacs-24 you can use:
 ;;(setq message-send-mail-function 'smtpmail-send-it
@@ -782,23 +782,23 @@ user."
 ;; (setq mu4e-show-images t)
 
 ;; use imagemagick, if available
-;;(when (fboundp 'imagemagick-register-types)
-;;  (imagemagick-register-types))
+;; (when (fboundp 'imagemagick-register-types)
+;;   (imagemagick-register-types))
 
 ;; spell check
-;;(add-hook 'mu4e-compose-mode-hook
-;;        (defun my-do-compose-stuff ()
-;;           "My settings for message composition."
-;;           (set-fill-column 72)
-;;           (flyspell-mode)))
+;; (add-hook 'mu4e-compose-mode-hook
+;;         (defun my-do-compose-stuff ()
+;;            "My settings for message composition."
+;;            (set-fill-column 72)
+;;            (flyspell-mode)))
 
 ;; don't keep message buffers around
 ;; (setq message-kill-buffer-on-exit t)
 
 ;; for encrypting password for offlineimap - FIXME
-;;(defun offlineimap-get-password (host port)
-;;      (let* ((netrc (netrc-parse (expand-file-name "~/.netrc.gpg")))
-;;             (hostentry (netrc-machine netrc host port port)))
+;; (defun offlineimap-get-password (host port)
+;;       (let* ((netrc (netrc-parse (expand-file-name "~/.netrc.gpg")))
+;;              (hostentry (netrc-machine netrc host port port)))
 ;;        (when hostentry (netrc-get hostentry "password"))))
 
 ;; defining useful block types for Beamer
