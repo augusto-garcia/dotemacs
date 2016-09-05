@@ -716,6 +716,12 @@ user."
 ;; or some other keybinding...
 (global-set-key (kbd "C-x F") 'find-file-as-root)
 
+;; tbemail.el --- Provide syntax highlighting for email editing via
+;; Thunderbird's "External Editor" extension.
+;;   see: http://globs.org/articles.php?lng=en&pg=2&id=2
+(require 'tbemail)
+
+
 ;; (add-to-list 'load-path "/usr/share/emacs24/site-lisp/mu4e")
 ;; (require 'mu4e)
 
