@@ -988,6 +988,7 @@ user."
 (eval-after-load "magit" 
   '(mapc (apply-partially 'add-to-list 'magit-repository-directories)
          '("~/git/augusto-garcia.github.io"
+           "~/git/LGN215-Genetica"
            "~/git/statgen-esalq"
            "~/git/dotemacs"
            "~/git/Mixed-Models"
