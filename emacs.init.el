@@ -864,7 +864,7 @@ user."
 ; FOR MEMORIAL:
 ;(setq reftex-default-bibliography '("/home/augusto/git/memorial/referencias/abstracts.bib"))
 ; For Thesis:
-(setq reftex-default-bibliography '("/home/augusto/git/TeseLivreDocencia/referencias/PoliploidesSNPs.bib"))
+(setq reftex-default-bibliography '("/home/augusto/git/TeseLivreDocencia/referencias/MapAssoc.bib"))
 
 
 ;; File extensions for reftex
