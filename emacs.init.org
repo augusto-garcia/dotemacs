@@ -1685,7 +1685,7 @@ More fancy ones:
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'subatomic t)
+(load-theme 'ample-light t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
