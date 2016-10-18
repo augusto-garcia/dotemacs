@@ -1681,10 +1681,11 @@ More fancy ones:
   + ubuntu
   + abyss
   + cyberpunk
+  + spacemacs-dark
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'spacemacs-dark t)
+(load-theme 'subatomic t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
