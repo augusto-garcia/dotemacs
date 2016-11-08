@@ -1697,7 +1697,7 @@ More fancy ones:
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'tangotango t)
+(load-theme 'soothe t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)

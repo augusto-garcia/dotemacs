@@ -67,7 +67,7 @@
  '(org-reverse-note-order t)
  '(package-selected-packages
    (quote
-    (which-key try use-package undo-tree ubuntu-theme tbemail tangotango-theme sublimity sublime-themes subatomic-theme spacemacs-theme smooth-scroll smex smartparens powerline polymode ox-reveal org-mobile-sync offlineimap magit hydra hungry-delete highlight-indentation heroku-theme goto-chg gmail-message-mode gitconfig-mode gitconfig git-timemachine focus flymake-cursor flymake ess edit-server dired-details+ dired+ cyberpunk-theme csv-mode counsel conkeror-minor-mode company-statistics company-auctex browse-kill-ring+ beacon base16-theme auto-complete anzu ample-theme alect-themes afternoon-theme ace-window abyss-theme)))
+    (soothe-theme which-key try use-package undo-tree ubuntu-theme tbemail tangotango-theme sublimity sublime-themes subatomic-theme spacemacs-theme smooth-scroll smex smartparens powerline polymode ox-reveal org-mobile-sync offlineimap magit hydra hungry-delete highlight-indentation heroku-theme goto-chg gmail-message-mode gitconfig-mode gitconfig git-timemachine focus flymake-cursor flymake ess edit-server dired-details+ dired+ cyberpunk-theme csv-mode counsel conkeror-minor-mode company-statistics company-auctex browse-kill-ring+ beacon base16-theme auto-complete anzu ample-theme alect-themes afternoon-theme ace-window abyss-theme)))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
