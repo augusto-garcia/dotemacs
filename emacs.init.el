@@ -20,6 +20,20 @@ Usage: (package-require 'package)"
     ; if we cannot require it, it does not exist, yet. So install it.
     (error (package-install package))))
 
+;; from http://cestlaz.github.io/posts/using-emacs-1-setup/
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+        (package-refresh-contents)
+        (package-install 'use-package))
+
+(use-package try
+        :ensure t)
+
+(use-package which-key
+        :ensure t 
+        :config
+        (which-key-mode))
+
 ;; To adjust the size of the window when starting emacs
 (if (window-system) (set-frame-size (selected-frame) 108 33))
 
