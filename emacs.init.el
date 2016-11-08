@@ -23,16 +23,16 @@ Usage: (package-require 'package)"
 ;; from http://cestlaz.github.io/posts/using-emacs-1-setup/
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
-        (package-refresh-contents)
-        (package-install 'use-package))
+	(package-refresh-contents)
+	(package-install 'use-package))
 
 (use-package try
-        :ensure t)
+	:ensure t)
 
 (use-package which-key
-        :ensure t 
-        :config
-        (which-key-mode))
+	:ensure t 
+	:config
+	(which-key-mode))
 
 ;; To adjust the size of the window when starting emacs
 (if (window-system) (set-frame-size (selected-frame) 108 33))
@@ -58,7 +58,7 @@ Usage: (package-require 'package)"
 ;; To customize the Welcome Message when loading Emacs
 (setq initial-scratch-message "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \nHi augusto.
-\nDid you manage to start using emacs 24.5?\n
+\nDid you manage to start using emacs 25.1?\n
 Cool!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -965,7 +965,7 @@ user."
 (defun fd-switch-dictionary()
       (interactive)
       (let* ((dic ispell-current-dictionary)
-         (change (if (string= dic "brasileiro") "american" "brasileiro")))
+    	 (change (if (string= dic "brasileiro") "american" "brasileiro")))
         (ispell-change-dictionary change)
         (message "Dictionary switched from %s to %s" dic change)
         ))
@@ -1174,57 +1174,57 @@ do this for the whole buffer."
   (interactive "P")
   (save-excursion
     (let* ((buffer-invisibility-spec (org-inhibit-invisibility))
-           (beg (condition-case nil
-                    (progn (outline-back-to-heading) (point))
-                  (error (point-min))))
-           (end (move-marker
-                 (make-marker)
-                 (progn (or (outline-get-next-sibling) ;; (1)
-                            (goto-char (point-max)))
-                        (point))))
-           (re "\\(\\[[0-9]*%\\]\\)\\|\\(\\[[0-9]*/[0-9]*\\]\\)")
-           (re-box
-            "^[ \t]*\\(*+\\|[-+*]\\|[0-9]+[.)]\\) +\\(\\[[- X]\\]\\)")
-           b1 e1 f1 c-on c-off lim (cstat 0))
+	   (beg (condition-case nil
+		    (progn (outline-back-to-heading) (point))
+		  (error (point-min))))
+	   (end (move-marker
+		 (make-marker)
+		 (progn (or (outline-get-next-sibling) ;; (1)
+			    (goto-char (point-max)))
+			(point))))
+	   (re "\\(\\[[0-9]*%\\]\\)\\|\\(\\[[0-9]*/[0-9]*\\]\\)")
+	   (re-box
+	    "^[ \t]*\\(*+\\|[-+*]\\|[0-9]+[.)]\\) +\\(\\[[- X]\\]\\)")
+	   b1 e1 f1 c-on c-off lim (cstat 0))
       (when all
-        (goto-char (point-min))
-        (or (outline-get-next-sibling) (goto-char (point-max))) ;; (2)
-        (setq beg (point) end (point-max)))
+	(goto-char (point-min))
+	(or (outline-get-next-sibling) (goto-char (point-max))) ;; (2)
+	(setq beg (point) end (point-max)))
       (goto-char beg)
       (while (re-search-forward re end t)
-        (setq cstat (1+ cstat)
-              b1 (match-beginning 0)
-              e1 (match-end 0)
-              f1 (match-beginning 1)
-              lim (cond
-                   ((org-on-heading-p)
-                    (or (outline-get-next-sibling) ;; (3)
-                        (goto-char (point-max)))
-                    (point))
-                   ((org-at-item-p) (org-end-of-item) (point))
-                   (t nil))
-              c-on 0 c-off 0)
-        (goto-char e1)
-        (when lim
-          (while (re-search-forward re-box lim t)
-            (if (member (match-string 2) '("[ ]" "[-]"))
-                (setq c-off (1+ c-off))
-              (setq c-on (1+ c-on))))
-          (goto-char b1)
-          (insert (if f1
-                      (format "[%d%%]" (/ (* 100 c-on)
-                                          (max 1 (+ c-on c-off))))
-                    (format "[%d/%d]" c-on (+ c-on c-off))))
-          (and (looking-at "\\[.*?\\]")
-               (replace-match ""))))
+	(setq cstat (1+ cstat)
+	      b1 (match-beginning 0)
+	      e1 (match-end 0)
+	      f1 (match-beginning 1)
+	      lim (cond
+		   ((org-on-heading-p)
+		    (or (outline-get-next-sibling) ;; (3)
+			(goto-char (point-max)))
+		    (point))
+		   ((org-at-item-p) (org-end-of-item) (point))
+		   (t nil))
+	      c-on 0 c-off 0)
+	(goto-char e1)
+	(when lim
+	  (while (re-search-forward re-box lim t)
+	    (if (member (match-string 2) '("[ ]" "[-]"))
+		(setq c-off (1+ c-off))
+	      (setq c-on (1+ c-on))))
+	  (goto-char b1)
+	  (insert (if f1
+		      (format "[%d%%]" (/ (* 100 c-on)
+					  (max 1 (+ c-on c-off))))
+		    (format "[%d/%d]" c-on (+ c-on c-off))))
+	  (and (looking-at "\\[.*?\\]")
+	       (replace-match ""))))
       (when (interactive-p)
-        (message "Checkbox statistics updated %s (%d places)"
-                 (if all "in entire file" "in current outline entry")
-                 cstat)))))
+	(message "Checkbox statistics updated %s (%d places)"
+		 (if all "in entire file" "in current outline entry")
+		 cstat)))))
 (defadvice org-update-checkbox-count (around wicked activate)
   "Fix the built-in checkbox count to understand headlines."
   (setq ad-return-value
-        (wicked/org-update-checkbox-count (ad-get-arg 1))))
+	(wicked/org-update-checkbox-count (ad-get-arg 1))))
 
 ;; To set up Beamer exporting
 (require 'ox-latex)
@@ -1338,7 +1338,7 @@ and set the focus back to Emacs frame"
   )
 
 (add-to-list 'compilation-finish-functions
-             'notify-compilation-result)
+	     'notify-compilation-result)
 
 ;; This gives a regular `compile-command' prompt.
 (global-set-key [f6] 'compile)
