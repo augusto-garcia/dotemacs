@@ -1697,7 +1697,7 @@ More fancy ones:
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'soothe t)
+(load-theme 'grandshell t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)

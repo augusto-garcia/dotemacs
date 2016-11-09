@@ -1376,7 +1376,7 @@ and set the focus back to Emacs frame"
 (sp-with-modes '(html-mode sgml-mode)
   (sp-local-pair "<" ">"))
 
-(load-theme 'soothe t)
+(load-theme 'grandshell t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
