@@ -1226,6 +1226,12 @@ do this for the whole buffer."
   (setq ad-return-value
 	(wicked/org-update-checkbox-count (ad-get-arg 1))))
 
+;; To have nice looking bullets in orgmode
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
 ;; To set up Beamer exporting
 (require 'ox-latex)
 (add-to-list 'org-latex-classes
