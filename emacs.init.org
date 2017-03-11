@@ -1701,10 +1701,11 @@ More fancy ones:
   + abyss
   + cyberpunk
   + spacemacs-dark
+  + grandshell
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'grandshell t)
+(load-theme 'afternoon t)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
