@@ -1246,7 +1246,7 @@ Package git-timemachine:
 #+END_SRC
 
 
-* COMMENT Configurations for orgmode
+* Configurations for orgmode
 
 #+BEGIN_SRC emacs-lisp
 
