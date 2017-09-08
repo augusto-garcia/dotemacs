@@ -938,6 +938,16 @@ user."
                           (when (string= ".conkerorrc" (buffer-name))
                             (conkeror-minor-mode 1))))
 
+
+;; To use package atomic-chrome with chrome extensions atomic chrome or ghost text
+(require 'atomic-chrome)
+(atomic-chrome-start-server)
+(setq atomic-chrome-default-major-mode 'org-mode)
+(setq atomic-chrome-buffer-open-style 'frame) ;alternatives for frame: full, split
+; if using frame above, setting its size
+(setq atomic-chrome-buffer-frame-height 30)
+(setq atomic-chrome-buffer-frame-width 90)
+
 ;; Required to load ESS
 (load "ess-site")
 
