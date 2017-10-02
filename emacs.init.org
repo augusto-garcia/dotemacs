@@ -372,12 +372,12 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "C-c m") 'toggle-window-split)
 
 ;; use control + arrow keys to switch between visible buffers
-(require 'windmove)
-(windmove-default-keybindings 'control) ;; will be overridden
-(global-set-key (kbd "<C-s-left>")  'windmove-left)
-(global-set-key (kbd "<C-s-right>") 'windmove-right)
-(global-set-key (kbd "<C-s-up>")    'windmove-up)
-(global-set-key (kbd "<C-s-down>")  'windmove-down)
+;(require 'windmove)
+;(windmove-default-keybindings 'control) ;; will be overridden
+;(global-set-key (kbd "<C-s-left>")  'windmove-left)
+;(global-set-key (kbd "<C-s-right>") 'windmove-right)
+;(global-set-key (kbd "<C-s-up>")    'windmove-up)
+;(global-set-key (kbd "<C-s-down>")  'windmove-down)
 
 ;; to activate winner mode - restore window configurations
 ;; usage: C-c left, C-c right
@@ -385,8 +385,18 @@ point reaches the beginning or end of the buffer, stop there."
       (winner-mode 1))
 
 ;; to setup ace-window, to easily navigate between windows
-(global-set-key (kbd "C-c w") 'ace-window)
+(use-package ace-window
+  :ensure t
+  :init
+  (progn
+    (global-set-key [remap other-window] 'ace-window)
+    (custom-set-faces
+     '(aw-leading-char-face
+       ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
+    ))
 (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+; old configuration
+;(global-set-key (kbd "C-c w") 'ace-window)
 
 ;; For searching and replacing
 (setq search-highlight t                 ;; highlight when searching... 
@@ -1786,12 +1796,7 @@ good to remember the hotkeys.
               ("Windows"
                ["Swap Windows (C-c s)" swap-windows]
                ["Toggle Split Window (C-c m)" toggle-window-split]
-               ["Left (C-s-left)" windmove-left]
-               ["Right (C-s-right)" windmove-right]
-               ["Up (C-s-up)" windmove-up]
-               ["Down( C-s-down)" windmove-down]
                ["Restore windows (C-c left or right)" winner]
-               ["Ace-window (C-c w)" ace-window]
                )
               ("Move Text Blocks"
                ["Forward (next)" ergoemacs-forward-block]
