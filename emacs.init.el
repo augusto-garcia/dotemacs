@@ -472,6 +472,7 @@ This command does the inverse of `fill-region'."
 (setq ivy-use-virtual-buffers t)
 (setq ivy-display-style 'fancy)
 (global-set-key "\C-s" 'swiper)
+(global-set-key "\C-r" 'swiper) ; see below if counsel-expression is better
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 (global-set-key (kbd "<f5>") 'ivy-resume)
 (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -486,7 +487,7 @@ This command does the inverse of `fill-region'."
 (global-set-key (kbd "C-c k") 'counsel-ag)
 (global-set-key (kbd "C-x l") 'counsel-locate)
 (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-(define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+;(define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
 ;;advise swiper to recenter on exit
 (defun bjm-swiper-recenter (&rest args)
   "recenter display after swiper"
