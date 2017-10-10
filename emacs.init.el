@@ -150,7 +150,16 @@ Cool!
                    (cons 'ac-source-semantic ac-sources))))
 
 ;; Inline auto completion and suggestions
-(package-require 'auto-complete)
+; I am not using package auto-complete anymore
+; replace by company-mode
+;(use-package auto-complete
+;  :ensure t
+;  :init
+;  (progn
+;    (ac-config-default)
+;    (global-auto-complete-mode t)
+;    ))
+
 
 ;; to have a smart C-a navigation
 (defun smarter-move-beginning-of-line (arg)
