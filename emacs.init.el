@@ -1413,7 +1413,9 @@ and set the focus back to Emacs frame"
 (sp-with-modes '(html-mode sgml-mode)
   (sp-local-pair "<" ">"))
 
-(load-theme 'moe-dark t)
+(load-theme 'spacemacs-dark t)
+;(require 'moe-theme)
+;(moe-light)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
