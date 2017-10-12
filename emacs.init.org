@@ -1733,9 +1733,9 @@ More fancy ones:
 
 #+BEGIN_SRC emacs-lisp
 
-(load-theme 'spacemacs-dark t)
-;(require 'moe-theme)
-;(moe-light)
+;(load-theme 'spacemacs-dark t)
+(require 'moe-theme)
+(moe-light)
 
 ;; To highlight current line
 (global-hl-line-mode 1)
