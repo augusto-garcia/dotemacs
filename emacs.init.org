@@ -541,7 +541,6 @@ This command does the inverse of `fill-region'."
   (let ((fill-column 90002000))
     (fill-region start end)))
 
-
 ;; company: to "complete anything"
 ;; to be available in all major-modes
 (add-hook 'after-init-hook 'global-company-mode)
@@ -552,6 +551,11 @@ This command does the inverse of `fill-region'."
 (require 'company-statistics)
 (company-statistics-mode)
 
+;; to use flycheck, for syntax check in many languages, such as R
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode t))
 
 #+END_SRC
 
@@ -1734,6 +1738,7 @@ More fancy ones:
 #+BEGIN_SRC emacs-lisp
 
 ;(load-theme 'spacemacs-dark t)
+(require 'powerline)
 (require 'moe-theme)
 (moe-light)
 

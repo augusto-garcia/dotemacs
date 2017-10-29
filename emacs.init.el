@@ -464,7 +464,6 @@ This command does the inverse of `fill-region'."
   (let ((fill-column 90002000))
     (fill-region start end)))
 
-
 ;; company: to "complete anything"
 ;; to be available in all major-modes
 (add-hook 'after-init-hook 'global-company-mode)
@@ -474,6 +473,12 @@ This command does the inverse of `fill-region'."
 ;; company-statistics
 (require 'company-statistics)
 (company-statistics-mode)
+
+;; to use flycheck, for syntax check in many languages, such as R
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode t))
 
 ;; Trying to replace IDO mode with ivy mode, counsel and swiper 
 ;; If I don't like it, just comment below and uncomment IDO configuration removing ";; "
@@ -1414,6 +1419,7 @@ and set the focus back to Emacs frame"
   (sp-local-pair "<" ">"))
 
 ;(load-theme 'spacemacs-dark t)
+(require 'powerline)
 (require 'moe-theme)
 (moe-light)
 
