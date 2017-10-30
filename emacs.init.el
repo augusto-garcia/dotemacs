@@ -480,6 +480,12 @@ This command does the inverse of `fill-region'."
   :init
   (global-flycheck-mode t))
 
+;;YASnippet
+(use-package yasnippet
+  :ensure t
+  :init
+    (yas-global-mode 1))
+
 ;; Trying to replace IDO mode with ivy mode, counsel and swiper 
 ;; If I don't like it, just comment below and uncomment IDO configuration removing ";; "
 (ivy-mode 1)

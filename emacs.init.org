@@ -557,6 +557,12 @@ This command does the inverse of `fill-region'."
   :init
   (global-flycheck-mode t))
 
+;;YASnippet
+(use-package yasnippet
+  :ensure t
+  :init
+    (yas-global-mode 1))
+
 #+END_SRC
 
 * Working through files, buffers and directories
