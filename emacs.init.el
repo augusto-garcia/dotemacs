@@ -61,6 +61,8 @@ Usage: (package-require 'package)"
 \nDid you manage to start using emacs 25.1?\n
 Cool!
 
+C-u, C-5 (etc), C--
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ")
 
