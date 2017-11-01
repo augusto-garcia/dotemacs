@@ -1,4 +1,7 @@
 ;; update the git directory with the latest version:
+(shell-command "cd ~/git/dotemacs ; git pull")
+;; The emacs.init.el file is at this location
+(add-to-list 'load-path "~/git/dotemacs")
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -6,9 +9,6 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(shell-command "cd ~/git/dotemacs ; git pull")
-;; The emacs.init.el file is at this location
-(add-to-list 'load-path "~/git/dotemacs")
 ;; Load it
 (load "emacs.init")
 
