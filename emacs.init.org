@@ -103,6 +103,21 @@ Usage: (package-require 'package)"
 
 
 #+BEGIN_SRC emacs-lisp
+;; To customize the Welcome Message when loading Emacs
+(setq initial-scratch-message "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nHi augusto.
+
+% Help choose theme
+M-x customize-themes
+
+% Repeat, negative argument
+C-u, C-5 (etc), C--
+
+% Getting help
+C-h i, C-h a
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+")
   
 ;; To adjust the size of the window when starting emacs
 (if (window-system) (set-frame-size (selected-frame) 108 33))
@@ -125,19 +140,11 @@ Usage: (package-require 'package)"
 ;; disable to scroll bar
 (scroll-bar-mode -1)
 
-;; To customize the Welcome Message when loading Emacs
-(setq initial-scratch-message "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\nHi augusto.
-\nDid you manage to start using emacs 25.1?\n
-Cool!
-
-C-u, C-5 (etc), C--
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-")
-
 ;; save/restore opened files and windows config
 (desktop-save-mode 1) ; 0 for off
+
+;; ordering relevant results with apropos
+(setq apropos-sort-by-scores t)
 
 ;; Sublimity mode (M-x sublimity-mode)
 ;; smooth-scrolling, minimap and distraction-free mode
