@@ -45,7 +45,7 @@ M-x customize-themes
 C-u, C-5 (etc), C--
 
 % Getting help
-C-h i, C-h a
+C-h i (manual), C-h a (apropos), C-h m (describe-mode)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ")
