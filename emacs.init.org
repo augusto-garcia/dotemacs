@@ -272,9 +272,9 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; defining C-x C-u as undo (same as C-x u). It was upcase-region.
 (define-key global-map "\C-x\C-u" 'undo)
-
 ;; undo-tree-mode
-;;turn on everywhere
+;; turn on everywhere
+;; use C-x u to see the three
 (global-undo-tree-mode 1)
 ;; make ctrl-z undo
 (global-set-key (kbd "C-z") 'undo)
