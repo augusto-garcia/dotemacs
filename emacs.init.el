@@ -47,6 +47,9 @@ C-u, C-5 (etc), C--
 % Getting help
 C-h i (manual), C-h a (apropos), C-h m (describe-mode)
 
+% Moving
+M-m (moves to first non-whitespace character)
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ")
   
@@ -501,6 +504,9 @@ This command does the inverse of `fill-region'."
   :ensure t
   :config 
   (global-set-key (kbd "C-=") 'er/expand-region))
+
+;; Treats CamelCase as distinct words
+(subword-mode t)
 
 ;; Trying to replace IDO mode with ivy mode, counsel and swiper 
 ;; If I don't like it, just comment below and uncomment IDO configuration removing ";; "
