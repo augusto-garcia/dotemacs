@@ -496,6 +496,12 @@ This command does the inverse of `fill-region'."
   :init
     (yas-global-mode 1))
 
+;; expand the marked region in semantic increments (negative prefix to reduce region)
+(use-package expand-region
+  :ensure t
+  :config 
+  (global-set-key (kbd "C-=") 'er/expand-region))
+
 ;; Trying to replace IDO mode with ivy mode, counsel and swiper 
 ;; If I don't like it, just comment below and uncomment IDO configuration removing ";; "
 (ivy-mode 1)
@@ -1467,8 +1473,8 @@ and set the focus back to Emacs frame"
               ["Narrowing region (out: C-x n w)" narrow-to-region]
               ["Count occurences" occur]
               ["Toggle linum-mode (M-x lm)" lm]
-              ["Helm search (C-c h)" helm-mini]
               ["Search word in the web (C-x g)" webjump]
+              ["Expand region (C-=)" er/expand-region]
               ("Flyspell"
                ["Flyspell buffer (M-x fb)" flyspell-buffer]
                ["Toggle on buffer (C-S-f9)" flyspell-mode]
