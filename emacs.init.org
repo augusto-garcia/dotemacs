@@ -193,7 +193,7 @@ M-m (moves to first non-whitespace character)
 #+END_SRC
 
 
-* Editing
+* COMMENT Editing
 
 #+BEGIN_SRC emacs-lisp
   
@@ -583,6 +583,11 @@ This command does the inverse of `fill-region'."
 
 ;; Treats CamelCase as distinct words
 (subword-mode t)
+
+;; Editing multiple words simultaneously
+;; Select with C-; edit, then quit with C-;
+(use-package iedit
+:ensure t)
 
 #+END_SRC
 
