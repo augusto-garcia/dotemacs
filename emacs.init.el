@@ -121,6 +121,398 @@ M-m (moves to first non-whitespace character)
 ;; Or, to initialize by default:
 ;; (focus-mode 1)
 
+;; keep a list of recently opened files, available using F7
+(recentf-mode 1)
+(global-set-key (kbd "<f7>") 'recentf-open-files)
+
+;; Flymake: on the fly syntax checking
+; stronger error display
+(defface flymake-message-face
+  '((((class color) (background light)) (:foreground "#b2dfff"))
+    (((class color) (background dark))  (:foreground "#b2dfff")))
+  "Flymake message face")
+; show the flymake errors in the minibuffer
+(package-require 'flymake-cursor)  
+
+;; To activate COPY from Emacs to other applications
+; Not necessary anymore, for Emacs 24.4
+;(setq x-select-enable-clipboard t)
+
+;; for having small hints when using TAB for completion
+(custom-set-variables
+ '(icomplete-mode t))
+
+;; To use Semantic, with M-x semantic
+;; It should provide useful context options
+(eval-after-load "semantic"
+   '(progn
+      (add-to-list 'semantic-default-submodes
+                   'global-semantic-decoration-mode)
+      (add-to-list 'semantic-default-submodes
+                   'global-semantic-idle-summary-mode)
+      (add-to-list 'semantic-default-submodes
+                   'global-semantic-idle-local-symbol-highlight-mode)
+      (add-to-list 'semantic-default-submodes
+                   'global-semantic-mru-bookmark-mode)))
+;; For using auto-completion features
+(when (ignore-errors (require 'auto-complete-config nil t))
+  (ac-config-default)
+  (ac-flyspell-workaround)
+  (eval-after-load "semantic"
+    '(setq-default ac-sources
+                   (cons 'ac-source-semantic ac-sources))))
+
+;; Inline auto completion and suggestions
+; I am not using package auto-complete anymore
+; replace by company-mode
+;(use-package auto-complete
+;  :ensure t
+;  :init
+;  (progn
+;    (ac-config-default)
+;    (global-auto-complete-mode t)
+;    ))
+
+
+;; to have a smart C-a navigation
+(defun smarter-move-beginning-of-line (arg)
+  "Move point back to indentation of beginning of line.
+Move point to the first non-whitespace character on this line.
+If point is already there, move to the beginning of the line.
+Effectively toggle between the first non-whitespace character and
+the beginning of the line.
+If ARG is not nil or 1, move forward ARG - 1 lines first.  If
+point reaches the beginning or end of the buffer, stop there."
+  (interactive "^p")
+  (setq arg (or arg 1))
+  ;; Move lines first
+  (when (/= arg 1)
+    (let ((line-move-visual nil))
+      (forward-line (1- arg))))
+  (let ((orig-point (point)))
+    (back-to-indentation)
+    (when (= orig-point (point))
+      (move-beginning-of-line 1))))
+;; remap C-a to `smarter-move-beginning-of-line'
+(global-set-key [remap move-beginning-of-line]
+                'smarter-move-beginning-of-line)
+
+;; defining C-x C-u as undo (same as C-x u). It was upcase-region.
+(define-key global-map "\C-x\C-u" 'undo)
+;; undo-tree-mode
+;; turn on everywhere
+;; use C-x u to see the three
+(global-undo-tree-mode 1)
+;; make ctrl-z undo
+(global-set-key (kbd "C-z") 'undo)
+;; make ctrl-Z redo
+(defalias 'redo 'undo-tree-redo)
+(global-set-key (kbd "C-S-z") 'redo)
+;; C-x u for a neat tree visualization; q for change and C-q for quit
+
+;; Seeing color values
+; M-x list-colors-display
+
+;; Turn on font-lock mode to color text in certain modes 
+(global-font-lock-mode t)
+
+;; Show line and column position of cursor
+(column-number-mode 1)
+
+;; Make sure spaces are used when indenting code
+(setq-default indent-tabs-mode nil)
+
+;; Using single space after dots to define the end of sentences
+(setq sentence-end-double-space nil)
+
+;; makes backspace and C-d erase all consecutive white space
+;; (instead of just one)
+(require 'hungry-delete)
+(global-hungry-delete-mode)
+
+;; use allout minor mode to have outlining everywhere.
+(allout-mode)
+
+;; Add proper word wrapping
+(global-visual-line-mode t)
+
+;; C-home goes to the start, C-end goes to the end of the file
+(global-set-key (kbd "<C-home>")
+  (lambda()(interactive)(goto-char(point-min))))
+(global-set-key (kbd "<C-end>")
+  (lambda()(interactive)(goto-char(point-max))))
+
+;; Go to the last change
+;; Super-cool!
+(require 'goto-chg)
+(global-set-key (kbd "C-c C-,") 'goto-last-change)
+(global-set-key (kbd "C-c C-.") 'goto-last-change-reverse)
+
+;; save cursor position between sessions
+(require 'saveplace)
+(setq-default save-place t)
+
+;; make all "yes or no" prompts show "y or n" instead
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Smooth scrolling
+(require 'smooth-scroll)
+(smooth-scroll-mode t)
+
+;; To keep the point in a fixed position while scrolling
+(global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
+(global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
+
+;; To browse the kill-ring with C-c k
+(require 'browse-kill-ring)
+(require 'browse-kill-ring+)
+(global-set-key (kbd "C-c k") 'browse-kill-ring)
+
+;; To swap two windows using C-c s
+(defun swap-windows ()
+  "If you have 2 windows, it swaps them."
+  (interactive)
+  (cond ((/= (count-windows) 2)
+         (message "You need exactly 2 windows to do this."))
+        (t
+         (let* ((w1 (first (window-list)))
+                (w2 (second (window-list)))
+                (b1 (window-buffer w1))
+                (b2 (window-buffer w2))
+                (s1 (window-start w1))
+                (s2 (window-start w2)))
+           (set-window-buffer w1 b2)
+           (set-window-buffer w2 b1)
+           (set-window-start w1 s2)
+           (set-window-start w2 s1))))
+  (other-window 1))
+(global-set-key (kbd "C-c s") 'swap-windows)
+
+
+;; Toggles between horizontal and vertical layout of two windows
+(defun toggle-window-split ()
+  (interactive)
+  (if (= (count-windows) 2)
+      (let* ((this-win-buffer (window-buffer))
+             (next-win-buffer (window-buffer (next-window)))
+             (this-win-edges (window-edges (selected-window)))
+             (next-win-edges (window-edges (next-window)))
+             (this-win-2nd (not (and (<= (car this-win-edges)
+                                         (car next-win-edges))
+                                     (<= (cadr this-win-edges)
+                                         (cadr next-win-edges)))))
+             (splitter
+              (if (= (car this-win-edges)
+                     (car (window-edges (next-window))))
+                  'split-window-horizontally
+                'split-window-vertically)))
+        (delete-other-windows)
+        (let ((first-win (selected-window)))
+          (funcall splitter)
+          (if this-win-2nd (other-window 1))
+          (set-window-buffer (selected-window) this-win-buffer)
+          (set-window-buffer (next-window) next-win-buffer)
+          (select-window first-win)
+          (if this-win-2nd (other-window 1))))))
+(global-set-key (kbd "C-c m") 'toggle-window-split)
+
+;; use control + arrow keys to switch between visible buffers
+;(require 'windmove)
+;(windmove-default-keybindings 'control) ;; will be overridden
+;(global-set-key (kbd "<C-s-left>")  'windmove-left)
+;(global-set-key (kbd "<C-s-right>") 'windmove-right)
+;(global-set-key (kbd "<C-s-up>")    'windmove-up)
+;(global-set-key (kbd "<C-s-down>")  'windmove-down)
+
+;; to activate winner mode - restore window configurations
+;; usage: C-c left, C-c right
+(when (fboundp 'winner-mode)
+      (winner-mode 1))
+
+;; to setup ace-window, to easily navigate between windows
+(use-package ace-window
+  :ensure t
+  :init
+  (progn
+    (global-set-key [remap other-window] 'ace-window)
+    (custom-set-faces
+     '(aw-leading-char-face
+       ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
+    ))
+(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+; old configuration
+;(global-set-key (kbd "C-c w") 'ace-window)
+
+;; For searching and replacing
+(setq search-highlight t                 ;; highlight when searching... 
+  query-replace-highlight t)             ;; ...and replacing
+(setq completion-ignore-case t           ;; ignore case when completing...
+  read-file-name-completion-ignore-case t) ;; ...filenames too
+
+;; Slick-copy: make copy-past a bit more intelligent
+;; from: http://www.emacswiki.org/emacs/SlickCopy
+;; Supercool!
+;; ‘M-w’ copies the current line when the region is not active, and
+;; ‘C-w’ deletes it.
+(defadvice kill-ring-save (before slick-copy activate compile)
+  "When called interactively with no active region, copy a single
+line instead."
+  (interactive
+    (if mark-active (list (region-beginning) (region-end))
+      (message "Copied line")
+      (list (line-beginning-position)
+               (line-beginning-position 2)))))
+(defadvice kill-region (before slick-cut activate compile)
+  "When called interactively with no active region, kill a single
+line instead."
+  (interactive
+    (if mark-active (list (region-beginning) (region-end))
+      (list (line-beginning-position)
+        (line-beginning-position 2)))))
+
+;; key board / input method settings
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+(set-language-environment "UTF-8")       ; prefer utf-8 for language settings
+(set-input-method nil)                   ; no funky input for normal editing;
+(setq read-quoted-char-radix 10)         ; use decimal, not octal
+
+;; global keybindings
+;(global-set-key (kbd "RET") 'newline-and-indent)
+
+;; Move more quickly, 5 lines or chars at a time
+;; It works with capslock with usual commands
+(global-set-key (kbd "C-S-n")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (next-line 5))))
+(global-set-key (kbd "C-S-p")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (previous-line 5))))
+(global-set-key (kbd "C-S-f")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (forward-char 5))))
+(global-set-key (kbd "C-S-b")
+                (lambda ()
+                  (interactive)
+                  (ignore-errors (backward-char 5))))
+
+;; To show line numbers when using M-x goto-line-with-feedback
+;; It should be very useful when finding errors
+(global-set-key [remap goto-line] 'goto-line-with-feedback)
+(defun goto-line-with-feedback ()
+  "Show line numbers temporarily, while prompting for the line number input"
+  (interactive)
+  (unwind-protect
+      (progn
+        (linum-mode 1)
+        (goto-line (read-number "Goto line: ")))
+    (linum-mode -1)))
+(defalias 'gl 'goto-line)
+
+;; Moving by blocks
+;; From ergoemacs
+;; http://ergoemacs.org/emacs/emacs_move_by_paragraph.html
+(defun ergoemacs-forward-block ()
+  "Move cursor forward to the beginning of next text block.
+A text block is separated by 2 empty lines (or line with just
+whitespace). In most major modes, this is similar to
+`forward-paragraph', but this command's behavior is the same
+regardless of syntax table."
+  (interactive)
+  (if (search-forward-regexp "\n[[:blank:]\n]*\n+" nil "NOERROR")
+      (progn (backward-char))
+    (progn (goto-char (point-max)) )
+    )
+  )
+(defun ergoemacs-backward-block ()
+  "Move cursor backward to previous text block.
+See: `ergoemacs-forward-block'"
+  (interactive)
+  (if (search-backward-regexp "\n[\t\n ]*\n+" nil "NOERROR")
+      (progn
+        (skip-chars-backward "\n\t ")
+        (forward-char 1)
+        )
+    (progn (goto-char (point-min)) )
+    )
+  )
+(global-set-key (kbd "<prior>") 'ergoemacs-backward-block)
+(global-set-key (kbd "<next>") 'ergoemacs-forward-block)
+
+;; Binding for dynamic abbreviations (dabbrev)
+;; It is super-cool! It also cycles around words
+(global-set-key (kbd "C-<tab>") 'dabbrev-expand)
+(define-key minibuffer-local-map (kbd "C-<tab>") 'dabbrev-expand)
+
+;; allowing indentations when writing codes in certain modes
+(electric-indent-mode +1)
+
+;; Word count in selected region
+(defun count-words-region ()
+  (interactive)
+  (message "Word count: %s" (how-many "\\w+" (point) (mark))))
+
+;; Enable narrowing the selected region
+;; Usage: In: C-x n n Out: C-x n w
+(put 'narrow-to-region 'disabled nil)
+
+;; Unfill paragraph and region
+(defun unfill-paragraph ()
+  "Replace newline chars in current paragraph by single spaces.
+This command does the inverse of `fill-paragraph'."
+  (interactive)
+  (let ((fill-column 90002000)) ; 90002000 is just random. you can use `most-positive-fixnum'
+    (fill-paragraph nil)))
+
+(defun unfill-region (start end)
+  "Replace newline chars in region by single spaces.
+This command does the inverse of `fill-region'."
+  (interactive "r")
+  (let ((fill-column 90002000))
+    (fill-region start end)))
+
+;; company: to "complete anything"
+;; to be available in all major-modes
+(add-hook 'after-init-hook 'global-company-mode)
+;; company with auctex
+(require 'company-auctex)
+(company-auctex-init)
+;; company-statistics
+(require 'company-statistics)
+(company-statistics-mode)
+
+;; to use flycheck, for syntax check in many languages, such as R
+(use-package flycheck
+  :ensure t
+  :init
+  (global-flycheck-mode t))
+
+;;YASnippet
+(use-package yasnippet
+  :ensure t
+  :init
+    (yas-global-mode 1))
+
+;; expand the marked region in semantic increments (negative prefix to reduce region)
+(use-package expand-region
+  :ensure t
+  :config 
+  (global-set-key (kbd "C-=") 'er/expand-region))
+
+;; Treats CamelCase as distinct words
+(subword-mode t)
+
+;; Editing multiple words simultaneously
+;; Select with C-; edit, then quit with C-;
+(use-package iedit
+:ensure t)
+
 ;; Trying to replace IDO mode with ivy mode, counsel and swiper 
 ;; If I don't like it, just comment below and uncomment IDO configuration removing ";; "
 (ivy-mode 1)

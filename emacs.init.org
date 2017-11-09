@@ -193,7 +193,7 @@ M-m (moves to first non-whitespace character)
 #+END_SRC
 
 
-* COMMENT Editing
+* Editing
 
 #+BEGIN_SRC emacs-lisp
   
