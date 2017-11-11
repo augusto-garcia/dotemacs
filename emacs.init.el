@@ -49,6 +49,14 @@ C-h i (manual), C-h a (apropos), C-h m (describe-mode)
 
 % Moving
 M-m (moves to first non-whitespace character)
+C-M-f, C-M-b  (by sexp, balanced expressions)
+C-M-d, C-M-u (down and up list)
+C-M-n, C-M-p (next and previous list)
+C-M-k (kill-sexp)
+
+C-M-a, C-M-e (begin and end of defun)
+
+M-{, M-} (start and end of paragraph)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ")
