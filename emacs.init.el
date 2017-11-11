@@ -129,6 +129,10 @@ M-{, M-} (start and end of paragraph)
 ;; Or, to initialize by default:
 ;; (focus-mode 1)
 
+;; make cursor the width of the character it is under
+;; i.e. full width of a TAB
+(setq x-stretch-cursor t)
+
 ;; keep a list of recently opened files, available using F7
 (recentf-mode 1)
 (global-set-key (kbd "<f7>") 'recentf-open-files)
