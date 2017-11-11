@@ -1309,6 +1309,9 @@ do this for the whole buffer."
 ;  :config
 ;  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
+;; Highlight latex text
+(setq org-highlight-latex-and-related '(latex))
+
 ;; To set up Beamer exporting
 (require 'ox-latex)
 (add-to-list 'org-latex-classes

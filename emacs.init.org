@@ -1511,6 +1511,9 @@ do this for the whole buffer."
 ;  :config
 ;  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
+;; Highlight latex text
+(setq org-highlight-latex-and-related '(latex))
+
 
 #+END_SRC
 
