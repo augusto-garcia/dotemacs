@@ -1463,9 +1463,9 @@ and set the focus back to Emacs frame"
   (sp-local-pair "<" ">"))
 
 ;(load-theme 'spacemacs-dark t)
-(require 'powerline)
-(require 'moe-theme)
-(moe-light)
+(require 'kaolin-themes)
+(load-theme 'kaolin-light) ; kaolin-light, kaolin-eclipse, kaolin-eclipse, kaolin-ocean
+
 
 ;; To highlight current line
 (global-hl-line-mode 1)
