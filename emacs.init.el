@@ -634,10 +634,10 @@ This command does the inverse of `fill-region'."
   uniquify-ignore-buffers-re "^\\*")
 
 ;; smex, for auto-complete on M-x
-(global-set-key (kbd "M-x") 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;(global-set-key (kbd "M-x") 'smex)
+;(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 ;; This is your old M-x.
-(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+;(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;; Find file at point
 (defalias 'ff 'find-file-at-point)
