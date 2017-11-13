@@ -707,15 +707,15 @@ This command does the inverse of `fill-region'."
 (global-set-key (kbd "C-c j") 'avy-goto-word-or-subword-1)
 (global-set-key (kbd "C-c c") 'avy-goto-char-timer)
 
-;; I need to learn more about helm
-;; Enable helm, for a better search
-;;(helm-mode 1)
-;;(global-set-key (kbd "C-c h") 'helm-mini)
-
 ;; Prettier text replacement with anzu
 (global-anzu-mode +1)
 (global-set-key (kbd "M-%") 'anzu-query-replace)
 (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
+
+;; I need to learn more about helm
+;; Enable helm, for a better search
+;;(helm-mode 1)
+;;(global-set-key (kbd "C-c h") 'helm-mini)
 
 ;; Hidding password when prompted in shell mode inside Emacs
 (add-hook 'comint-output-filter-functions
