@@ -715,8 +715,11 @@ This command does the inverse of `fill-region'."
 
 ;; I need to learn more about helm
 ;; Enable helm, for a better search
-;;(helm-mode 1)
+(helm-mode 1)
 ;;(global-set-key (kbd "C-c h") 'helm-mini)
+(require 'helm-config)
+
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
 
 ;; Hidding password when prompted in shell mode inside Emacs
 (add-hook 'comint-output-filter-functions
