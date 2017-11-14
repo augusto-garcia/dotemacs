@@ -272,13 +272,15 @@ point reaches the beginning or end of the buffer, stop there."
 (smooth-scroll-mode t)
 
 ;; To keep the point in a fixed position while scrolling
-(global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
-(global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
+;; not necessary anymore because ivy already does it
+;(global-set-key (kbd "M-n") (kbd "C-u 1 C-v"))
+;(global-set-key (kbd "M-p") (kbd "C-u 1 M-v"))
 
 ;; To browse the kill-ring with C-c k
-(require 'browse-kill-ring)
-(require 'browse-kill-ring+)
-(global-set-key (kbd "C-c k") 'browse-kill-ring)
+;removed to use helm for this task
+;(require 'browse-kill-ring)
+;(require 'browse-kill-ring+)
+;(global-set-key (kbd "C-c k") 'browse-kill-ring)
 
 ;; To swap two windows using C-c s
 (defun swap-windows ()
@@ -529,6 +531,7 @@ This command does the inverse of `fill-region'."
 ;; If I don't like it, just comment below and uncomment IDO configuration removing ";; "
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
+
 (global-set-key (kbd "C-x b") 'ivy-switch-buffer)
 (setq ivy-display-style 'fancy)
 (global-set-key "\C-s" 'swiper)
@@ -544,7 +547,7 @@ This command does the inverse of `fill-region'."
 (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
 (global-set-key (kbd "C-c g") 'counsel-git)
 (global-set-key (kbd "C-c j") 'counsel-git-grep)
-(global-set-key (kbd "C-c k") 'counsel-ag)
+;(global-set-key (kbd "C-c k") 'counsel-ag) ;not working
 (global-set-key (kbd "C-x l") 'counsel-locate)
 (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
 ;(define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
@@ -624,8 +627,8 @@ This command does the inverse of `fill-region'."
 (savehist-mode t)
 
 ;; to use ibuffer with C-x C-b
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-
+;(global-set-key (kbd "C-x C-b") 'ibuffer)
+q
 ;; uniquify: unique buffer names
 (require 'uniquify) ;; make buffer names more unique
 (setq 
@@ -713,13 +716,12 @@ This command does the inverse of `fill-region'."
 (global-set-key (kbd "M-%") 'anzu-query-replace)
 (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
 
-;; I need to learn more about helm
 ;; Enable helm, for a better search
 (helm-mode 1)
-;;(global-set-key (kbd "C-c h") 'helm-mini)
+(global-set-key (kbd "C-c h") 'helm-mini) ;for better buffer list
 (require 'helm-config)
-
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-c k") 'helm-show-kill-ring)
 
 ;; Hidding password when prompted in shell mode inside Emacs
 (add-hook 'comint-output-filter-functions
