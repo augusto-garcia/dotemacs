@@ -55,6 +55,10 @@ ln -s  ~/Dropbox/Emacs/org/diary ~/
 ln -s ~/Dropbox/Emacs/.authinfo.gpg ~/
 #+END_SRC
 
+
+
+
+
 * Packages and repositories
 
 #+BEGIN_SRC emacs-lisp
@@ -795,12 +799,11 @@ This command does the inverse of `fill-region'."
 (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
 
 ;; Enabling helm, for better search
-(helm-mode 1)
+;(helm-mode 1)
 (global-set-key (kbd "C-x C-b") 'helm-mini) ;for better buffer list
 (require 'helm-config)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-c k") 'helm-show-kill-ring)
-
 
 #+END_SRC
 

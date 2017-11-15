@@ -718,7 +718,7 @@ This command does the inverse of `fill-region'."
 (global-set-key (kbd "C-M-%") 'anzu-query-replace-regexp)
 
 ;; Enabling helm, for better search
-(helm-mode 1)
+;(helm-mode 1)
 (global-set-key (kbd "C-x C-b") 'helm-mini) ;for better buffer list
 (require 'helm-config)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
