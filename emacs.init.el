@@ -723,6 +723,8 @@ This command does the inverse of `fill-region'."
 (require 'helm-config)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "C-c k") 'helm-show-kill-ring)
+(global-set-key (kbd "C-x r b") 'helm-bookmarks)
+(defalias 'sb 'helm-bookmarks)
 
 ;; Hidding password when prompted in shell mode inside Emacs
 (add-hook 'comint-output-filter-functions
@@ -747,9 +749,6 @@ This command does the inverse of `fill-region'."
 (defalias 'ms 'magit-status)
 (defalias 'tm 'git-timemachine)
 (defalias 'lm 'linum-mode)
-(defalias 'sb 'bookmark-set)
-(defalias 'lb 'bookmark-bmenu-list)
-(defalias 'jb 'bookmark-jump)
 
 ;; shortcut to open file .emacs
 (defun dotemacs ()
@@ -1499,9 +1498,6 @@ and set the focus back to Emacs frame"
               ["Edit file as root (C-x F)" find-file-as-root]
               ["Rename file at butter (C-x C-r)" rename-current-buffer-file]
               ["Using dired (C-x d)" dired]
-              ["Set Bookmark (sb)" sb]
-              ["List Bookmarks (lb)" lb]
-              ["Jump to Bookmark (jb)" jb]
               ["Open .emacs (M-x dotemacs)" dotemacs]
               ["Open emacs.init.org (M-x init)" init]
               ["Goto Last Change (C-.)" goto-last-change]
