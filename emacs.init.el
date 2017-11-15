@@ -628,7 +628,7 @@ This command does the inverse of `fill-region'."
 
 ;; to use ibuffer with C-x C-b
 ;(global-set-key (kbd "C-x C-b") 'ibuffer)
-q
+
 ;; uniquify: unique buffer names
 (require 'uniquify) ;; make buffer names more unique
 (setq 

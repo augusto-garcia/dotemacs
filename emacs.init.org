@@ -10,7 +10,7 @@ can produce a =emacs.init.el= file tangling only the elisp code. To do
 that, load this file in Emacs and then run =M-x org-babel-load-file=.
 You can of course edit it before tangling. 
 
-I assume you are using Emacs24.4.
+I assume you are using Emacs25 or later.
 
 A good idea is to save these files into a directory under version
 control with =git=. You can do this by cloning my =github= repository
@@ -54,9 +54,6 @@ ln -s  ~/Dropbox/Emacs/.emacs.d/ ~/
 ln -s  ~/Dropbox/Emacs/org/diary ~/
 ln -s ~/Dropbox/Emacs/.authinfo.gpg ~/
 #+END_SRC
-
-
-
 
 * Packages and repositories
 
@@ -203,7 +200,6 @@ M-{, M-} (start and end of paragraph)
 (setq x-stretch-cursor t)
 
 #+END_SRC
-
 
 * Editing
 
@@ -709,7 +705,7 @@ This command does the inverse of `fill-region'."
 
 ;; to use ibuffer with C-x C-b
 ;(global-set-key (kbd "C-x C-b") 'ibuffer)
-q
+
 ;; uniquify: unique buffer names
 (require 'uniquify) ;; make buffer names more unique
 (setq 
@@ -808,7 +804,6 @@ q
 #+END_SRC
 
 
-
 * Working with shell
 
 #+BEGIN_SRC emacs-lisp
@@ -831,7 +826,6 @@ q
 (global-set-key (kbd "C-!") 'babcore-shell-execute)
 
 #+END_SRC
-
 
 * Shortcuts
 
@@ -874,7 +868,6 @@ q
 
 #+END_SRC
 
-
 * Tramp: protocols for ssh, sudo editing, etc
 
 #+BEGIN_SRC emacs-lisp
@@ -911,7 +904,6 @@ user."
 (global-set-key (kbd "C-x F") 'find-file-as-root)
 
 #+END_SRC
-
 
 * Email with mu4e
 
@@ -1165,7 +1157,6 @@ Sweave (do I still need this, given the recent R package =knitr=?).
 #+END_SRC
 
 
-
 * Emacs Speaks Statistics
 
 #+BEGIN_SRC emacs-lisp
@@ -1182,7 +1173,6 @@ Sweave (do I still need this, given the recent R package =knitr=?).
 
 
 #+END_SRC
-
 
 
 * Flyspell configurations
@@ -1319,7 +1309,6 @@ Package git-timemachine:
 #+END_SRC
 
 
-
 * CSV files
 
 #+BEGIN_SRC emacs-lisp
@@ -1327,7 +1316,6 @@ Package git-timemachine:
 (autoload 'csv-mode "csv-mode"
   "Major mode for editing comma-separated value files." t)
 #+END_SRC
-
 
 * Configurations for orgmode
 
@@ -1592,7 +1580,6 @@ Exporting:
 #+END_SRC
 
 
-
 * MobileOrg: export to Android devices
 
 #+BEGIN_SRC emacs-lisp
@@ -1616,7 +1603,6 @@ Exporting:
 
 
 #+END_SRC
-
 
 * Compiling Makefiles
 
@@ -1716,7 +1702,6 @@ Better compile command
   (sp-local-pair "<" ">"))
 
 #+END_SRC
-
 
 * Themes
 
@@ -1818,7 +1803,6 @@ I also have customizations for the modeline, using =powerline= (from Melpa).
 ;(setq powerline-arrow-shape 'curve) ;;option: arrow, arrow14
 
 #+END_SRC
-
 
 * Defining a customized menu
 
@@ -1924,7 +1908,6 @@ remember the hotkeys. With Hydras this is supposed to be easier.
 
 
 #+END_SRC
-
 
 * License
 
