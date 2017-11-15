@@ -56,8 +56,16 @@ C-M-k (kill-sexp)
 C-M-a, C-M-e (begin and end of defun)
 M-{, M-} (start and end of paragraph)
 
+M-g M-n, M-g M-p (jump to next/previous error)
+
 % Setting marks
 M-h (marks next paragraph), M-@ (marks next word)
+C-x h (marks entire buffer), C-M-h (marks defun)
+C-M-<space> (marks by sexp)
+
+% Search
+C-M-s, C-M-r (by regexp)
+M-x imenu
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ")
@@ -527,6 +535,9 @@ This command does the inverse of `fill-region'."
 ;; Select with C-; edit, then quit with C-;
 (use-package iedit
 :ensure t)
+
+;; Defining a keybind for imenu - good for navigation
+(global-set-key (kbd "M-i") 'imenu)
 
 ;; Trying to replace IDO mode with ivy mode, counsel and swiper 
 ;; If I don't like it, just comment below and uncomment IDO configuration removing ";; "
@@ -1505,6 +1516,7 @@ and set the focus back to Emacs frame"
               ["Goto Last Change (C-.)" goto-last-change]
               ["Browse Kill Ring (C-c k)" browse-kill-ring]
               ["Goto Line (M-x gl)" goto-line-with-feedback]
+              ["Using imenu (M-i)" imenu]
               ["Dynamic abbrev (C-tab)" dabbrev-expand]
               ["Count words (M-x cw)" count-words-region]
               ["Narrowing region (out: C-x n w)" narrow-to-region]
