@@ -53,10 +53,11 @@ C-M-f, C-M-b  (by sexp, balanced expressions)
 C-M-d, C-M-u (down and up list)
 C-M-n, C-M-p (next and previous list)
 C-M-k (kill-sexp)
-
 C-M-a, C-M-e (begin and end of defun)
-
 M-{, M-} (start and end of paragraph)
+
+% Setting marks
+M-h (marks next paragraph), M-@ (marks next word)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ")
@@ -1182,7 +1183,7 @@ user."
 (define-key global-map "\C-cb" 'org-iswitchb)
 (setq org-log-done t)
 
-;; suggested by Org-mode manual, to be removed if not good
+;; suggested by Org-mode manual; probably not required anymore
 (transient-mark-mode 1)
 
 ;; to mark as DONE if subtrees elements are checked as completed
