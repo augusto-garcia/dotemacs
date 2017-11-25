@@ -1488,9 +1488,9 @@ and set the focus back to Emacs frame"
 (sp-with-modes '(html-mode sgml-mode)
   (sp-local-pair "<" ">"))
 
-;(load-theme 'spacemacs-dark t)
-(require 'kaolin-themes)
-(load-theme 'kaolin-light) ; kaolin-light,kaolin-eclipse,kaolin-eclipse,kaolin-ocean,kaolin-tribal
+(load-theme 'spacemacs-light t)
+;(require 'kaolin-themes)
+;(load-theme 'kaolin-light) ; kaolin-light,kaolin-eclipse,kaolin-eclipse,kaolin-ocean,kaolin-tribal
 
 
 ;; To highlight current line

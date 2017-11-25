@@ -1796,9 +1796,9 @@ More fancy ones:
 
 #+BEGIN_SRC emacs-lisp
 
-;(load-theme 'spacemacs-dark t)
-(require 'kaolin-themes)
-(load-theme 'kaolin-light) ; kaolin-light,kaolin-eclipse,kaolin-eclipse,kaolin-ocean,kaolin-tribal
+(load-theme 'spacemacs-light t)
+;(require 'kaolin-themes)
+;(load-theme 'kaolin-light) ; kaolin-light,kaolin-eclipse,kaolin-eclipse,kaolin-ocean,kaolin-tribal
 
 
 ;; To highlight current line
