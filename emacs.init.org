@@ -28,25 +28,22 @@ ln -s  ~/augusto.garcia@usp.br/emacs/dotemacs/.emacs ~/
 Actually, =.emacs= only has the following:
 
 #+BEGIN_SRC sh :tangle no
-;; update the git directory with the latest version:
-;(shell-command "cd ~/git/dotemacs ; git pull")
 ;; The emacs.init.el file is at this location
 (add-to-list 'load-path "~/augusto.garcia@usp.br/emacs/dotemacs")
 ;; Load it
 (load "emacs.init")
 #+END_SRC
 
-Notice that I use one trick, forcing =git= to pull modifications
-already on =github=, before loading Emacs. By doing that, everything
-will always be updated on all computers.
+Notice that althoug I use for version control, the file is updated on
+all my computers since the file is on Google Drive.
 
-Emacs will look for files on =~/git/dotemacs=; there,
-he will find =emacs.init.el= (the file produced by tangling
+Emacs will look for files on =~/augusto.garcia@usp.br/emacs/dotemacs=;
+there, he will find =emacs.init.el= (the file produced by tangling
 =emacs.init.org=) and will load it.
 
-Packages, org-mode files, and passwords (securely) stored on the
-=.gpg= file, are all on my Dropbox directory. So, I also use symbolic
-links to access them in Emacs:
+Packages, org-mode files, and passwords (securely) stored on a =.gpg=
+file, are all on my Dropbox directory. So, I also use symbolic links
+to access them in Emacs:
 
 #+BEGIN_SRC sh :tangle no
 ln -s  ~/Dropbox/Emacs/org/ ~/
