@@ -17,21 +17,21 @@ control with =git=. You can do this by cloning my =github= repository
 or by downloading the files.
 
 In my case, files (=.emacs=, =emacs.init.org= and =emacs.init.el=) are
-at =~/git/dotemacs=. But since emacs will by default load =.emacs=
-from my home directory, I have a symbolic link pointing out to my file
-on the /git/ directory:
+at Google Drive in =~/augusto.garcia@usp.br/emacs/dotemacs=. But since
+emacs will by default load =.emacs= from my home directory, I have a
+symbolic link pointing out to my file under =git= control:
 
 #+BEGIN_SRC sh :tangle no
-ln -s  ~/git/dotemacs/.emacs ~/
+ln -s  ~/augusto.garcia@usp.br/emacs/dotemacs/.emacs ~/
 #+END_SRC
 
 Actually, =.emacs= only has the following:
 
 #+BEGIN_SRC sh :tangle no
 ;; update the git directory with the latest version:
-(shell-command "cd ~/git/dotemacs ; git pull")
+;(shell-command "cd ~/git/dotemacs ; git pull")
 ;; The emacs.init.el file is at this location
-(add-to-list 'load-path "~/git/dotemacs")
+(add-to-list 'load-path "~/augusto.garcia@usp.br/emacs/dotemacs")
 ;; Load it
 (load "emacs.init")
 #+END_SRC
