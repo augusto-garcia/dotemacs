@@ -46,14 +46,11 @@ file, are all on my Dropbox directory. So, I also use symbolic links
 to access them in Emacs:
 
 #+BEGIN_SRC sh :tangle no
-ln -s  ~/Dropbox/Emacs/org/ ~/
-ln -s  ~/Dropbox/Emacs/.emacs.d/ ~/
-ln -s  ~/Dropbox/Emacs/org/diary ~/
-ln -s ~/Dropbox/Emacs/.authinfo.gpg ~/
+ln -s ~/augusto.garcia@usp.br/emacs/org/ ~/
+ln -s ~/augusto.garcia@usp.br/emacs/.emacs.d/ ~/
+ln -s ~/augusto.garcia@usp.br/emacs/org/diary ~/
+ln -s ~/augusto.garcia@usp.br/emacs/.authinfo.gpg ~/
 #+END_SRC
-
-
-
 
 
 * Packages and repositories
