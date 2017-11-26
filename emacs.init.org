@@ -42,7 +42,7 @@ there, he will find =emacs.init.el= (the file produced by tangling
 =emacs.init.org=) and will load it.
 
 Packages, org-mode files, and passwords (securely) stored on a =.gpg=
-file, are all on my Dropbox directory. So, I also use symbolic links
+file, are all on my Google Drive directory. So, I also use symbolic links
 to access them in Emacs:
 
 #+BEGIN_SRC sh :tangle no
@@ -1615,7 +1615,6 @@ Exporting:
 ;; To automaticaly push and pull modifications when opening/closing emacs
 (add-hook 'after-init-hook 'org-mobile-pull)
 (add-hook 'kill-emacs-hook 'org-mobile-push) 
-
 
 #+END_SRC
 
