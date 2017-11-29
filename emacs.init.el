@@ -34,6 +34,14 @@ Usage: (package-require 'package)"
 	:config
 	(which-key-mode))
 
+;; from http://cestlaz.github.io/posts/using-emacs-19-live
+;; create a function for loading file only if it is available
+;; good for defining specific configurations for every computer
+(defun load-if-exists (f)
+ ""
+ (if (file-readable-p f)
+     load-file f))
+
 ;; To customize the Welcome Message when loading Emacs
 (setq initial-scratch-message "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \nHi augusto.
