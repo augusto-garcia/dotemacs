@@ -772,7 +772,7 @@ This command does the inverse of `fill-region'."
 ;; shortcut to open file emacs.init.org
 (defun init ()
   (interactive)
-  (find-file "~/git/dotemacs/emacs.init.org")
+  (find-file "~/augusto.garcia@usp.br/emacs/dotemacs/emacs.init.org")
   )
 
 ;; A function to "refresh" the buffer without asking confirmation
