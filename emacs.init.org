@@ -127,8 +127,11 @@ C-M-n, C-M-p (next and previous list)
 C-M-k (kill-sexp)
 C-M-a, C-M-e (begin and end of defun)
 M-{, M-} (start and end of paragraph)
-
 M-g M-n, M-g M-p (jump to next/previous error)
+
+% Kill
+C-M-k (kill sexp)
+C-M-w (append kill to kill ring)
 
 % Setting marks
 M-h (marks next paragraph), M-@ (marks next word)
@@ -1842,7 +1845,7 @@ good to remember the hotkeys.
               ["Open .emacs (M-x dotemacs)" dotemacs]
               ["Open emacs.init.org (M-x init)" init]
               ["Goto Last Change (C-.)" goto-last-change]
-              ["Browse Kill Ring (C-c k)" browse-kill-ring]
+              ["Browse Kill Ring (C-c k or M-y)" browse-kill-ring]
               ["Goto Line (M-x gl)" goto-line-with-feedback]
               ["Using imenu (M-i)" imenu]
               ["Dynamic abbrev (C-tab)" dabbrev-expand]
