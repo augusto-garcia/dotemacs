@@ -568,6 +568,8 @@ This command does the inverse of `fill-region'."
 		 ("html" . (ac-source-words-in-buffer ac-source-abbrev)))))
 
 (setq web-mode-enable-auto-closing t)
+(setq web-mode-enable-current-element-highlight t)
+(setq web-mode-enable-current-column-highlight t)
 
 ;; Trying to replace IDO mode with ivy mode, counsel and swiper 
 ;; If I don't like it, just comment below and uncomment IDO configuration removing ";; "
