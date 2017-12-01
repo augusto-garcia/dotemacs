@@ -556,6 +556,19 @@ This command does the inverse of `fill-region'."
 ;; Defining a keybind for imenu - good for navigation
 (global-set-key (kbd "M-i") 'imenu)
 
+;; Adding a mode for html files
+(use-package web-mode
+    :ensure t
+    :config
+	 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+	 (setq web-mode-engines-alist
+	       '(("django"    . "\\.html\\'")))
+	 (setq web-mode-ac-sources-alist
+	       '(("css" . (ac-source-css-property))
+		 ("html" . (ac-source-words-in-buffer ac-source-abbrev)))))
+
+(setq web-mode-enable-auto-closing t)
+
 ;; Trying to replace IDO mode with ivy mode, counsel and swiper 
 ;; If I don't like it, just comment below and uncomment IDO configuration removing ";; "
 (ivy-mode 1)
