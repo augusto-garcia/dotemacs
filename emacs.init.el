@@ -65,9 +65,15 @@ C-M-a, C-M-e (begin and end of defun)
 M-{, M-} (start and end of paragraph)
 M-g M-n, M-g M-p (jump to next/previous error)
 
-% Kill
-C-M-k (kill sexp)
-C-M-w (append kill to kill ring)
+% Kill C-M-k (kill sexp) C-M-w (append kill to kill ring)
+
+% Transposing
+C-t, M-t, C-M-t, C-x C-t (transpose character, word, sexp, lines)
+
+% Filling and commenting
+C-x f (sets the fill column width)
+M-; and C-x C-; (comment/uncomment)
+M-j, C-M,j (insert new line with comment)
 
 % Setting marks
 M-h (marks next paragraph), M-@ (marks next word)
@@ -80,7 +86,7 @@ M-x imenu
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ")
-  
+
 ;; To adjust the size of the window when starting emacs
 (if (window-system) (set-frame-size (selected-frame) 108 33))
 
@@ -92,9 +98,9 @@ M-x imenu
 
 ;; Display on frame title the name of the file, host and some information
 (setq frame-title-format
-  '("emacs%@" (:eval (system-name)) ": " (:eval (if (buffer-file-name)
-        (abbreviate-file-name (buffer-file-name))
-             "%b")) " [%*]"))
+'("emacs%@" (:eval (system-name)) ": " (:eval (if (buffer-file-name)
+(abbreviate-file-name (buffer-file-name))
+"%b")) " [%*]"))
 
 ;; remove toolbar
 (tool-bar-mode -1)
@@ -132,7 +138,7 @@ M-x imenu
 (sublimity-attractive-hide-fringes)
 ;;(sublimity-attractive-hide-modelines)
 
-;; To help find the cursorS
+;; To help find the cursor
 (beacon-mode 1)
 (setq beacon-push-mark 35)
 (setq beacon-color "#666600")
