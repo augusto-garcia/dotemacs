@@ -73,7 +73,7 @@ C-t, M-t, C-M-t, C-x C-t (transpose character, word, sexp, lines)
 % Filling and commenting
 C-x f (sets the fill column width)
 M-; and C-x C-; (comment/uncomment)
-M-j, C-M,j (insert new line with comment)
+M-j, C-M j (insert new line with comment)
 
 % Setting marks
 M-h (marks next paragraph), M-@ (marks next word)
