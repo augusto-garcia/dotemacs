@@ -1028,6 +1028,10 @@ user."
                          '("LatexSweave" "%l %(mode) %s"
                            TeX-run-TeX nil (latex-mode) :help "Run Latex after Sweave") t)))
 
+
+;; latex-preview-pane, for pdf preview and highlights of errors
+(latex-preview-pane-enable)
+
 ;; Define emacs to always start as a server
 (server-start)
 

@@ -1150,6 +1150,10 @@ Sweave (do I still need this, given the recent R package =knitr=?).
                          '("LatexSweave" "%l %(mode) %s"
                            TeX-run-TeX nil (latex-mode) :help "Run Latex after Sweave") t)))
 
+
+;; latex-preview-pane, for pdf preview and highlights of errors
+(latex-preview-pane-enable)
+
 #+END_SRC
 
 * Server for using Emacs with Google Chrome and Conkeror
