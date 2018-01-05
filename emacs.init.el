@@ -1193,7 +1193,7 @@ user."
 (custom-set-variables
  '(org-agenda-custom-commands (quote (("d" todo #("DELEGATED" 0 9 (face org-warning)) nil) ("c" todo #("DONE|DEFERRED|CANCELLED" 0 23 (face org-warning)) nil) ("w" todo #("WAITING" 0 7 (face org-warning)) nil) ("W" agenda "" ((org-agenda-ndays 21))) ("A" agenda "" ((org-agenda-skip-function (lambda nil (org-agenda-skip-entry-if (quote notregexp) "\\=.*\\[#A\\]"))) (org-agenda-ndays 1) (org-agenda-overriding-header "Tarefas de hoje com prioridade #A: "))) ("u" alltodo "" ((org-agenda-skip-function (lambda nil (org-agenda-skip-entry-if (quote scheduled) (quote deadline) (quote regexp) "<[^>
 ]+>"))) (org-agenda-overriding-header "TODOs não agendados: "))))))
- '(org-agenda-files (quote ("~/org/Tarefas.org")))
+ '(org-agenda-files (quote ("~/org/Tarefas.org" "~/org/gcal.org")))
  '(org-agenda-ndays 7)
  '(org-agenda-show-all-dates t)
  '(org-agenda-skip-deadline-if-done t)
@@ -1287,6 +1287,8 @@ user."
                "* TODO %?\n  %U")
               ("n" "notas" entry (file+datetree "~/org/Notas.org")
               "* %u %?")
+              ("a" "appointment" entry (file  "~/org/gcal.org" )
+	      "* %?\n\n%^T\n\n:PROPERTIES:\n\n:END:\n\n")
               )))
 
 ; '(org-remember-templates (quote ((116 "* TODO %?
@@ -1373,6 +1375,11 @@ do this for the whole buffer."
 
 ;; Highlight latex text
 (setq org-highlight-latex-and-related '(latex))
+
+;; For integration with Google Calendar
+;; from http://cestlaz.github.io/posts/using-emacs-26-gcal/#.Wk-2YXWnGV5
+;;(load-if-exists "~/augusto.garcia@usp.br/emacs/config-org-gcal.el")
+(load "~/augusto.garcia@usp.br/emacs/config-org-gcal.el")
 
 ;; To set up Beamer exporting
 (require 'ox-latex)
