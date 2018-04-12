@@ -788,6 +788,11 @@ This command does the inverse of `fill-region'."
    (process-send-string (get-buffer-process "*shell-commands-buf*") (concat cmd "\n")))
 (global-set-key (kbd "C-!") 'babcore-shell-execute)
 
+;; better-shell package https://github.com/killdash9/better-shell
+;; specially useful for open a shell on a remote server
+(global-set-key (kbd "C-'") 'better-shell-shell)
+(global-set-key (kbd "C-;") 'better-shell-remote-open)
+
 ;; useful ones
 (defalias 'eb 'eval-buffer)
 (defalias 'er 'eval-region)
