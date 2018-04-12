@@ -641,6 +641,9 @@ This command does the inverse of `fill-region'."
 (setq web-mode-enable-current-element-highlight t)
 (setq web-mode-enable-current-column-highlight t)
 
+;; to use dead-keys for accents on some ubuntu distributions (problem with 16.04 on segovia)
+(require 'iso-transl)
+
 #+END_SRC
 
 * Working through files, buffers and directories

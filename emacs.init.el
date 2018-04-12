@@ -571,6 +571,9 @@ This command does the inverse of `fill-region'."
 (setq web-mode-enable-current-element-highlight t)
 (setq web-mode-enable-current-column-highlight t)
 
+;; to use dead-keys for accents on some ubuntu distributions (problem with 16.04 on segovia)
+(require 'iso-transl)
+
 ;; Trying to replace IDO mode with ivy mode, counsel and swiper 
 ;; If I don't like it, just comment below and uncomment IDO configuration removing ";; "
 (ivy-mode 1)
