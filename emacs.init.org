@@ -873,8 +873,10 @@ This command does the inverse of `fill-region'."
 
 ;; better-shell package https://github.com/killdash9/better-shell
 ;; specially useful for open a shell on a remote server
-(global-set-key (kbd "C-'") 'better-shell-shell)
-(global-set-key (kbd "C-;") 'better-shell-remote-open)
+(use-package better-shell
+    :ensure t
+    :bind (("C-'" . better-shell-shell)
+	   ("C-;" . better-shell-remote-open)))
 
 #+END_SRC
 
