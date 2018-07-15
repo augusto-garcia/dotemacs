@@ -1542,7 +1542,7 @@ and set the focus back to Emacs frame"
 (sp-with-modes '(html-mode sgml-mode)
   (sp-local-pair "<" ">"))
 
-(load-theme 'klere t)
+(load-theme 'deeper-blue t)
 ;(require 'kaolin-themes)
 ;(load-theme 'kaolin-light) ; kaolin-light,kaolin-eclipse,kaolin-eclipse,kaolin-ocean,kaolin-tribal
 
