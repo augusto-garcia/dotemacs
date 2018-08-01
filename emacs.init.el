@@ -1641,3 +1641,20 @@ and set the focus back to Emacs frame"
   ("u" windmove-up "windmove up")
   ("d" windmove-down "windmove down"))
 (global-set-key (kbd "M-g w") 'hydra-windows/body)
+
+
+(global-set-key
+ (kbd "M-g j")
+ (defhydra hydra-gotoline 
+   ( :pre (linum-mode 1)
+	  :post (linum-mode -1))
+   "goto"
+   ("t" (lambda () (interactive)(move-to-window-line-top-bottom 0)) "top")
+   ("b" (lambda () (interactive)(move-to-window-line-top-bottom -1)) "bottom")
+   ("m" (lambda () (interactive)(move-to-window-line-top-bottom)) "middle")
+   ("e" (lambda () (interactive)(end-of-buffer)) "end")
+   ("c" recenter-top-bottom "recenter")
+   ("n" next-line "down")
+   ("p" (lambda () (interactive) (forward-line -1))  "up")
+   ("g" goto-line "goto-line")
+   ))
