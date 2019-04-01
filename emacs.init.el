@@ -1180,6 +1180,7 @@ user."
 
 ;; For using MARKDOWN (other than RMarkdown) I prefer markdown mode, see above
 ;; For R modes
+;; But the line below for .Rnw stop working on Nov 2018, so I commented them and changed above to include .Rmd
 (add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
 (add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
 ;(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
@@ -1387,11 +1388,6 @@ do this for the whole buffer."
 ;; Highlight latex text
 (setq org-highlight-latex-and-related '(latex))
 
-;; For integration with Google Calendar
-;; from http://cestlaz.github.io/posts/using-emacs-26-gcal/#.Wk-2YXWnGV5
-;;(load-if-exists "~/augusto.garcia@usp.br/emacs/config-org-gcal.el")
-(load "~/augusto.garcia@usp.br/emacs/config-org-gcal.el")
-
 ;; To set up Beamer exporting
 (require 'ox-latex)
 (add-to-list 'org-latex-classes
@@ -1448,6 +1444,11 @@ do this for the whole buffer."
 ;; To look for CSS file, js and plugin in the same file where the
 ;; presentation is
 (setq org-reveal-root "")
+
+;; For integration with Google Calendar
+;; from http://cestlaz.github.io/posts/using-emacs-26-gcal/#.Wk-2YXWnGV5
+;;(load-if-exists "~/augusto.garcia@usp.br/emacs/config-org-gcal.el")
+(load "~/augusto.garcia@usp.br/emacs/config-org-gcal.el")
 
 ;; To use MobileOrg
 ;; Set to the location of your Org files on your local system

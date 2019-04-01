@@ -1577,10 +1577,6 @@ do this for the whole buffer."
 ;; Highlight latex text
 (setq org-highlight-latex-and-related '(latex))
 
-;; For integration with Google Calendar
-;; from http://cestlaz.github.io/posts/using-emacs-26-gcal/#.Wk-2YXWnGV5
-;;(load-if-exists "~/augusto.garcia@usp.br/emacs/config-org-gcal.el")
-(load "~/augusto.garcia@usp.br/emacs/config-org-gcal.el")
 
 
 #+END_SRC
@@ -1647,6 +1643,17 @@ Exporting:
 (setq org-reveal-root "")
 
 #+END_SRC
+
+Others:
+
+#+BEGIN_SRC emacs-lisp
+;; For integration with Google Calendar
+;; from http://cestlaz.github.io/posts/using-emacs-26-gcal/#.Wk-2YXWnGV5
+;;(load-if-exists "~/augusto.garcia@usp.br/emacs/config-org-gcal.el")
+(load "~/augusto.garcia@usp.br/emacs/config-org-gcal.el")
+
+#+END_SRC
+
 
 
 * MobileOrg: export to Android devices
