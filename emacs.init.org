@@ -1355,8 +1355,8 @@ Package git-timemachine:
 ;; For using MARKDOWN (other than RMarkdown) I prefer markdown mode, see above
 ;; For R modes
 ;; But the line below for .Rnw stop working on Nov 2018, so I commented them and changed above to include .Rmd
-(add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+;(add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
+;(add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
 ;(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 
 ;; Emacs polymode - allows auctex/reftex to work with .Rnw files
