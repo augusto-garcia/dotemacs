@@ -1,8 +1,8 @@
 ;; Package repositories
 (require 'package)
-(package-initialize)
+;;(package-initialize)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-                          ("marmalade" . "http://marmalade-repo.org/packages/")
+;;                          ("marmalade" . "http://marmalade-repo.org/packages/")
                           ("elpa" . "http://tromey.com/elpa/")
                           ("melpa" . "http://melpa.org/packages/")))
 
@@ -240,7 +240,7 @@ point reaches the beginning or end of the buffer, stop there."
 ;; undo-tree-mode
 ;; turn on everywhere
 ;; use C-x u to see the three
-(global-undo-tree-mode 1)
+;;(global-undo-tree-mode 1)
 ;; make ctrl-z undo
 (global-set-key (kbd "C-z") 'undo)
 ;; make ctrl-Z redo
@@ -1025,22 +1025,22 @@ user."
 
 ;; To use AucTeX with Sweave
 ;; http://andreas.kiermeier.googlepages.com/essmaterials
-(setq TeX-file-extensions
-      '("Snw" "Rnw" "nw" "tex" "sty" "cls" "ltx" "texi" "texinfo"))
-(add-to-list 'auto-mode-alist '("\\.Rnw\\'" . Rnw-mode))
-(add-to-list 'auto-mode-alist '("\\.Snw\\'" . Snw-mode))
-(add-hook 'Rnw-mode-hook
-          (lambda ()
-            (add-to-list 'TeX-command-list
-                         '("Sweave" "R CMD Sweave %s"
-                           TeX-run-command nil (latex-mode) :help "Run Sweave") t)
-            (add-to-list 'TeX-command-list
-                         '("LatexSweave" "%l %(mode) %s"
-                           TeX-run-TeX nil (latex-mode) :help "Run Latex after Sweave") t)))
+;(setq TeX-file-extensions
+;      '("Snw" "Rnw" "nw" "tex" "sty" "cls" "ltx" "texi" "texinfo"))
+;(add-to-list 'auto-mode-alist '("\\.Rnw\\'" . Rnw-mode))
+;(add-to-list 'auto-mode-alist '("\\.Snw\\'" . Snw-mode))
+;(add-hook 'Rnw-mode-hook
+;          (lambda ()
+;            (add-to-list 'TeX-command-list
+;                         '("Sweave" "R CMD Sweave %s"
+;                           TeX-run-command nil (latex-mode) :help "Run Sweave") t)
+;            (add-to-list 'TeX-command-list
+;                         '("LatexSweave" "%l %(mode) %s"
+;                           TeX-run-TeX nil (latex-mode) :help "Run Latex after Sweave") t)))
 
 
 ;; latex-preview-pane, for pdf preview and highlights of errors
-(latex-preview-pane-enable)
+;(latex-preview-pane-enable)
 
 ;; Define emacs to always start as a server
 (server-start)
@@ -1144,6 +1144,17 @@ user."
   )
 (global-set-key (kbd "M-<f9>") 'flyspell-check-next-highlighted-word)
 
+
+;; For flymake-grammarly
+;; Just gave up; too slow
+;;(require 'flymake-grammarly)
+;;(setq flymake-grammarly-check-time 0.8)
+;; to activate it in a given mode-hook
+;;(add-hook 'text-mode-hook 'flymake-grammarly-load)
+;;(add-hook 'latex-mode-hook 'flymake-grammarly-load)
+;;(add-hook 'org-mode-hook 'flymake-grammarly-load)
+;;(add-hook 'markdown-mode-hook 'flymake-grammarly-load)
+
 ;; Magit
 ;; To check the magit status of my favorite repos
 ;; Usage: M-x magit-status, then TAB
@@ -1176,19 +1187,26 @@ user."
    "Major mode for editing Markdown files" t)
   (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-  (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
+;  (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
 
 ;; For using MARKDOWN (other than RMarkdown) I prefer markdown mode, see above
 ;; For R modes
 ;; But the line below for .Rnw stop working on Nov 2018, so I commented them and changed above to include .Rmd
 ;(add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
 ;(add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
+
 ;(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
 
+
+(require 'poly-R)
+(add-to-list 'auto-mode-alist
+             '("\\.[rR]md\\'" . poly-gfm+r-mode))
+
+
 ;; Emacs polymode - allows auctex/reftex to work with .Rnw files
-(setq load-path
-      (append '("/usr/share/emacs/site-lisp/polymode/"  "/usr/share/emacs/site-lisp/polymode/modes")
-              load-path))
+;(setq load-path
+;      (append '("/usr/share/emacs/site-lisp/polymode/"  "/usr/share/emacs/site-lisp/polymode/modes")
+;              load-path))
 
 (add-to-list 'auto-mode-alist '("\\.[Cc][Ss][Vv]\\'" . csv-mode))
 (autoload 'csv-mode "csv-mode"
@@ -1520,7 +1538,7 @@ and set the focus back to Emacs frame"
 
 ;; to enable smartparens (package) in all modes
 ;; it was necessary to turn off electric-pair-mode (above)
-(package-initialize)
+;;(package-initialize)
 (smartparens-global-mode t)
 ;; highlights matching pairs
 (show-smartparens-global-mode t)
